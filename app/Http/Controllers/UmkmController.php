@@ -19,17 +19,16 @@ class UmkmController extends Controller
         Member::create($request->all()); 
         return redirect('/daftarmemberumkm')->with('sukses','Data berhasil ditambahkan');
     }
-    public function editmember($mbr)
+    public function editmember($id)
     {
-
-        Member::find($mbr);
-        return view ('/admin/editmember',['member'->$mbr]);
-        
+        $member = \App\Models\Member::find($id);
+        return view ('admin/edit',['member'->$id]);
     }
-    public function updatemember(Request $request,$mbr)
+    public function updatemember(Request $request,$id)
     {
-        Member::find($mbr);
+        $member = \App\Models\Member::find($id);
         $member->updatemember($request->all());
-        return redirect('/daftarmemberumkm')->with('sukses','Data berhasil diupdate');
+        return redirect('/daftarmemberumkm')->with('sukses','Data berhasil diubah!');
     }
+   
 }   
