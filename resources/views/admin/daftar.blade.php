@@ -69,8 +69,8 @@
                     <td>{{$mbr->no_telp}}</td>
                     <td>{{$mbr->alamat}}</td>
                     <td>
-                        <a href="" class="badge badge-success">edit</a>
-                        <a href="" class="badge badge-danger">delete</a> 
+                        <a href="/member/{{$mbr->id}}/edit" class="badge badge-warning">Edit</a>
+                        <a href="#" class="badge badge-danger">delete</a> 
                     </td>
             </tr>
         @endforeach
