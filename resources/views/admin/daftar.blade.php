@@ -69,7 +69,7 @@
                     <td>{{$mbr->no_telp}}</td>
                     <td>{{$mbr->alamat}}</td>
                     <td>
-                        <a href="/member/{{$mbr->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/daftarmemberumkm/edit/{{$mbr->id}}" class="btn btn-warning btn-sm">Edit</a>
                         <a href="#" class="btn btn-danger btn-sm">delete</a> 
                     </td>
             </tr>

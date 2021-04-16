@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Route;
     Route::get('/kabupaten','KabupatenController@index');
     Route::post('/createmember', 'UmkmController@createmember');
     Route::get('/daftarmemberumkm','UmkmController@index');
-    Route::get('/member/{id}/edit','UmkmController@editmember');
-    Route::post('/member/{id}/update','UmkmController@updatemember');
+    Route::get('/daftarmemberumkm/edit/{id}','UmkmController@editmember');
+    Route::post('/daftarmemberumkm/update/{id}','UmkmController@update');
     
     
 //berita

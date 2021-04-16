@@ -22,12 +22,12 @@ class UmkmController extends Controller
     public function editmember($id)
     {
         $member = \App\Models\Member::find($id);
-        return view ('admin/edit',['member'->$id]);
+        return view ('admin.editmember')->with(['member' => $member]);;
     }
-    public function updatemember(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $member = \App\Models\Member::find($id);
-        $member->updatemember($request->all());
+        $member->update($request->all());
         return redirect('/daftarmemberumkm')->with('sukses','Data berhasil diubah!');
     }
    

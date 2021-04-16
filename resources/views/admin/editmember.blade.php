@@ -11,7 +11,7 @@
     <div class="alert alert-success" role="alert">{{session('sukses')}}</div>@endif
         <div class="row">
             <div class="col-lg-12">
-            <form action ="/member/{id}/update" method="POST"> 
+            <form action ="/daftarmemberumkm/update/{{$member->id}}" method="POST"> 
                 @csrf
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">NIK</label>
@@ -29,7 +29,7 @@
                     <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
                     <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3">{{$member->alamat}}</textarea>
                 </div>              
-                <button type="submit"   class="btn btn-primary btn-warning" > Tambahkan!</button>
+                <button type="submit" class="btn btn-warning">Ubah Data!</button>
             </form>
             </div>
         </div>
