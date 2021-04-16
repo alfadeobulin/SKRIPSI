@@ -1,7 +1,7 @@
 
 @extends('umkm.index')
 
-@section('title','Daftar UMKM')
+@section('title','Edit Member UMKM')
 
 
 @section('container')

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/daftarmemberumkm','UmkmController@index');
     Route::get('/daftarmemberumkm/edit/{id}','UmkmController@editmember');
     Route::post('/daftarmemberumkm/update/{id}','UmkmController@update');
+    Route::get('/daftarmemberumkm/delete/{id}','UmkmController@delete');
     
     
 //berita

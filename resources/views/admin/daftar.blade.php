@@ -70,7 +70,7 @@
                     <td>{{$mbr->alamat}}</td>
                     <td>
                         <a href="/daftarmemberumkm/edit/{{$mbr->id}}" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="#" class="btn btn-danger btn-sm">delete</a> 
+                        <a href="/daftarmemberumkm/delete/{{$mbr->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
                     </td>
             </tr>
         @endforeach

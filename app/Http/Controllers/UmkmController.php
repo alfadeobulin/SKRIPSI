@@ -9,9 +9,16 @@ use App\Models\Member;
 
 class UmkmController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $member = Member::all();
+        if($request->has('cari'))
+        {
+            $member = \App\Models\Member::where('nama','LIKE','%'.$request->cari.'%')->get();
+        }
+        else
+        {
+            $member = Member::all();
+        }   
         return view ('admin.daftar', ['member' => $member]);
     }
     public function createmember(Request $request)
@@ -29,6 +36,12 @@ class UmkmController extends Controller
         $member = \App\Models\Member::find($id);
         $member->update($request->all());
         return redirect('/daftarmemberumkm')->with('sukses','Data berhasil diubah!');
+    }
+    public function delete($id)
+    {
+        $member = \App\Models\Member::find($id);
+        $member->delete($member);
+        return redirect('/daftarmemberumkm')->with('sukses','Data berhasil dihapus!');
     }
    
 }   
