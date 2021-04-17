@@ -34,7 +34,7 @@
             </div>
                 </ul>
             
-                <form class="d-flex" method="GET" action ="/daftarmemberumkm">
+                <form class="d-flex" method="GET" action =" ">
                 <input name="cari" class="form-control me-2" type="search" placeholder="Cari " aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Pencarian</button>
                 </form>
