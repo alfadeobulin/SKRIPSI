@@ -12,12 +12,10 @@ use Illuminate\Support\Facades\Route;
     Route::get('/daftarmemberumkm/edit/{id}','MemberController@editmember');
     Route::post('/daftarmemberumkm/update/{id}','MemberController@update');
     Route::get('/daftarmemberumkm/delete/{id}','MemberController@delete');
-    
-    
-//berita
-Route::get('/berita','BeritaController@index');
-
-
+//berita admin
+    Route::get('/berita','BeritaController@index');
+    Route::get('/berita/delete/{brt}','BeritaController@delete');
+    Route::post('/createberita','BeritaController@createberita');
 //galeri
 Route::get('/galeri','GaleriController@index');
 
