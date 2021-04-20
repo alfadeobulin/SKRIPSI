@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Route;
     Route::get('/home','HomeController@index');
     Route::get('/kecamatan','KecamatanController@index');
     Route::get('/kabupaten','KabupatenController@index');
-    Route::post('/createmember', 'UmkmController@createmember');
-    Route::get('/daftarmemberumkm','UmkmController@index');
-    Route::get('/daftarmemberumkm/edit/{id}','UmkmController@editmember');
-    Route::post('/daftarmemberumkm/update/{id}','UmkmController@update');
-    Route::get('/daftarmemberumkm/delete/{id}','UmkmController@delete');
+    Route::post('/createmember', 'MemberController@createmember');
+    Route::get('/daftarmemberumkm','MemberController@index');
+    Route::get('/daftarmemberumkm/edit/{id}','MemberController@editmember');
+    Route::post('/daftarmemberumkm/update/{id}','MemberController@update');
+    Route::get('/daftarmemberumkm/delete/{id}','MemberController@delete');
     
     
 //berita
