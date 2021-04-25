@@ -28,6 +28,10 @@
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
                     <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3">{{$member->alamat}}</textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">ID ADMIN</label>
+                    <input name="id_admin" type="text" class="form-control" id="InputIdadmin" aria-describedby="ID ADMIN">
                 </div>              
                 <button type="submit" class="btn btn-warning">Ubah Data!</button>
             </form>

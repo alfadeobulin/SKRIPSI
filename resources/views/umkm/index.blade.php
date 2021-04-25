@@ -15,21 +15,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/galeri')}}">Galeri </a>
                     </li>
-            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/berita')}}">Berita </a>
+                    </li>
+                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Kategori
+                            Daftar
                         </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{url('/kabupaten')}}">Kabupaten</a>
+                                <a class="dropdown-item" href="{{url('/daftaradmin')}}">Daftar Admin</a>
                                 <a class="dropdown-item" href="{{url('/daftarmemberumkm')}}">Daftar member umkm</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{url('/umkm')}}">UMKM Terdaftar</a>
                             </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('/berita')}}">Berita </a>
                     </li>
             </div>
                 </ul>

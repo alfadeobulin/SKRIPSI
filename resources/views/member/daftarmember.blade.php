@@ -39,10 +39,6 @@
                                                             <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
                                                             <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                                         </div>
-                                                        <div class="mb-3">
-                                                            <label for="exampleFormControlTextarea1" class="form-label">ID ADMIN</label>
-                                                            <input name="id_admin" type="text" class="form-control" id="InputIdadmin" aria-describedby="ID ADMIN">
-                                                        </div>
                                                         </div>
                                                         <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                                         <button type="submit"   class="btn btn-primary" > Tambahkan!</button>
@@ -60,7 +56,6 @@
                 <th scope="col">NAMA</th>   
                 <th scope="col">TELP</th>
                 <th scope="col">ALAMAT</th>
-                <th scope="col">ID ADMIN</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -72,8 +67,8 @@
                     <td>{{$mbr->nama}}</td>
                     <td>{{$mbr->no_telp}}</td>
                     <td>{{$mbr->alamat}}</td>
-                    <td>{{$mbr->id_admin}}</td>
                     <td>
+                        <a href="/daftarmemberumkm/edit/{{$mbr->id}}" class="btn btn-warning btn-sm">Edit</a>
                         <a href="/daftarmemberumkm/delete/{{$mbr->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
                     </td>
             </tr>

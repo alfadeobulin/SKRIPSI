@@ -8,6 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Member extends Model
 {
-    protected $table = 'member';
-    protected $fillable = ['no_ktp','nama','no_telp','alamat'];
+    //
 }
