@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+//DashBoard
+    Route::get('/','HomeController@index');
 
 //role admin
     Route::get('/home','HomeController@index');

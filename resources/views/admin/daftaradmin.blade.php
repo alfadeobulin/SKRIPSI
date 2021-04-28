@@ -1,10 +1,20 @@
 
 @extends('umkm.index')
-
-@section('title','Daftar UMKM')
-
-
 @section('container')
+    <div class = "main">
+        <div class="main-content">
+            <div class = "container-fluid ">
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection 
+@section('container1')
 <div class="container">
     @if(session('sukses'))
     <div class="alert alert-success" role="alert">{{session('sukses')}}</div>@endif
