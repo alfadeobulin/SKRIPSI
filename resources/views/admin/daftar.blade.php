@@ -14,7 +14,13 @@
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Daftar Member UMKMku</h3>
                                 </div>
-
+                                <form class="navbar-form navbar-right" method='GET' action = ''>
+                                    <div class="input-group">
+                                        <input name="cari" value="" class="form-control" placeholder="Cari . . .">
+                                        <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-primary">Cari</button></span>
+                                    </div>
+                                </form>
                                 <div class="panel-body">
                                 <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">Tambah Data Member</button>
                                     <table class="table table-hover">

@@ -11,7 +11,7 @@ class AdminlistController extends Controller
   {
       if($request->has('cari'))
       {
-          $admin = \App\Models\Adminlist::where('nama','LIKE','%'.$request->cari.'%')->get();
+          $admin = \App\Models\Adminlist::where('nama_admin','LIKE','%'.$request->cari.'%')->get();
       }
       else
       {

@@ -27,19 +27,12 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="index.html"><img src="{{asset('admin/assets/img/logo-dark.png')}}" alt="Klorofil Logo" class="img-responsive logo"></a>
+				<a href="index.html"><img src="{{asset('admin/umkmku.png')}}" alt="Klorofil Logo" class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
 					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
 				</div>
-				<form class="navbar-form navbar-left">
-					<div class="input-group">
-						<input type="text" value="" class="form-control" placeholder="Search dashboard...">
-						<span class="input-group-btn"><button type="button" class="btn btn-primary">Go</button></span>
-					</div>
-				</form>
-				
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
@@ -96,10 +89,11 @@
 								<ul class="nav">
 									<li><a href="{{url('/daftarmemberumkm')}}" class="">Daftar Member UMKMku</a></li>
 									<li><a href="{{url('/umkm')}}" class="">UMKM Terdaftar</a></li>
+									<li><a href="{{url('/daftaradmin')}}" class="">Daftar Admin</a></li>
 								</ul>
 							</div>
 						</li>
-                        <li><a href="elements.html" class=""><i class="fa fa-map"></i> <span>Informasi</span></a></li>
+                        <li><a href="{{url('/Informasi')}}" class=""><i class="fa fa-map"></i> <span>Informasi</span></a></li>
 					</ul>
 				</nav>
 			</div>
@@ -111,7 +105,7 @@
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+				<p class="copyright">UMKM Kota Yogyakarta <i class="fa fa-love"></i><a href="https://diskopukm.jogjaprov.go.id/dinas/">DISKOPUKMDIY</a>
 </p>
 			</div>
 		</footer>

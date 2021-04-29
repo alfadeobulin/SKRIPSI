@@ -11,7 +11,7 @@ class BeritaController extends Controller
   {
       if($request->has('cari'))
       {
-          $berita = \App\Models\Berita::where('nama','LIKE','%'.$request->cari.'%')->get();
+          $berita = \App\Models\Berita::where('JUDUL','LIKE','%'.$request->cari.'%')->get();
       }
       else
       {
