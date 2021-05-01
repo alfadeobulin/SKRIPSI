@@ -48,6 +48,7 @@
                                                     <td>{{$mbr->id_admin}}</td>
                                                     <td>
                                                         <a href="/daftarmemberumkm/delete/{{$mbr->id_member}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
+                                                        <a href="/detailmember" class="btn btn-success btn-sm">Detail</a>
                                                     </td>
                                             </tr>
                                         @endforeach

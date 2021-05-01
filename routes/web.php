@@ -22,7 +22,9 @@ use Illuminate\Support\Facades\Route;
     Route::get('/berita','BeritaController@index');
     Route::get('/berita/delete/{brt}','BeritaController@delete');
     Route::post('/createberita','BeritaController@createberita');
-//galeri
-Route::get('/galeri','GaleriController@index');
+//galeri admin
+    Route::get('/galeri','GaleriController@index');
+//usaha admin
+    Route::get('/umkm','UmkmController@index');
 
 
