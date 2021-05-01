@@ -69,43 +69,44 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Tambah berita</h5>
                             <div class="modal-body">
-                                <form action ="/createberita" method="POST"> 
-                                    @csrf
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Judul</label>
-                                        <input name="judul" type="text" class="form-control" id="InputBerita" aria-describedby="JUDUL">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlTextarea1" class="form-label">Isi</label>
-                                        <textarea name="isi" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Penulis</label>
-                                        <input name="penulis" type="text" class="form-control" id="InputPenulis" aria-describedby="PENULIS">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">ID Berita</label>
-                                        <input name="id_berita" type="text" class="form-control" id="InputId_berita" aria-describedby="ID Berita">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Tanggal</label>
-                                        <input name="tgl_terbit" type="text" class="form-control" id="InputTgl_terbit" aria-describedby="TANGGAL">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Link</label>
-                                        <input name="link" type="text" class="form-control" id="InputLink" aria-describedby="LINK">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">ID Admin</label>
-                                        <input name="id_admin" type="text" class="form-control" id="InputId_admin" aria-describedby="ID Admin">
-                                    </div>
-                                    </div>
-                                    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                    <button type="submit"   class="btn btn-primary" > Tambahkan!</button>
-                                </form>
+                            <form action ="/createberita" method="POST"> 
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Judul</label>
+                                    <input name="judul" type="text" class="form-control" id="InputBerita" aria-describedby="JUDUL">
                                 </div>
-                            </div>
-                        </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Isi</label>
+                                    <textarea name="isi" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Penulis</label>
+                                    <input name="penulis" type="text" class="form-control" id="InputPenulis" aria-describedby="PENULIS">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">ID Berita</label>
+                                    <input name="id_berita" type="text" class="form-control" id="InputId_berita" aria-describedby="ID Berita">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Tanggal</label>
+                                    <input name="tgl_terbit" type="text" class="form-control" id="InputTgl_terbit" aria-describedby="TANGGAL">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Link</label>
+                                    <input name="link" type="text" class="form-control" id="InputLink" aria-describedby="LINK">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">ID Admin</label>
+                                    <input name="id_admin" type="text" class="form-control" id="InputId_admin" aria-describedby="ID Admin">
+                                </div>
+
+                                </div>
+                                <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit"   class="btn btn-primary" > Tambahkan!</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
     </div>
 </div>
 @endsection 

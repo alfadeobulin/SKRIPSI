@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Berita extends Model
 {
+    use HasFactory;
     protected $table = 'berita';
-    protected $fillable = ['judul','isi','penulis','id_berita','tgl_terbit','link','id_admin'];
+    protected $fillable = ['id_berita','judul','isi','tgl_terbit','penulis','link','id_admin'];
+    public $timestamps = false;
+     
 }

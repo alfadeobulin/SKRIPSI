@@ -21,14 +21,27 @@ class AdminController extends Controller
   }
   public function createmember(Request $request)
   {
-      Admin::create($request->all()); 
-      return redirect('/daftarmemberumkm')->with('sukses','Data berhasil ditambahkan');
+    $member = new Member;
+    $member->id_member = $request->id_member;
+    $member->nama_member = $request->nama_member;
+    $member->email_member = $request->email_member;
+    $member->nohp_member = $request->nohp_member;
+    $member->alamat_member = $request->alamat;
+    $member->password  = $request->password;
+    $member->id_admin = $request->id_admin;
+    $member->save();
+    return redirect('/daftarmemberumkm')->with('sukses','Data berita berhasil ditambahkan');
   }
+
+  public function editmember($id_member)
+    {
+      $member = DB::table('member')->where('id_member', $id_member)->first();
+      return view ('admin/editmember')->with(['member' => $member]);
+    }
   
   public function delete($id)
   {
-      $member = \App\Models\Admin::find($id);
-      $member->delete($member);
-      return redirect('/daftarmemberumkm')->with('sukses','Data berhasil dihapus!');
+    DB::table('member')->where('id_member', $id_member)->delete();
+    return redirect('/daftarmemberumkm')->with('sukses','Data berhasil dihapus!');
   }
 }
