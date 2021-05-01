@@ -21,8 +21,14 @@ class AdminlistController extends Controller
   }
   public function createadmin(Request $request)
   {
-      Adminlist::create($request->all()); 
-      return redirect('/daftaradmin')->with('sukses','Data berhasil ditambahkan');
+    $admin = new Adminlist;
+    $admin->id_admin = $request->id_admin;
+    $admin->nama_admin = $request->nama_admin;
+    $admin->email_admin = $request->email_admin;
+    $admin->nohp_admin = $request->nohp_admin;
+    $admin->password  = $request->password;
+    $admin->save();
+    return redirect('/daftaradmin')->with('sukses','Data berita berhasil ditambahkan');
   }
   
   public function delete($id)

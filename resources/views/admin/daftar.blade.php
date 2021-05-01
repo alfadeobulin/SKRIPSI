@@ -27,9 +27,10 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">NO</th>
-                                                <th scope="col">NIK </th>
+                                                <th scope="col">ID MEMBER </th>
                                                 <th scope="col">NAMA</th>   
-                                                <th scope="col">TELP</th>
+                                                <th scope="col">EMAIL</th>
+                                                <th scope="col">NO TELP</th>
                                                 <th scope="col">ALAMAT</th>
                                                 <th scope="col">ID ADMIN</th>
                                                 <th scope="col"></th>
@@ -39,13 +40,14 @@
                                         @foreach ($member as $mbr)
                                             <tr>    
                                                 <th scope='row'>{{$loop->iteration}}</th>
-                                                    <td>{{$mbr->no_ktp}}</td>
-                                                    <td>{{$mbr->nama}}</td>
-                                                    <td>{{$mbr->no_telp}}</td>
-                                                    <td>{{$mbr->alamat}}</td>
+                                                    <td>{{$mbr->id_member}}</td>
+                                                    <td>{{$mbr->nama_member}}</td>
+                                                    <td>{{$mbr->email_member}}</td>
+                                                    <td>{{$mbr->nohp_member}}</td>
+                                                    <td>{{$mbr->alamat_member}}</td>
                                                     <td>{{$mbr->id_admin}}</td>
                                                     <td>
-                                                        <a href="/daftarmemberumkm/delete/{{$mbr->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
+                                                        <a href="/daftarmemberumkm/delete/{{$mbr->id_member}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
                                                     </td>
                                             </tr>
                                         @endforeach
@@ -86,7 +88,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
-                                        <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea name="alamat_member" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">PASSWORD</label>

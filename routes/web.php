@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Route;
     Route::get('/kecamatan','KecamatanController@index');
     Route::post('/createmember', 'AdminController@createmember');
     Route::get('/daftarmemberumkm','AdminController@index');
-    Route::get('/daftarmemberumkm/edit/{id}','AdminController@editmember');
-    Route::post('/daftarmemberumkm/update/{id}','AdminController@update');
-    Route::get('/daftarmemberumkm/delete/{id}','AdminController@delete');
+    Route::get('/daftarmemberumkm/edit/{id_member}','AdminController@editmember');
+    Route::post('/daftarmemberumkm/update/{id_member}','AdminController@update');
+    Route::get('/daftarmemberumkm/delete/{id_member}','AdminController@delete');
 //role admin -> daftar admin
     Route::get('/daftaradmin','AdminlistController@index');
     Route::post('/createadmin', 'AdminlistController@createadmin');

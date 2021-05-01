@@ -27,10 +27,10 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">NO</th>  
-                                                <th scope="col">NAMA  </th>  
-                                                <th scope="col">TELP</th>
+                                                <th scope="col">ID ADMIN  </th>  
+                                                <th scope="col">NAMA</th>
                                                 <th scope="col">EMAIL</th>
-                                                <th scope="col">ID ADMIN</th>
+                                                <th scope="col">NO TELP</th>
                                                 <th scope="col"></th>
                                             </tr>
                                         </thead>
@@ -38,10 +38,10 @@
                                         @foreach ($admin as $adm)
                                             <tr>    
                                                 <th scope='row'>{{$loop->iteration}}</th>
-                                                    <td>{{$adm->nama_admin}}</td>
-                                                    <td>{{$adm->no_telp}}</td>
-                                                    <td>{{$adm->email_admin}}</td>
                                                     <td>{{$adm->id_admin}}</td>
+                                                    <td>{{$adm->nama_admin}}</td>
+                                                    <td>{{$adm->email_admin}}</td>
+                                                    <td>{{$adm->nohp_admin}}</td>
                                                     <td>
                                                         <a href="/daftaradmin/delete/{{$adm->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
                                                     </td>
@@ -66,21 +66,24 @@
                                 <form action ="/createadmin" method="POST"> 
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Nama </label>
-                                        <input name="nama_admin" type="text"  class="form-control" id="InputNama" aria-describedby="NAMA">
+                                        <label for="exampleInputEmail1" class="form-label">ID Admin </label>
+                                        <input name="id_admin" type="text"  class="form-control" id="InputNama" aria-describedby="NAMA">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Telp</label>
-                                        <input name="no_telp" type="text" class="form-control" id="InputTelp" aria-describedby="TELP">
+                                        <label for="exampleInputEmail1" class="form-label">Nama</label>
+                                        <input name="nama_admin" type="text" class="form-control" id="InputTelp" aria-describedby="TELP">
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlTextarea1" class="form-label">Email</label>
                                         <input name="email_admin" type="text" class="form-control" id="InputEmail" aria-describedby="Email">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">ID Admin</label>
-                                        <input name="id_admin" type="text" class="form-control" id="InputId" aria-describedby="IDADMIN">
+                                        <label for="exampleInputEmail1" class="form-label">No Telp</label>
+                                        <input name="nohp_admin" type="text" class="form-control" id="InputId" aria-describedby="IDADMIN">
                                     </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Password</label>
+                                        <input name="password" type="text" class="form-control" id="InputId" aria-describedby="IDADMIN">
                                     </div>
                                     <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                     <button type="submit"   class="btn btn-primary" > Tambahkan!</button>

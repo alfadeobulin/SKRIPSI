@@ -49,7 +49,7 @@
                                                 <td>{{$brt->link}}</td>
                                                 <td>{{$brt->id_admin}}</td>
                                                 <td>
-                                                    <a href="/berita/delete/{{$brt->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus berita?')">Delete</a>
+                                                    <a href="/berita/delete/{{$brt->id_berita}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus berita?')">Delete</a>
                                                 </td>
                                         </tr>
                                     @endforeach

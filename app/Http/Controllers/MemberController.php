@@ -10,13 +10,13 @@ class MemberController extends Controller
     
     public function editmember($id)
     {
-        $member = \App\Models\Member::find($id);
-        return view ('admin.editmember')->with(['member' => $member]);;
+        // $member = \App\Models\Member::find($id);
+        // return view ('admin.editmember')->with(['member' => $member]);;
     }
     public function update(Request $request, $id)
     {
-        $member = \App\Models\Member::find($id);
-        $member->update($request->all());
-        return redirect('/daftarmemberumkm')->with('sukses','Data berhasil diubah!');
+        // $member = \App\Models\Member::find($id);
+        // $member->update($request->all());
+        // return redirect('/daftarmemberumkm')->with('sukses','Data berhasil diubah!');
     }
 }

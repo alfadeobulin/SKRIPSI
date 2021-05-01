@@ -33,10 +33,9 @@ class BeritaController extends Controller
     $berita->save();
     return redirect('/berita')->with('sukses','Data berita berhasil ditambahkan');
   }
-  public function delete($id)
+  public function delete($id_berita)
   {
-    $berita = \App\Models\Berita::find($id);
-    $berita->delete($berita);
-    return redirect('/berita')->with('sukses','Data berita berhasil dihapus!');
+    DB::table('berita')->where('id_berita', $id_berita)->delete();
+    return redirect('/berita')->with('sukses','Data berhasil dihapus!');
   }
 }
