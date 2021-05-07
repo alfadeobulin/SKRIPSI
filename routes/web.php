@@ -3,16 +3,29 @@
 use Illuminate\Support\Facades\Route;
 
 //DashBoard
-    Route::get('/','HomeController@index');
+    Route::get('/', function ()
+    {
+        return view('home');
+    });
 
-//role admin
-    Route::get('/home','HomeController@index');
+//Login & Logout
+    Route::get('/login','AuthController@login');
+    Route::post('/postlogin','AuthController@postlogin');
+    Route::get('/logout','AuthController@logout');
+
+
+//Informasi
+    Route::get('/informasi','InformasiController@index');
+    
+//role admin ->daftar member
+    Route::get('/dashboard','DashboardController@index');
     Route::get('/kecamatan','KecamatanController@index');
     Route::post('/createmember', 'AdminController@createmember');
     Route::get('/daftarmemberumkm','AdminController@index');
     Route::get('/daftarmemberumkm/edit/{id_member}','AdminController@editmember');
     Route::post('/daftarmemberumkm/update/{id_member}','AdminController@update');
     Route::get('/daftarmemberumkm/delete/{id_member}','AdminController@delete');
+
 //role admin -> daftar admin
     Route::get('/daftaradmin','AdminlistController@index');
     Route::post('/createadmin', 'AdminlistController@createadmin');
@@ -25,6 +38,10 @@ use Illuminate\Support\Facades\Route;
 //galeri admin
     Route::get('/galeri','GaleriController@index');
 //usaha admin
+    //Route::post('/createusaha', 'UmkmController@create');
     Route::get('/umkm','UmkmController@index');
+    Route::get('/umkm/delete/{ush}','UmkmController@delete');
+    
+
 
 

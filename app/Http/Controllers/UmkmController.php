@@ -13,12 +13,18 @@ class UmkmController extends Controller
   {
       if($request->has('cari'))
       {
-          $usaha = \App\Models\Umkm::where('nama_member','LIKE','%'.$request->cari.'%')->get();
+          $usaha = \App\Models\Umkm::where('nama_ush','LIKE','%'.$request->cari.'%')->get();
       }
       else
       {
           $usaha = Umkm::all();
       }   
-      return view ('admin/usaha', ['usaha' => $usaha]);
+      return view ('umkm/usaha', ['usaha' => $usaha]);
+  }
+
+  public function delete($id_usaha)
+  {
+    DB::table('usaha')->where('id_usaha', $id_usaha)->delete();
+    return redirect('/umkm')->with('sukses','Data berhasil dihapus!');
   }
 }   
