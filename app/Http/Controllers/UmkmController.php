@@ -11,6 +11,7 @@ class UmkmController extends Controller
 {
    public function index(Request $request)
   {
+    
       if($request->has('cari'))
       {
           $usaha = \App\Models\Umkm::where('nama_ush','LIKE','%'.$request->cari.'%')->get();

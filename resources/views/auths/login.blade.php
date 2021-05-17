@@ -2,7 +2,7 @@
 <html lang="en" class="fullscreen-bg">
 
 <head>
-	<title>Login | Klorofil - Free Bootstrap Dashboard Template</title>
+	<title>Login | UMKM Kota Yogyakarta</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -29,6 +29,9 @@
 				<div class="auth-box ">
 					<div class="left">
 						<div class="content">
+						@if(session('alert'))
+        				<div class="alert alert-danger" role="alert">{{session('alert')}}</div>
+        				@endif
 							<div class="header">
 								<div class="logo text-center"><img src="{{asset('admin/umkm.png')}}" alt="Klorofil Logo"></div>
 								<p class="lead">Login </p>

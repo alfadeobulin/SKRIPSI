@@ -4,44 +4,37 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 use App\Models\Admin;
+use Hash;
 
 class AdminController extends Controller
 {
-    public function index(Request $request)
+  public function index(Request $request)
   {
       if($request->has('cari'))
       {
-          $member = \App\Models\Admin::where('nama_member','LIKE','%'.$request->cari.'%')->get();
+          $admin = \App\Models\Admin::where('nama_admin','LIKE','%'.$request->cari.'%')->get();
       }
       else
       {
-          $member = Admin::all();
+          $admin = Admin::all();
       }   
-      return view ('admin/daftar', ['member' => $member]);
+      return view ('admin/daftaradmin', ['admin' => $admin]);
   }
-  public function createmember(Request $request)
+  public function createadmin(Request $request)
   {
-    $member = new Admin;
-    $member->id_member = $request->id_member;
-    $member->nama_member = $request->nama_member;
-    $member->email_member = $request->email_member;
-    $member->nohp_member = $request->nohp_member;
-    $member->alamat_member = $request->alamat_member;
-    $member->password  = $request->password;
-    $member->id_admin = $request->id_admin;
-    $member->save();
-    return redirect('/daftarmemberumkm')->with('sukses','Data berita berhasil ditambahkan');
+    $admin = new Admin;
+    $admin->id_admin = $request->id_admin;
+    $admin->nama_admin = $request->nama_admin;
+    $admin->email = $request->email;
+    $admin->nohp_admin = $request->nohp_admin;
+    $admin->password  = Hash::make($request->password);
+    $admin->save();
+    return redirect('/daftaradmin')->with('sukses','Data berita berhasil ditambahkan');
   }
-
-  public function editmember($id_member)
-    {
-      $member = DB::table('member')->where('id_member', $id_member)->first();
-      return view ('admin/editmember')->with(['member' => $member]);
-    }
   
-  public function delete($id_member)
+  public function delete($id_admin)
   {
-    DB::table('member')->where('id_member', $id_member)->delete();
-    return redirect('/daftarmemberumkm')->with('sukses','Data berhasil dihapus!');
+      DB::table('admin')->where('id_admin', $id_admin)->delete();
+      return redirect('/daftaradmin')->with('sukses','Data berhasil dihapus!');
   }
 }

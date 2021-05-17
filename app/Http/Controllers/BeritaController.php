@@ -7,6 +7,7 @@ use App\Models\Berita;
 
 class BeritaController extends Controller
 {
+  
     public function index(Request $request)
   {
       if($request->has('cari'))

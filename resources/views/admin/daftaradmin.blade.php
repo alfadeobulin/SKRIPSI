@@ -40,10 +40,10 @@
                                                 <th scope='row'>{{$loop->iteration}}</th>
                                                     <td>{{$adm->id_admin}}</td>
                                                     <td>{{$adm->nama_admin}}</td>
-                                                    <td>{{$adm->email_admin}}</td>
+                                                    <td>{{$adm->email}}</td>
                                                     <td>{{$adm->nohp_admin}}</td>
                                                     <td>
-                                                        <a href="/daftaradmin/delete/{{$adm->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
+                                                        <a href="/daftaradmin/delete/{{$adm->id_admin}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
                                                     </td>
                                             </tr>
                                         @endforeach
@@ -75,7 +75,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlTextarea1" class="form-label">Email</label>
-                                        <input name="email_admin" type="text" class="form-control" id="InputEmail" aria-describedby="Email">
+                                        <input name="email" type="text" class="form-control" id="InputEmail" aria-describedby="Email">
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">No Telp</label>

@@ -9,38 +9,42 @@ use Illuminate\Support\Facades\Route;
     });
 
 //Login & Logout
-    Route::get('/login','AuthController@login');
+    Route::get('/login','AuthController@login')->name('login');
     Route::post('/postlogin','AuthController@postlogin');
     Route::get('/logout','AuthController@logout');
 
-
-//Informasi
-    Route::get('/informasi','InformasiController@index');
-    
-//role admin ->daftar member
-    Route::get('/dashboard','DashboardController@index');
-    Route::get('/kecamatan','KecamatanController@index');
-    Route::post('/createmember', 'AdminController@createmember');
-    Route::get('/daftarmemberumkm','AdminController@index');
-    Route::get('/daftarmemberumkm/edit/{id_member}','AdminController@editmember');
-    Route::post('/daftarmemberumkm/update/{id_member}','AdminController@update');
-    Route::get('/daftarmemberumkm/delete/{id_member}','AdminController@delete');
-
+   //Route::group(['middleware'=>'auth'], function(){
+    //role admin ->daftar member
+    Route::get('/dashboard','DashboardController@index')->name('dashboard');
+    Route::get('/kecamatan','KecamatanController@index')->name('kecamatan');
+    Route::post('/createmember', 'MemberController@createmember')->name('create member');
+    Route::get('/daftarmemberumkm','MemberController@index')->name('daftar member');
+    Route::get('/daftarmemberumkm/edit/{id_member}','MemberController@editmember')->name('edit member');
+    Route::post('/daftarmemberumkm/update/{id_member}','MemberController@update')->name('update member');
+    Route::get('/daftarmemberumkm/delete/{id_member}','MemberController@delete')->name('delete member');
 //role admin -> daftar admin
-    Route::get('/daftaradmin','AdminlistController@index');
-    Route::post('/createadmin', 'AdminlistController@createadmin');
-    Route::get('/daftaradmin','AdminlistController@index');
-    Route::get('/daftaradmin/delete/{id}','AdminlistController@delete');
+    Route::get('/daftaradmin','AdminController@index')->name('daftar admin');
+    Route::post('/createadmin', 'AdminController@createadmin')->name('create admin');
+    Route::get('/daftaradmin','AdminController@index')->name('daftar admin');
+    Route::get('/daftaradmin/delete/{id_admin}','AdminController@delete')->name('delete admin');
 //berita admin
-    Route::get('/berita','BeritaController@index');
-    Route::get('/berita/delete/{brt}','BeritaController@delete');
-    Route::post('/createberita','BeritaController@createberita');
+    Route::get('/berita','BeritaController@index')->name('berita');
+    Route::get('/berita/delete/{brt}','BeritaController@delete')->name('delete berita');
+    Route::post('/createberita','BeritaController@createberita')->name('create berita');
 //galeri admin
-    Route::get('/galeri','GaleriController@index');
+    Route::get('/galeri','GaleriController@index')->name('galeri');
 //usaha admin
     //Route::post('/createusaha', 'UmkmController@create');
-    Route::get('/umkm','UmkmController@index');
-    Route::get('/umkm/delete/{ush}','UmkmController@delete');
+    Route::get('/umkm','UmkmController@index')->name('usaha');
+    Route::get('/umkm/delete/{ush}','UmkmController@delete')->name('delete usaha');
+//Informasi
+    Route::get('/informasi','InformasiController@index')->name('informasi ');
+   //});
+    
+
+
+
+
     
 
 
