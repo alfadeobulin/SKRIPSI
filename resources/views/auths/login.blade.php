@@ -29,22 +29,22 @@
 				<div class="auth-box ">
 					<div class="left">
 						<div class="content">
-						@if(session('alert'))
-        				<div class="alert alert-danger" role="alert">{{session('alert')}}</div>
-        				@endif
+							@if(session('alert'))
+							<div class="alert alert-danger" role="alert">{{session('alert')}}</div>
+							@endif
 							<div class="header">
 								<div class="logo text-center"><img src="{{asset('admin/umkm.png')}}" alt="Klorofil Logo"></div>
 								<p class="lead">Login </p>
 							</div>
-							<form class="form-auth-small" action="/postlogin" method="POST">
+							<form class="form-auth-small" action="/login" method="POST">
 								{{csrf_field()}}
 								<div class="form-group">
 									<label for="signin-email" class="control-label sr-only">Email</label>
-									<input name ="email" type="email" class="form-control" id="signin-email"  placeholder="Email">
+									<input name="email" type="email" class="form-control" id="signin-email" placeholder="Email">
 								</div>
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Password</label>
-									<input name="password" type="password" class="form-control" id="signin-password"  placeholder="Password">
+									<input name="password" type="password" class="form-control" id="signin-password" placeholder="Password">
 								</div>
 								<div class="form-group clearfix">
 									<!-- <label class="fancy-checkbox element-left">
@@ -63,7 +63,7 @@
 						<div class="overlay"></div>
 						<div class="content text">
 							<h1 class="heading">UMKMku</h1>
-							<p>visualisasi pesebaran umkm kuliner kota Yogyakarta</p>
+							<p>Visualisasi pesebaran umkm kuliner kota Yogyakarta</p>
 						</div>
 					</div>
 					<div class="clearfix"></div>

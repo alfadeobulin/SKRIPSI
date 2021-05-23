@@ -14,16 +14,20 @@ class AuthController extends Controller
 {
     public function login()
     {
+        if(Auth::check()){
+            return redirect()->route('dashboard');
+        }
         return  view ('auths.login');
     }
     public function postlogin(Request $request)
     {
-        
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) 
+        if(Auth::attempt($request->only('email','password')))
+        //$credentials = $request->only('email', 'password');
+        //if (Auth::attempt($credentials)) 
         {
-            $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            //$request->session()->regenerate();
+            //return redirect()->intended('/dashboard');
+            return redirect('/dashboard');
         }
         else
         {

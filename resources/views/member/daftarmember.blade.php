@@ -42,7 +42,7 @@
                                                 <th scope='row'>{{$loop->iteration}}</th>
                                                     <td>{{$mbr->id_member}}</td>
                                                     <td>{{$mbr->nama_member}}</td>
-                                                    <td>{{$mbr->email_member}}</td>
+                                                    <td>{{$mbr->email}}</td>
                                                     <td>{{$mbr->nohp_member}}</td>
                                                     <td>{{$mbr->alamat_member}}</td>
                                                     <td>{{$mbr->id_admin}}</td>
@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">EMAIL MEMBER</label>
-                                        <input name="email_member" type="text" class="form-control" id="" aria-describedby="EMAIL" >
+                                        <input name="email" type="text" class="form-control" id="" aria-describedby="EMAIL" >
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">NO HANDPHONE</label>

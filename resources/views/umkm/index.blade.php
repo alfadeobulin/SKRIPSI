@@ -62,7 +62,12 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('admin/assets/img/user.png')}}" class="img-circle" alt="Avatar"> <span></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
-								<li><a href="/logout"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+								<li><a href="{{ route('logout') }}" onclick=" event.preventDefault(); document.getElementById('logout-form').submit();""><i class=" lnr lnr-exit"></i> <span>Logout</span></a></li>
+
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+									@csrf
+								</form>
+
 							</ul>
 						</li>
 						<!-- <li>
@@ -79,8 +84,6 @@
 				<nav>
 					<ul class="nav">
 						<li><a href="{{url('/dashboard')}}" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-                        <li><a href="{{url('/galeri')}}" class=""><i class="fa fa-shopping-bag"></i> <span>Galeri UMKM</span></a></li>
-						<li><a href="{{url('/berita')}}" class=""><i class="lnr lnr-file-empty"></i> <span>Berita</span></a></li>
 						<li>
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>Member</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
@@ -91,16 +94,19 @@
 								</ul>
 							</div>
 						</li>
-                        <li><a href="{{url('/informasi')}}" class=""><i class="fa fa-map"></i> <span>Informasi</span></a></li>
+						<li><a href="{{url('/galeri')}}" class=""><i class="fa fa-shopping-bag"></i> <span>Galeri UMKM</span></a></li>
+						<li><a href="{{url('/berita')}}" class=""><i class="lnr lnr-file-empty"></i> <span>Berita</span></a></li>
+
+						<li><a href="{{url('/informasi')}}" class=""><i class="fa fa-map"></i> <span>Informasi</span></a></li>
 					</ul>
 				</nav>
 			</div>
 		</div>
 		<!-- END LEFT SIDEBAR -->
 		<!-- MAIN -->
-        @yield('content')
+		@yield('content')
 		<!-- END MAIN -->
-		
+
 		<footer>
 			<div class="container-fluid">
 				<p class="copyright">UMKM Kota Yogyakarta <i class="fa fa-love"></i><a href="https://diskopukm.jogjaprov.go.id/dinas/">DISKOPUKMDIY</a></p>
@@ -113,7 +119,7 @@
 	<script src="{{asset('admin/assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('admin/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
 	<script src="{{asset('admin/assets/scripts/klorofil-common.js')}}"></script>
-	
+
 </body>
 
 </html>
