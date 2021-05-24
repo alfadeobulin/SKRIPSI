@@ -81,10 +81,10 @@
                                         <label for="exampleInputEmail1" class="form-label">No Telp</label>
                                         <input name="nohp_admin" type="text" class="form-control" id="InputId" aria-describedby="IDADMIN">
                                     </div>
-                                    <div class="mb-3">
+                                    <!-- <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Password</label>
                                         <input name="password" type="text" class="form-control" id="InputId" aria-describedby="IDADMIN">
-                                    </div>
+                                    </div> -->
                                     <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                     <button type="submit"   class="btn btn-primary" > Tambahkan!</button>
                                 </form>

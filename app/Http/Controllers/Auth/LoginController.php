@@ -42,4 +42,5 @@ class LoginController extends Controller
     {
         return view('auths.login');
     }
+    
 }

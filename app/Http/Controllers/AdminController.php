@@ -22,20 +22,18 @@ class AdminController extends Controller
   }
   public function createadmin(Request $request)
   {
+    //$user= User::all()->toArray();
     $user = new \App\Models\User;
     $user->role = 'admin';
     $user->name = $request->nama_admin;
     $user->email = $request->email;
     $user->password = bcrypt('admin123');
-    $user->remember_token = str::random(60);
     $user->save();
 
     $admin = new Admin;
     $admin->id_admin = $request->id_admin;
     $admin->nama_admin = $request->nama_admin;
-    $admin->email = $request->email;
     $admin->nohp_admin = $request->nohp_admin;
-    $admin->password  = Hash::make($request->password);
     $admin->save();
 
     return redirect('/daftaradmin')->with('sukses','Data berita berhasil ditambahkan');

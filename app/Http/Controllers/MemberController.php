@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 use App\Models\Member;
+
 use Hash;
 
 class MemberController extends Controller
@@ -21,21 +22,19 @@ class MemberController extends Controller
     }
     public function createmember(Request $request)
     {
+      //$user= User::all()->toArray();
       $user = new \App\Models\User;
       $user->role = 'member';
       $user->name = $request->nama_member;
       $user->email = $request->email;
       $user->password = bcrypt('member123');
-      $user->remember_token = str::random(60);
       $user->save();
 
       $member = new Member;
       $member->id_member = $request->id_member;
       $member->nama_member = $request->nama_member;
-      $member->email = $request->email;
       $member->nohp_member = $request->nohp_member;
       $member->alamat_member = $request->alamat_member;
-      $member->password  =  Hash::make($request->password);
       $member->id_admin = $request->id_admin;
       $member->save();
 

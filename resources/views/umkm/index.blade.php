@@ -62,9 +62,8 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('admin/assets/img/user.png')}}" class="img-circle" alt="Avatar"> <span></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
-								<li><a href="{{ route('logout') }}" onclick=" event.preventDefault(); document.getElementById('logout-form').submit();""><i class=" lnr lnr-exit"></i> <span>Logout</span></a></li>
-
-								<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+								<li><a href="/logout"><i class=" lnr lnr-exit"></i><span>Logout</span></a></li>
+								<form id="logout-form" action="/logout" method="POST" class="d-none">
 									@csrf
 								</form>
 
@@ -90,13 +89,16 @@
 								<ul class="nav">
 									<li><a href="{{url('/daftarmemberumkm')}}" class="">Daftar Member UMKMku</a></li>
 									<li><a href="{{url('/umkm')}}" class="">UMKM Terdaftar</a></li>
+									@if (auth()->user()->role == 'admin')
 									<li><a href="{{url('/daftaradmin')}}" class="">Daftar Admin</a></li>
+									@endif
 								</ul>
 							</div>
 						</li>
 						<li><a href="{{url('/galeri')}}" class=""><i class="fa fa-shopping-bag"></i> <span>Galeri UMKM</span></a></li>
+						@if (auth()->user()->role == 'admin')
 						<li><a href="{{url('/berita')}}" class=""><i class="lnr lnr-file-empty"></i> <span>Berita</span></a></li>
-
+						@endif
 						<li><a href="{{url('/informasi')}}" class=""><i class="fa fa-map"></i> <span>Informasi</span></a></li>
 					</ul>
 				</nav>
