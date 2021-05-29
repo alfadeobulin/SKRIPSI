@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 //DashBoard
 
 //Login & Logout
@@ -28,18 +29,21 @@ Auth::routes();
     //role lihat wilayah
     Route::get('/kecamatan', 'KecamatanController@index');
     Route::get('/kelurahan', 'KecamatanController@index');
-    //log out
+    //logout
     Route::get('/logout','AuthController@logout');
+    
 
 Route::group(['middleware' => ['auth','checkRole:admin,member']], function () {
-    //create member
-    Route::post('/createmember', 'MemberController@createmember');
+    // profile member
+    Route::get('/profilemember/profile/{id_member}', 'MemberController@profile');
     
     
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function () {
-    
+
+    //create member
+    Route::post('/createmember', 'MemberController@createmember');
     //create berita 
     Route::get('/berita/delete/{brt}', 'BeritaController@delete');
     Route::post('/createberita', 'BeritaController@createberita');

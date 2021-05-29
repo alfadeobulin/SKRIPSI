@@ -50,7 +50,7 @@
                                                         @if (auth()->user()->role == 'admin')
                                                         <a href="/daftarmemberumkm/delete/{{$mbr->id_member}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
                                                         @endif
-                                                        <a href="/detailmember" class="btn btn-success btn-sm">Detail</a>
+                                                        <a href="/profilemember/profile/{{$mbr->id_member}}" class="btn btn-success btn-sm">Profile</a>
                                                     </td>
                                             </tr>
                                         @endforeach

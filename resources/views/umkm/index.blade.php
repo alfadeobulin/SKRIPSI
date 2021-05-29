@@ -58,20 +58,15 @@
 								<li><a href="#">Troubleshooting</a></li>
 							</ul>
 						</li>
+						@if (auth()->user())
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('admin/assets/img/user.png')}}" class="img-circle" alt="Avatar"> <span></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="" class="dropdown-toggle" data-toggle="dropdown"><img src="" class="img-circle" alt="Avatar"> <span>{{Auth::user()->name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
-								<li><a href="/logout"><i class=" lnr lnr-exit"></i><span>Logout</span></a></li>
-								<form id="logout-form" action="/logout" method="POST" class="d-none">
-									@csrf
-								</form>
-
+								<li><a href=""><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+								<li><a href="{{'/logout'}}"><i class=" lnr lnr-exit"></i><span>Logout</span></a></li>
+								@endif
 							</ul>
 						</li>
-						<!-- <li>
-							<a class="update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
-						</li> -->
 					</ul>
 				</div>
 			</div>

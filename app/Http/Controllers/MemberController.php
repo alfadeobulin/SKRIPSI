@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Member;
 
 use Hash;
@@ -42,16 +43,34 @@ class MemberController extends Controller
     }
   
     public function editmember($id_member)
-      {
-        $member = DB::table('member')->where('id_member', $id_member)->first();
-        return view ('admin/editmember')->with(['member' => $member]);
-      }
-
-    public function update(Request $request, $id_member)
     {
-        $member = \App\Models\Member::find($id_member);
-        $member->update($request->all());
-        return redirect('/daftarmemberumkm')->with('sukses','Data berhasil diubah!');
+      $member = DB::table('member')->where('id_member', $id_member)->first();
+      return view ('member/editmember')->with(['member' => $member]);
+    }
+
+    public function update(Request $request)
+    {
+
+      DB::table('member')->where('id_member',$request->id_member)->update([
+      'id_member' => $request->id_member,
+      'nama_member' => $request->nama_member,
+      'nohp_member' => $request->nohp_member,
+      'alamat_member' => $request->alamat_member,
+      'avatar' => $request->avatar,
+      'id_admin' => $request->id_admin]);
+      
+      if($request->hasFile('member'))
+      {
+        
+        // $member = new \stdClass();
+        // $member->success = false;
+        dd($request->all());
+        $request->file('avatar')->move('images/', $request->file('avatar')->getClientOriginalName());
+        $avatar->avatar = $request->file('avatar')->getClientOriginalName();
+        $member->save();
+      }
+      
+      return redirect('/daftarmemberumkm')->with('sukses','Data berhasil diubah!');
     }
     
     public function delete($id_member)
@@ -59,11 +78,11 @@ class MemberController extends Controller
       DB::table('member')->where('id_member', $id_member)->delete();
       return redirect('/daftarmemberumkm')->with('sukses','Data berhasil dihapus!');
     }
-    
-    // public function editmember($id)
-    // {
-    //     // $member = \App\Models\Member::find($id);
-    //     // return view ('admin.editmember')->with(['member' => $member]);;
-    // }
+
+    public function profile($id_member)
+    {
+      $member = DB::table('member')->where('id_member', $id_member)->first();
+      return view('member/profile', ['member'=>$member]);
+    }
    
 }

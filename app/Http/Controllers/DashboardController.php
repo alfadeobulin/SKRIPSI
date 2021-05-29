@@ -10,6 +10,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('umkm.index');
+        return view('umkm.visualisasi');
     }
 }

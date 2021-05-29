@@ -9,7 +9,7 @@ class GaleriController extends Controller
 {
     public function index()
     {
-        return view ('umkm.galeri',);
+        return view ('umkm/galeri',);
     }
 }
 

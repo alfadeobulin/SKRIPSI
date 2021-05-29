@@ -9,6 +9,6 @@ class Admin extends Model
 {
     use HasFactory;
     protected $table = 'admin';
-    protected $fillable =['id_admin','nama_admin','email','nohp_admin','password'];
+    protected $fillable =['id_admin','nama_admin','email','nohp_admin'];
     public $timestamps = false; 
 }

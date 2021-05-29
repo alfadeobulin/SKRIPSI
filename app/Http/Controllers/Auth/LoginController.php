@@ -40,7 +40,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('auths.login');
+        return view('auths.login')->with('alert','Email atau password salah, silahkan cek kembali!');;
     }
     
 }
