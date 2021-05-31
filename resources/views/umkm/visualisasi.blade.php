@@ -1,14 +1,16 @@
-@extends('umkm.index')
+@extends('umkm.chart')
 
-@section('content')
+@section('content chart')
     <div class = "main">
         <div class="main-content">
             <div class = "container-fluid ">
                 <div class="row">
                     <div class="col-md-12">
                         <!-- Marker-->
-                        <h1>Selamat Datang di UMKMku</h1>
-                            
+                        
+                        <!-- html script chart umkmku -->
+                        
+                        </div>
                         <!-- END Marker-->
                     </div>
                 </div>
