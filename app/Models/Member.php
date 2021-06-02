@@ -13,20 +13,7 @@ class Member extends Model
     protected $fillable = ['id_member','nama_member','nohp_member','alamat_member','avatar','id_admin'];
     public $timestamps = false; 
 
-    public function umkm()
-    {
-        return $this->hasMany(Umkm::class);
-    }
-
-    public function galeri()
-    {
-        return $this->hasMany(Galeri::class);
-    }
-
-    public function admin()
-    {
-        return $this->belongsTo(Admin::class);
-    }
+   
 
     public function getAvatar()
     {
@@ -37,9 +24,6 @@ class Member extends Model
         return asset('images/'.$this->avatar);
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    
 }
 

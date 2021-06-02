@@ -48,7 +48,7 @@ class MemberController extends Controller
       return view ('member/editmember')->with(['member' => $member]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $member)
     {
 
       DB::table('member')->where('id_member',$request->id_member)->update([
@@ -66,7 +66,7 @@ class MemberController extends Controller
         // $member->success = false;
         dd($request->all());
         $request->file('avatar')->move('images/', $request->file('avatar')->getClientOriginalName());
-        $avatar->avatar = $request->file('avatar')->getClientOriginalName();
+        $member->avatar = $request->file('avatar')->getClientOriginalName();
         $member->save();
       }
       

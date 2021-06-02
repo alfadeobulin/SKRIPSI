@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -59,9 +60,10 @@ Route::group(['middleware' => ['auth','checkRole:admin']], function () {
 });
 
 Route::group(['middleware' => ['auth','checkRole:member']], function () {
+    //create usaha
+    Route::post('/createusaha', 'UmkmController@create');
     //edit member
     Route::get('/daftarmemberumkm/edit/{id_member}', 'MemberController@editmember');
     Route::post('/daftarmemberumkm/update/{id_member}', 'MemberController@update');
-    //create usaha
-    Route::post('/createusaha', 'UmkmController@create');
+    
 });

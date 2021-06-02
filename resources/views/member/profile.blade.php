@@ -10,7 +10,7 @@
 						<div class="profile-header">
 							<div class="overlay"></div>
 							<div class="profile-main">
-								<img src="{{asset('public/images/'.$member->avatar)}}" class="img-circle" alt="avatar">
+								<img src="" class="img-circle" alt="avatar">
 								<h3 class="name">{{$member->nama_member}}</h3>
 								<span class="online-status status-available">{{$member->alamat_member}}</span>
 							</div>
@@ -35,6 +35,7 @@
 								<div class="text-center">
 								@if (auth()->user()->role == 'member')
 								<a href="/daftarmemberumkm/edit/{{$member->id_member}}" class="btn btn-warning">Edit Profile</a>
+								<a href="/createusaha" class="btn btn-primary">Tambah Data Usaha</a>
 							</div>
 							@endif
 							@if (auth()->user()->role == 'admin')
