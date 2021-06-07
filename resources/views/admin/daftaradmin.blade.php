@@ -29,7 +29,6 @@
                                                 <th scope="col">NO</th>  
                                                 <th scope="col">ID ADMIN  </th>  
                                                 <th scope="col">NAMA</th>
-                                                <th scope="col">EMAIL</th>
                                                 <th scope="col">NO TELP</th>
                                                 <th scope="col"></th>
                                             </tr>
@@ -38,13 +37,12 @@
                                         @foreach ($admin as $adm)
                                             <tr>    
                                                 <th scope='row'>{{$loop->iteration}}</th>
-                                                    <td>{{$adm->id_admin}}</td>
-                                                    <td>{{$adm->nama_admin}}</td>
-                                                    <td>{{$adm->email}}</td>
-                                                    <td>{{$adm->nohp_admin}}</td>
-                                                    <td>
-                                                        <a href="/daftaradmin/delete/{{$adm->id_admin}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
-                                                    </td>
+                                                <td>{{$adm->id_admin}}</td>
+                                                <td>{{$adm->nama_admin}}</td>
+                                                <td>{{$adm->nohp_admin}}</td>
+                                                <td>
+                                                    <a href="/daftaradmin/delete/{{$adm->id_admin}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                         </tbody>
