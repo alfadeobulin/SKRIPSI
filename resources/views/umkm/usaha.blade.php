@@ -53,7 +53,9 @@
                                                     <td>{{$ush->id_kel}}</td>
                                                     <td>{{$ush->id_kec}}</td>
                                                     <td>
+                                                    @if (auth()->user()->role == 'admin')
                                                         <a href="/umkm/delete/{{$ush->id_usaha}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
+                                                    @endif
                                                     </td>
                                                     
                                             </tr>

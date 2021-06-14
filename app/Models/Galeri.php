@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Galeri extends Model
 {
     use HasFactory;
+    protected $table = 'galeri';
+    protected $fillable = ['id_galeri','nama_gal','foto','id_usaha','ktrgn_foto'];
+    public $timestamps = false;
+     
 }

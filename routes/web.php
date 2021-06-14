@@ -25,8 +25,7 @@ Auth::routes();
     Route::get('/galeri', 'GaleriController@index');
     //umkm terdaftar
     Route::get('/umkm', 'UmkmController@index');
-    //berita 
-    Route::get('/berita', 'BeritaController@index');
+    
     //role lihat wilayah
     Route::get('/kecamatan', 'KecamatanController@index');
     Route::get('/kelurahan', 'KecamatanController@index');
@@ -48,6 +47,7 @@ Route::group(['middleware' => ['auth','checkRole:admin']], function () {
     //create berita 
     Route::get('/berita/delete/{brt}', 'BeritaController@delete');
     Route::post('/createberita', 'BeritaController@createberita');
+    Route::get('/berita', 'BeritaController@index');
     //create admin
     Route::post('/createadmin', 'AdminController@createadmin');
     Route::get('/daftaradmin/delete/{id_admin}', 'AdminController@delete');
@@ -62,8 +62,14 @@ Route::group(['middleware' => ['auth','checkRole:admin']], function () {
 Route::group(['middleware' => ['auth','checkRole:member']], function () {
     //create usaha
     Route::post('/createusaha', 'UmkmController@create');
+    //create galeri
+    Route::get('/galeri/delete/{glr}', 'GaleriController@delete');
+    Route::post('/creategaleri', 'GaleriController@creategaleri');
+    Route::get('/galeri/edit/{id_galeri}', 'GaleriController@editgaleri');
+    Route::post('/galeri/update/{id_galeri}', 'GaleriController@update');
     //edit member
     Route::get('/daftarmemberumkm/edit/{id_member}', 'MemberController@editmember');
     Route::post('/daftarmemberumkm/update/{id_member}', 'MemberController@update');
+    
     
 });
