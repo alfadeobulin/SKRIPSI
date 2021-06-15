@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <!-- Marker-->
-                        <h1>Selamat Datang di UMKMku</h1>
+                        <h1>Datachart UMKM Yang Sudah Terdaftar</h1>
                         <!-- html script chart umkmku -->
                         <div class="chart-container " >
                         <style>.highcharts-figure, .highcharts-data-table table 
