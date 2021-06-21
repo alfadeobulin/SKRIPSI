@@ -23,7 +23,31 @@ class MemberController extends Controller
     }
     public function createmember(Request $request)
     {
-      //$user= User::all()->toArray();
+      $this->validate($request,
+        [
+            'id_member' => 'required|min:3|unique:member',
+            'nama_member' => 'required',
+            'email' => 'required|email|unique:users',
+            'nohp_member' => 'required|max:12',
+            'alamat_member' => 'required',
+            'id_admin' => 'required|min:3|max:3'
+        ],
+        [
+            'id_member.required' => 'ID member wajib di isi',
+            'id_member.min'      => 'ID member minimal 3 karakter',
+            'id_member.unique'   => 'ID member sudah terdaftar',
+            'nama_member.required'   => 'Nama wajib di isi',
+            'nohp_member.required' => 'No HP wajib di isi',
+            'nohp_member.max' => 'No HP melebihi 12 digit',
+            'email.required' => 'Email wajib di isi',
+            'email.email' => 'Format Email Salah',
+            'email.unique' => 'Email Sudah Digunakan',
+            'alamat_member.required' => 'Alamat wajib di isi',
+            'id_admin.required' => 'ID admin wajib di isi',
+            'id_admin.min'      => 'ID admin minimal 3 karakter',
+            'id_admin.max' => 'ID admin maksimal 3 digit',
+        ]);
+
       $user = new \App\Models\User;
       $user->role = 'member';
       $user->name = $request->nama_member;

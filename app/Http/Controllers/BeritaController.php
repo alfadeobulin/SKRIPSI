@@ -22,6 +22,30 @@ class BeritaController extends Controller
   }
   public function createberita(Request $request)
   {
+    $this->validate($request,
+    [
+        'id_berita' => 'required|min:4|unique:berita',
+        'judul' => 'required',
+        'isi' => 'required',
+        'penulis' => 'required',
+        'tgl_terbit' => 'required',
+        'link' => 'required',
+        'id_admin' => 'required|min:3|max:3|unique:admin',
+    ],
+    [
+        'id_berita.required' => 'ID berita wajib di isi',
+        'id_berita.min'      => 'ID berita minimal 3 karakter',
+        'id_berita.unique' => 'ID berita  sudah digunakan',
+        'id_admin.max' => 'ID admin maksimal 3 digit',
+        'id_admin.required' => 'ID admin wajib di isi',
+        'id_admin.unique' => 'ID admin sudah digunakan',
+        'id_admin.min'      => 'ID admin minimal 3 karakter',
+        'isi.required'   => 'Konten berita wajib di isi',
+        'tgl_terbit.required'   => 'Tanggal terbit berita wajib di isi',
+        'penulis.required' => 'Penulis wajib di isi',
+        'link.required' => 'Link wajib di isi',
+        'judul.required' => 'Judul wajib di isi',
+    ]);
     // dd($request);
     $berita = new Berita;
     $berita->id_berita = $request->id_berita;

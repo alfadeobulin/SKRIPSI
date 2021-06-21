@@ -72,36 +72,63 @@
                             <form action ="/createberita" method="POST"> 
                                 @csrf
                                 <div class="mb-3">
+                                    <div class="form-group {{$errors->has('judul') ? 'has-error' : ''}}">
                                     <label for="exampleInputEmail1" class="form-label">Judul</label>
-                                    <input name="judul" type="text" class="form-control" id="InputBerita" aria-describedby="JUDUL">
+                                    <input name="judul" type="text" class="form-control" id="InputBerita" aria-describedby="JUDUL" value="{{old('judul')}}">
+                                    @if($errors->has('judul'))
+                                        <span class="help-block">{{$errors->first('judul')}}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
+                                    <div class="form-group {{$errors->has('isi') ? 'has-error' : ''}}">   
                                     <label for="exampleFormControlTextarea1" class="form-label">Isi</label>
-                                    <textarea name="isi" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea name="isi" class="form-control" id="exampleFormControlTextarea1" rows="3" value="{{old('isi')}}"></textarea>
+                                    @if($errors->has('isi'))
+                                        <span class="help-block">{{$errors->first('isi')}}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
+                                    <div class="form-group {{$errors->has('penulis') ? 'has-error' : ''}}">
                                     <label for="exampleInputEmail1" class="form-label">Penulis</label>
-                                    <input name="penulis" type="text" class="form-control" id="InputPenulis" aria-describedby="PENULIS">
+                                    <input name="penulis" type="text" class="form-control" id="InputPenulis" aria-describedby="PENULIS" value="{{old('penulis')}}">
+                                    @if($errors->has('penulis'))
+                                        <span class="help-block">{{$errors->first('penulis')}}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
+                                    <div class="form-group {{$errors->has('id_berita') ? 'has-error' : ''}}">
                                     <label for="exampleInputEmail1" class="form-label">ID Berita</label>
-                                    <input name="id_berita" type="text" class="form-control" id="InputId_berita" aria-describedby="ID Berita">
+                                    <input name="id_berita" type="text" class="form-control" id="InputId_berita" aria-describedby="ID Berita" value="{{old('id_berita')}}">
+                                    @if($errors->has('id_berita'))
+                                        <span class="help-block">{{$errors->first('id_berita')}}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
+                                    <div class="form-group {{$errors->has('tgl_terbit') ? 'has-error' : ''}}">
                                     <label for="exampleInputEmail1" class="form-label">Tanggal</label>
-                                    <input name="tgl_terbit" type="text" class="form-control" id="InputTgl_terbit" aria-describedby="TANGGAL">
+                                    <input name="tgl_terbit" type="text" class="form-control" id="InputTgl_terbit" aria-describedby="TANGGAL" value="{{old('tgl_terbit')}}">
+                                    @if($errors->has('tgl_terbit'))
+                                        <span class="help-block">{{$errors->first('tgl_terbit')}}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
+                                    <div class="form-group {{$errors->has('link') ? 'has-error' : ''}}">
                                     <label for="exampleInputEmail1" class="form-label">Link</label>
-                                    <input name="link" type="text" class="form-control" id="InputLink" aria-describedby="LINK">
+                                    <input name="link" type="text" class="form-control" id="InputLink" aria-describedby="LINK" value="{{old('link')}}">
+                                    @if($errors->has('link'))
+                                        <span class="help-block">{{$errors->first('link')}}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
+                                    <div class="form-group {{$errors->has('id_admin') ? 'has-error' : ''}}">
                                     <label for="exampleInputEmail1" class="form-label">ID Admin</label>
-                                    <input name="id_admin" type="text" class="form-control" id="InputId_admin" aria-describedby="ID Admin">
+                                    <input name="id_admin" type="text" class="form-control" id="InputId_admin" aria-describedby="ID Admin" value="{{old('link')}}">
+                                    @if($errors->has('id_admin'))
+                                        <span class="help-block">{{$errors->first('id_admin')}}</span>
+                                    @endif
                                 </div>
-
                                 </div>
-                                <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                 <button type="submit"   class="btn btn-primary" > Tambahkan!</button>
                             </form>
                     </div>

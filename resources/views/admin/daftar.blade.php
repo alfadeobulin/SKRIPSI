@@ -74,35 +74,55 @@
                                 <form action ="/createmember" method="POST"> 
                                     @csrf
                                     <div class="mb-3">
+                                        <div class="form-group {{$errors->has('id_member') ? 'has-error' : ''}}">
                                         <label for="exampleInputEmail1" class="form-label">ID MEMBER</label>
-                                        <input name="id_member" type="text" class="form-control" id="" aria-describedby="IDMEMBER" >
+                                        <input name="id_member" type="text" class="form-control" id="" aria-describedby="IDMEMBER" value="{{old('id_member')}}">
+                                        @if($errors->has('id_member'))
+                                        <span class="help-block">{{$errors->first('id_member')}}</span>
+                                        @endif
                                     </div>
                                     <div class="mb-3">
+                                        <div class="form-group {{$errors->has('nama_member') ? 'has-error' : ''}}">
                                         <label for="exampleInputEmail1" class="form-label">Nama </label>
-                                        <input name="nama_member" type="text"  class="form-control" id="" aria-describedby="NAMA" >
+                                        <input name="nama_member" type="text"  class="form-control" id="" aria-describedby="NAMA" value="{{old('nama_member')}}">
+                                        @if($errors->has('nama_member'))
+                                        <span class="help-block">{{$errors->first('nama_member')}}</span>
+                                        @endif
                                     </div>
                                     <div class="mb-3">
+                                        <div class="form-group {{$errors->has('email') ? 'has-error' : ''}}">
                                         <label for="exampleInputEmail1" class="form-label">EMAIL MEMBER</label>
-                                        <input name="email" type="text" class="form-control" id="" aria-describedby="EMAIL" >
+                                        <input name="email" type="text" class="form-control" id="" aria-describedby="EMAIL" value="{{old('email')}}">
+                                        @if($errors->has('email'))
+                                        <span class="help-block">{{$errors->first('email')}}</span>
+                                        @endif
                                     </div>
                                     <div class="mb-3">
+                                        <div class="form-group {{$errors->has('nohp_member') ? 'has-error' : ''}}">
                                         <label for="exampleInputEmail1" class="form-label">NO HANDPHONE</label>
-                                        <input name="nohp_member" type="text" class="form-control" id="" aria-describedby="EMAIL" >
+                                        <input name="nohp_member" type="text" class="form-control" id="" aria-describedby="EMAIL" value="{{old('nohp_member')}}">
+                                        @if($errors->has('nohp_member'))
+                                        <span class="help-block">{{$errors->first('nohp_member')}}</span>
+                                        @endif
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
-                                        <textarea name="alamat_member" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <div class="form-group {{$errors->has('alamat_member') ? 'has-error' : ''}}">
+                                        <label for="exampleFormControlTextarea1" class="form-label" >Alamat</label>
+                                        <textarea name="alamat_member" class="form-control" id="exampleFormControlTextarea1" rows="3" value="{{old('alamat_member')}}" ></textarea>
+                                        @if($errors->has('alamat_member'))
+                                        <span class="help-block">{{$errors->first('alamat_member')}}</span>
+                                        @endif
                                     </div>
-                                    <!-- <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">PASSWORD</label>
-                                        <input name="password" type="text" class="form-control" id="" aria-describedby="PASSWORD" >
-                                    </div> -->
                                     <div class="mb-3">
+                                        <div class="form-group {{$errors->has('id_admin') ? 'has-error' : ''}}">
                                         <label for="exampleInputEmail1" class="form-label">ID ADMIN</label>
-                                        <input name="id_admin" type="text" class="form-control" id="" aria-describedby="IDADMIN" >
+                                        <input name="id_admin" type="text" class="form-control" id="" aria-describedby="IDADMIN" value="{{old('id_admin')}}">
+                                        @if($errors->has('id_admin'))
+                                        <span class="help-block">{{$errors->first('id_admin')}}</span>
+                                        @endif
                                     </div>
                                     </div>
-                                    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                     <button type="submit"   class="btn btn-primary" > Tambahkan!</button>
                                 </form>
                         </div>

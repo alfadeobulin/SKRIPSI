@@ -22,6 +22,25 @@ class AdminController extends Controller
   }
   public function createadmin(Request $request)
   {
+    $this->validate($request,
+    [
+        'id_admin' => 'required|min:3|max:3|unique:member',
+        'nama_admin' => 'required',
+        'email' => 'required|email|unique:users',
+        'nohp_admin' => 'required|max:12',
+    ],
+    [
+        'id_admin.required' => 'ID admin wajib di isi',
+        'id_admin.min'      => 'ID admin minimal 3 karakter',
+        'id_admin.max' => 'ID admin maksimal 3 digit',
+        'nama_admin.required'   => 'Nama wajib di isi',
+        'nohp_admin.required' => 'No HP wajib di isi',
+        'nohp_admin.max' => 'No HP melebihi 12 digit',
+        'email.required' => 'Email wajib di isi',
+        'email.email' => 'Format Email Salah',
+        'email.unique' => 'Email Sudah Digunakan',
+        
+    ]);
     //$user= User::all()->toArray();
     $user = new \App\Models\User;
     $user->role = 'admin';

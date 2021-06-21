@@ -64,25 +64,37 @@
                                 <form action ="/createadmin" method="POST"> 
                                     @csrf
                                     <div class="mb-3">
+                                        <div class="form-group {{$errors->has('id_admin') ? 'has-error' : ''}}">
                                         <label for="exampleInputEmail1" class="form-label">ID Admin </label>
-                                        <input name="id_admin" type="text"  class="form-control" id="InputNama" aria-describedby="NAMA">
+                                        <input name="id_admin" type="text"  class="form-control" id="InputNama" aria-describedby="NAMA" value="{{old('id_admin')}}">
+                                        @if($errors->has('id_admin'))
+                                        <span class="help-block">{{$errors->first('id_admin')}}</span>
+                                        @endif
                                     </div>
                                     <div class="mb-3">
+                                        <div class="form-group {{$errors->has('nama_admin') ? 'has-error' : ''}}">
                                         <label for="exampleInputEmail1" class="form-label">Nama</label>
-                                        <input name="nama_admin" type="text" class="form-control" id="InputTelp" aria-describedby="TELP">
+                                        <input name="nama_admin" type="text" class="form-control" id="InputTelp" aria-describedby="TELP" value="{{old('nama_admin')}}">
+                                        @if($errors->has('nama_admin'))
+                                        <span class="help-block">{{$errors->first('nama_admin')}}</span>
+                                        @endif
                                     </div>
                                     <div class="mb-3">
+                                        <div class="form-group {{$errors->has('email') ? 'has-error' : ''}}">
                                         <label for="exampleFormControlTextarea1" class="form-label">Email</label>
-                                        <input name="email" type="text" class="form-control" id="InputEmail" aria-describedby="Email">
+                                        <input name="email" type="text" class="form-control" id="InputEmail" aria-describedby="Email" value="{{old('email')}}">
+                                        @if($errors->has('email'))
+                                        <span class="help-block">{{$errors->first('email')}}</span>
+                                        @endif
                                     </div>
                                     <div class="mb-3">
+                                        <div class="form-group {{$errors->has('nohp_admin') ? 'has-error' : ''}}">
                                         <label for="exampleInputEmail1" class="form-label">No Telp</label>
-                                        <input name="nohp_admin" type="text" class="form-control" id="InputId" aria-describedby="IDADMIN">
+                                        <input name="nohp_admin" type="text" class="form-control" id="InputId" aria-describedby="IDADMIN" value="{{old('nohp_admin')}}">
+                                        @if($errors->has('nohp_admin'))
+                                        <span class="help-block">{{$errors->first('nohp_admin')}}</span>
+                                        @endif
                                     </div>
-                                    <!-- <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Password</label>
-                                        <input name="password" type="text" class="form-control" id="InputId" aria-describedby="IDADMIN">
-                                    </div> -->
                                     <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                     <button type="submit"   class="btn btn-primary" > Tambahkan!</button>
                                 </form>

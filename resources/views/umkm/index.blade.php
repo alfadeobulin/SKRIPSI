@@ -79,7 +79,7 @@
 					<ul class="nav">
 						<li><a href="{{url('/dashboard')}}" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
 						<li>
-							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>Member</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>Pengguna</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
 									<li><a href="{{url('/daftarmemberumkm')}}" class="">Daftar Member UMKMku</a></li>
@@ -101,7 +101,7 @@
 		</div>
 		<!-- END LEFT SIDEBAR -->
 		<!-- MAIN -->
-		@yield('content')
+		
 		<!-- END MAIN -->
 
 		<footer>
@@ -109,6 +109,7 @@
 				<p class="copyright">UMKM Kota Yogyakarta <i class="fa fa-love"></i><a href="https://diskopukm.jogjaprov.go.id/dinas/">DISKOPUKMDIY</a></p>
 			</div>
 		</footer>
+		@yield('content')
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
