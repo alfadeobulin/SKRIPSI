@@ -22,6 +22,10 @@
                                         <button type="submit" class="btn btn-primary">Cari</button></span>
                                     </div>
                                 </form>
+                                <div class="panel-body text-wrap">
+                                @if (auth()->user()->role == 'member')
+                                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">Tambah UMKM</button>
+                                @endif
                                 <div class="panel-body">
                                 <!-- <a href="createusaha" class = "btn btn-primary">Tambah Data Usaha</a> -->
                                     <table class="table table-hover">
@@ -65,6 +69,60 @@
                                 </div>
                             </div>
                         <!-- END TABLE HOVER -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah berita</h5>
+                            <div class="modal-body">
+                            <form action ="/createusaha" method="POST" > 
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="id_usaha" class="form-label">ID USAHA</label>
+                                    <input name="id_usaha" type="text" class="form-control"  aria-describedby="ID Usaha" >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Nama Usaha" class="form-label">NAMA USAHA</label>
+                                    <input name="nama_ush" type="text" class="form-control" aria-describedby="Nama Usaha" >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">ALAMAT</label>
+                                    <textarea name="alamat_ush" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">KETERANGAN</label>
+                                    <textarea name="ket_ush" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">LONGITUDE</label>
+                                    <input name="longitude" type="text" class="form-control"  aria-describedby="Longitude" >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">LATITUDE</label>
+                                    <input name="latitude" type="text" class="form-control"  aria-describedby="Latitude" >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">ID MEMBER</label>
+                                    <input name="id_member" type="text" class="form-control" aria-describedby="ID Member" >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">ID KELURAHAN</label>
+                                    <input name="id_kel" type="text" class="form-control"  aria-describedby="ID Kelurahan" >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">ID KECAMATAN</label>
+                                    <input name="id_kec" type="text" class="form-control"  aria-describedby="ID Kecamatan" >
+                                </div>
+                                <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                <button type="submit"   class="btn btn-primary" > Tambahkan!</button>
+                            </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

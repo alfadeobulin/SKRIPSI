@@ -35,8 +35,12 @@
                                     <input name="longitude" type="text" class="form-control"  aria-describedby="Longitude" >
                                 </div>
                                 <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">LATITUDE</label>
+                                    <input name="latitude" type="text" class="form-control"  aria-describedby="Latitude" >
+                                </div>
+                                <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">ID MEMBER</label>
-                                    <input name="id_member" type="text" class="form-control" aria-describedby="Latitude" >
+                                    <input name="id_member" type="text" class="form-control" aria-describedby="ID Member" >
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">ID KELURAHAN</label>

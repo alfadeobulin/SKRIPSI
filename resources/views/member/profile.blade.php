@@ -35,7 +35,7 @@
 								<div class="text-center">
 								@if (auth()->user()->role == 'member')
 								<a href="/daftarmemberumkm/edit/{{$member->id_member}}" class="btn btn-warning">Edit Profile</a>
-								<a href="/createusaha" class="btn btn-primary">Tambah Data Usaha</a>
+								<a href="/umkm" class="btn btn-primary">Tambah Data Usaha</a>
 							</div>
 							@endif
 							@if (auth()->user()->role == 'admin')

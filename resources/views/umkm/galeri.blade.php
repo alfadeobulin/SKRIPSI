@@ -28,7 +28,6 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
                                             <th>Keterangan</th>
                                             <th>Foto</th>
                                             <th></th>
@@ -37,14 +36,13 @@
                                     <tbody>
                                         @foreach ($galeri as $glr)
                                         <tr>
-                                        <th scope='row'>{{$loop->iteration}}</th>
                                             <td>{{$glr->ktrgn_foto}}</td>
                                             <td><img src="images/galeri/{{$glr->foto}}" class="rounded" alt="foto" width="200" height="100"></td>
                                             <td>
                                             @if (auth()->user()->role == 'member')
                                                 <a href="/galeri/edit/{{$glr->id_galeri}}" class="btn btn-warning btn-sm">Edit</a>
-                                            @endif
                                                 <a href="/galeri/delete/{{$glr->id_galeri}}" class="btn btn-danger btn-sm delete">Delete</a>
+                                            @endif
                                             </td>
                                         </tr>
                                         @endforeach
@@ -65,29 +63,49 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Tambah berita</h5>
                             <div class="modal-body">
-                            <form action ="/creategaleri" method="POST"> 
+                            <form action ="/creategaleri" method="POST" enctype="multipart/form-data"> 
                                 @csrf
                                 <div class="mb-3">
+                                    <div class="form-group {{$errors->has('id_galeri') ? 'has-error' : ''}}">
                                     <label for="exampleInputEmail1" class="form-label">ID Galeri</label>
-                                    <input name="id_galeri" type="text" class="form-control" id="InputIdGaleri" aria-describedby="ID Galeri">
+                                    <input name="id_galeri" type="text" class="form-control" id="InputIdGaleri" aria-describedby="ID Galeri" value="{{old('id_galeri')}}">
+                                    @if($errors->has('id_galeri'))
+                                    <span class="help-block">{{$errors->first('id_galeri')}}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
+                                    <div class="form-group {{$errors->has('nama_gal') ? 'has-error' : ''}}">
                                     <label for="exampleInputEmail1" class="form-label">Nama Galeri</label>
-                                    <input name="nama_gal" type="text" class="form-control" id="InputGaleri" aria-describedby="Nama Galeri">
+                                    <input name="nama_gal" type="text" class="form-control" id="InputGaleri" aria-describedby="Nama Galeri" value="{{old('nama_gal')}}">
+                                    @if($errors->has('nama_gal'))
+                                    <span class="help-block">{{$errors->first('nama_gal')}}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
+                                    <div class="form-group {{$errors->has('foto') ? 'has-error' : ''}}">
                                     <label for="exampleInputEmail1" class="form-label">Foto</label>
-                                    <input name="foto" type="file" class="form-control" id="InputFoto" aria-describedby="Foto">
+                                    <input name="foto" type="file" class="form-control" id="InputFoto" aria-describedby="Foto" value="{{old('foto')}}">
+                                    @if($errors->has('foto'))
+                                    <span class="help-block">{{$errors->first('foto')}}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
+                                    <div class="form-group {{$errors->has('id_usaha') ? 'has-error' : ''}}">
                                     <label for="exampleInputEmail1" class="form-label">ID Usaha</label>
-                                    <input name="id_usaha" type="text" class="form-control" id="InputLink" aria-describedby="LINK">
+                                    <input name="id_usaha" type="text" class="form-control" id="InputLink" aria-describedby="LINK" value="{{old('id_usaha')}}">
+                                    @if($errors->has('id_usaha'))
+                                    <span class="help-block">{{$errors->first('id_usaha')}}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
+                                    <div class="form-group {{$errors->has('ktrgn_foto') ? 'has-error' : ''}}">
                                     <label for="exampleFormControlTextarea1" class="form-label">Keterangan</label>
-                                    <textarea name="ktrgn_foto" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea name="ktrgn_foto" class="form-control" id="exampleFormControlTextarea1" rows="3" value="{{old('ktrgn_foto')}}"></textarea>
+                                    @if($errors->has('ktrgn_foto'))
+                                    <span class="help-block">{{$errors->first('ktrgn_foto')}}</span>
+                                    @endif
                                 </div>
-                                <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                 <button type="submit"   class="btn btn-primary" > Tambahkan!</button>
                             </form>
                     </div>

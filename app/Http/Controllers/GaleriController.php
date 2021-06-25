@@ -23,7 +23,27 @@ class GaleriController extends Controller
 
     public function creategaleri(Request $request)
     {
-        // dd($request);
+      $this->validate($request,
+      [
+          'id_galeri' => 'required|min:4|max:10|unique:galeri',
+          'nama_gal' => 'required',
+          'foto' => 'required',
+          'id_usaha' => 'required|min:3|max:10',
+          'ktrgn_foto' => 'required',
+      ],
+      [
+          'id_galeri.required' => 'ID galeri wajib di isi',
+          'id_galeri.min'      => 'ID galeri minimal 3 karakter',
+          'id_galeri.max' => 'ID galeri maksimal 3 digit',
+          'id_galeri.unique' => 'ID galeri Sudah Digunakan',
+          'nama_galeri.required'   => 'Nama wajib di isi',
+          'foto.required' => 'Foto wajib di unggah',
+          'id_usaha.required' => 'ID usaha wajib di isi',
+          'id_usaha.min'      => 'ID usaha minimal 3 karakter',
+          'id_usaha.max' => 'ID usaha maksimal 3 digit',
+          'ktrgn_foto.required' => 'Keterangan foto wajib di isi',
+      ]);
+        // // dd($request);
         $galeri = new Galeri;
         $galeri->id_galeri = $request->id_galeri;
         $galeri->nama_gal = $request->nama_gal;
