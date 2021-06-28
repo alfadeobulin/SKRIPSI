@@ -31,59 +31,15 @@
                                                 <th>Status</th>
                                             </tr>
 										</thead>
+                                        @foreach ($kecamatan as $kec)
 										<tbody>
 											<tr>
-                                                <td><a href="#">KEC01</a></td>
-                                                <td>Bambang Lipuro</td>
+                                                <td>{{$kec->id_kec}}</td>
+                                                <td>{{$kec->nama_kec}}</td>
                                                 <td><span class="label label-success">Terdaftar</span></td>
                                             </tr>
-											<tr>
-                                                <td><a href="#">KEC02</a></td>
-                                                <td>Banguntapan</td>
-                                                <td><span class="label label-success">Terdaftar</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">KEC01</a></td>
-                                                <td>Bambang Lipuro</td>
-                                                <td><span class="label label-success">Terdaftar</span></td>
-                                            </tr>
-											<tr>
-                                                <td><a href="#">KEC02</a></td>
-                                                <td>Banguntapan</td>
-                                                <td><span class="label label-success">Terdaftar</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">KEC01</a></td>
-                                                <td>Bambang Lipuro</td>
-                                                <td><span class="label label-success">Terdaftar</span></td>
-                                            </tr>
-											<tr>
-                                                <td><a href="#">KEC02</a></td>
-                                                <td>Banguntapan</td>
-                                                <td><span class="label label-success">Terdaftar</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">KEC01</a></td>
-                                                <td>Bambang Lipuro</td>
-                                                <td><span class="label label-success">Terdaftar</span></td>
-                                            </tr>
-											<tr>
-                                                <td><a href="#">KEC02</a></td>
-                                                <td>Banguntapan</td>
-                                                <td><span class="label label-success">Terdaftar</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">KEC01</a></td>
-                                                <td>Bambang Lipuro</td>
-                                                <td><span class="label label-success">Terdaftar</span></td>
-                                            </tr>
-											<tr>
-                                                <td><a href="#">KEC02</a></td>
-                                                <td>Banguntapan</td>
-                                                <td><span class="label label-success">Terdaftar</span></td>
-                                            </tr>
-											
 										</tbody>
+                                        @endforeach
 									</table>
 								</div>
 								<div class="panel-footer">

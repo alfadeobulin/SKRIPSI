@@ -11,7 +11,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('umkm.visualisasi');
+        $kecamatan = Kecamatan::all();
+        return view('umkm.visualisasi', compact('kecamatan'));
     }
 
 //     public function createkecamatan(Request $request)
