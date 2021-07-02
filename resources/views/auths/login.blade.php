@@ -40,11 +40,25 @@
 								{{csrf_field()}}
 								<div class="form-group">
 									<label for="signin-email" class="control-label sr-only">Email</label>
-									<input name="email" type="email" class="form-control" id="signin-email" placeholder="Email">
+									<input name="email" type="email" class="form-control" value="{{old('email')}}" id="signin-email" placeholder="Email">
+									@error('email')
+									<span class="invalid-feedback" role="alert">
+									<div class="alert alert-danger alert-dismissible" role="alert">
+										{{$message}}
+									</div>
+									</span>
+									@enderror
 								</div>
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Password</label>
 									<input name="password" type="password" class="form-control" id="signin-password" placeholder="Password">
+									@error('password')
+									<span class="invalid-feedback" role="alert">
+									<div class="alert alert-danger alert-dismissible" role="alert">
+										{{$message}}
+									</div>
+									</span>
+									@enderror
 								</div>
 								<div class="form-group clearfix">
 									<!-- <label class="fancy-checkbox element-left">

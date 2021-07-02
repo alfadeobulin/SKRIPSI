@@ -83,13 +83,13 @@ class MemberController extends Controller
       'avatar' => $request->avatar,
       'id_admin' => $request->id_admin]);
       
-      if($request->hasFile('member'))
+      if($request->hasFile('avatar'))
       {
         
         // $member = new \stdClass();
         // $member->success = false;
         dd($request->all());
-        $request->file('avatar')->move('images/', $request->file('avatar')->getClientOriginalName());
+        $request->file('avatar')->move('assets/img', $request->file('avatar')->getClientOriginalName());
         $member->avatar = $request->file('avatar')->getClientOriginalName();
         $member->save();
       }

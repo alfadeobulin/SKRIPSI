@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -7,15 +8,15 @@ use Illuminate\Support\Facades\Route;
 //DashBoard
 
 //Login & Logout
-// Route::get('/login','AuthController@login')->name('login');
-// Route::post('/postlogin','AuthController@postlogin');
+//  Route::get('/login','AuthController@login');
+//  Route::post('/postlogin','AuthController@postlogin');
  
 
 Auth::routes();
 
-    //All role (user, member, admin)
+    //All role (guest user)
     //halaman utama
-    Route::get('/','DashboardController@index');
+    Route::get('/','HomeController@home');
     Route::get('/dashboard','DashboardController@index');
     //Informasi
     Route::get('/informasi', 'InformasiController@index');
@@ -23,19 +24,24 @@ Auth::routes();
     Route::get('/daftarmemberumkm', 'MemberController@index');
     //galeri semua
     Route::get('/galeri', 'GaleriController@index');
+    Route::get('/lihatgaleri', 'GaleriController@LihatGaleri');
     //umkm terdaftar
     Route::get('/umkm', 'UmkmController@index');
+    Route::get('/lihatumkm', 'UmkmController@LihatUmkm');
     
     //role lihat wilayah
     Route::get('/kecamatan', 'KecamatanController@index');
     Route::get('/kelurahan', 'KecamatanController@index');
-    //logout
-    Route::get('/logout','AuthController@logout');
+    //maps
+    Route::get('/lihatmaps', 'UmkmController@LihatMaps');
+
     
 
 Route::group(['middleware' => ['auth','checkRole:admin,member']], function () {
     // profile member
     Route::get('/profilemember/profile/{id_member}', 'MemberController@profile');
+    //logout
+     Route::get('/logout','AuthController@logout');
     
     
 });

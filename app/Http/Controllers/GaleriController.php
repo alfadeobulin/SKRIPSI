@@ -88,5 +88,18 @@ class GaleriController extends Controller
       
       return redirect('/galeri')->with('sukses','Data berhasil diubah!');
     }
+
+    public function LihatGaleri(Request $request)
+    {
+      if($request->has('cari'))
+      {
+          $galeri = \App\Models\Berita::where('JUDUL','LIKE','%'.$request->cari.'%')->get();
+      }
+      else
+      {
+          $galeri = Galeri::all();
+      }   
+      return view ('detail/lihatgaleri', ['galeri' => $galeri]);
+    }
 }
 

@@ -84,5 +84,22 @@ class UmkmController extends Controller
     return redirect('/umkm')->with('sukses','Data berhasil dihapus!');
   }
 
+  public function LihatUmkm(Request $request)
+  {
+    if($request->has('cari'))
+      {
+          $usaha = \App\Models\Umkm::where('nama_ush','LIKE','%'.$request->cari.'%')->get();
+      }
+      else
+      {
+          $usaha = Umkm::all();
+      }   
+      return view ('detail/lihatumkm', ['usaha' => $usaha]);
+  }
+
+  public function LihatMaps()
+  {
+    return view ('detail/lihatmaps');
+  }
   
 }   

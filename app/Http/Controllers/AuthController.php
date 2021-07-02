@@ -39,6 +39,6 @@ class AuthController extends Controller
     {
         //$user= User::all()->toArray();
         Auth::logout();
-        return redirect('/login');
+        return redirect('/');
     }
 }
