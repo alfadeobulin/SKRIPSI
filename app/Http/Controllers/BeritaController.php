@@ -63,4 +63,21 @@ class BeritaController extends Controller
     DB::table('berita')->where('id_berita', $id_berita)->delete();
     return redirect('/berita')->with('sukses','Data berhasil dihapus!');
   }
+  public function LihatBerita(Request $request)
+  {
+    if($request->has('cari'))
+      {
+          $berita = \App\Models\Berita::where('JUDUL','LIKE','%'.$request->cari.'%')->get();
+      }
+      else
+      {
+          $berita = Berita::all();
+      }   
+      return view ('detail/lihatberita', ['berita' => $berita]);
+  }
+  public function IsiBerita($id_berita)
+  {
+      $berita = DB::table('berita')->where('id_berita', $id_berita)->first();
+      return view('guest/isiberita', ['berita'=>$berita]);
+  }
 }

@@ -34,37 +34,34 @@
                 </div>
             </div>
         </nav>
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container px-4 px-lg-5 h-100">
-                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-                    <div class="col-lg-8 align-self-end">
-                        <h1 class="text-white font-weight-bold">Selamat Datang di UMKMku</h1>
-                        <hr class="divider">
-                    </div>
-                    <div class="col-lg-8 align-self-baseline">
-                        <p class="text-white-75 mb-5">UMKMku merupakan sebuah sistem informasi berbasis web Daerah Istimewa Yogyakarta yang memvisualisasikan pesebaran UMKM dengan kategori kuliner dan sebagai media promosi produk - produk UMKM kota Yogyakarta</p>
-                        <a class="btn btn-primary btn-xl" href="/lihatmaps">Jelajahi</a>
-                    </div>
+        @yield('isiberita')
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Berita</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Berita terkait UMKMku</p>
                 </div>
             </div>
         </header>
-        </section>
-        <!-- Footer-->
+        @foreach ($berita as $brt)
+        <div class="container px-4 px-lg-5">
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                            <h2 class="post-title">{{$brt->judul}}</h2>
+                        <p class="post-meta">
+                            Penulis
+                            <a href="{{$brt->link}}">{{$brt->penulis}}</a>
+                            Tanggal terbit :
+                            <a>{{$brt->tgl_terbit}}</a>
+                        </p>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Pager-->
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="/lihatberita/{{$brt->id_berita}}">Lihat Berita</a></div>
+        </div>
+        @endforeach
         <footer class="bg-light py-5">
             <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2021 - UMKM Daerah Istimewa Yogyakarta</div></div>
         </footer>
-       
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- SimpleLightbox plugin JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
 </html>

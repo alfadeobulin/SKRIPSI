@@ -34,6 +34,9 @@ Auth::routes();
     Route::get('/kelurahan', 'KecamatanController@index');
     //maps
     Route::get('/lihatmaps', 'UmkmController@LihatMaps');
+    //berita
+    Route::get('/lihatberita', 'BeritaController@LihatBerita');
+    Route::get('/lihatberita/{id_berita}', 'BeritaController@IsiBerita');
 
     
 
