@@ -30,7 +30,7 @@ class BeritaController extends Controller
         'penulis' => 'required',
         'tgl_terbit' => 'required',
         'link' => 'required',
-        'id_admin' => 'required|min:3|max:3|unique:admin',
+        'id_admin' => 'required|min:3|max:3',
     ],
     [
         'id_berita.required' => 'ID berita wajib di isi',
@@ -38,7 +38,6 @@ class BeritaController extends Controller
         'id_berita.unique' => 'ID berita  sudah digunakan',
         'id_admin.max' => 'ID admin maksimal 3 digit',
         'id_admin.required' => 'ID admin wajib di isi',
-        'id_admin.unique' => 'ID admin sudah digunakan',
         'id_admin.min'      => 'ID admin minimal 3 karakter',
         'isi.required'   => 'Konten berita wajib di isi',
         'tgl_terbit.required'   => 'Tanggal terbit berita wajib di isi',

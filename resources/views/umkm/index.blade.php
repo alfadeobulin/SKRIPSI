@@ -110,6 +110,7 @@
 			</div>
 		</footer>
 		@yield('content')
+		@yield('ck-editor')
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
@@ -117,6 +118,8 @@
 	<script src="{{asset('admin/assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('admin/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
 	<script src="{{asset('admin/assets/scripts/klorofil-common.js')}}"></script>
+	<script src="{{asset('admin/assets/vendor/ckeditor/ckeditor/ckeditor.js')}}"></script>
+	<script src="[ckeditor-build-path]/ckeditor.js"></script>
 
 </body>
 

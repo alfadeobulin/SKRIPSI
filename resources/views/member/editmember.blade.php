@@ -31,7 +31,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
-                                                <textarea name="alamat_member" class="form-control" id="exampleFormControlTextarea1" rows="3">{{$member->alamat_member}}</textarea>
+                                                <textarea name="alamat_member" class="form-control" id="alamat_member" rows="3">{{$member->alamat_member}}</textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleInputEmail1" class="form-label">Foto Profil</label>

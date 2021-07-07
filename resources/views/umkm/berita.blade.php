@@ -1,6 +1,7 @@
 @extends('umkm.index')
 
 @section('content')
+
 <div class = "main">
         <div class="main-content">
         @if(session('sukses'))
@@ -42,7 +43,7 @@
                                         <tr>    
                                             <th scope='row'>{{$loop->iteration}}</th>
                                                 <td>{{$brt->judul}}</td>
-                                                <td>{{$brt->isi}}</td>
+                                                <td>{!!$brt->isi!!}</td>
                                                 <td>{{$brt->penulis}}</td>
                                                 <td>{{$brt->id_berita}}</td>
                                                 <td>{{$brt->tgl_terbit}}</td>
@@ -81,8 +82,8 @@
                                 </div>
                                 <div class="mb-3">
                                     <div class="form-group {{$errors->has('isi') ? 'has-error' : ''}}">   
-                                    <label for="exampleFormControlTextarea1" class="form-label">Isi</label>
-                                    <textarea name="isi" class="form-control" id="exampleFormControlTextarea1" rows="3" value="{{old('isi')}}"></textarea>
+                                    <label for="editor" class="form-label">Isi</label>
+                                    <textarea name="isi" class="form-control" id="editor" rows="10" cols="80" value="{{old('isi')}}"></textarea>
                                     @if($errors->has('isi'))
                                         <span class="help-block">{{$errors->first('isi')}}</span>
                                     @endif
@@ -122,7 +123,7 @@
                                 <div class="mb-3">
                                     <div class="form-group {{$errors->has('id_admin') ? 'has-error' : ''}}">
                                     <label for="exampleInputEmail1" class="form-label">ID Admin</label>
-                                    <input name="id_admin" type="text" class="form-control" id="InputId_admin" aria-describedby="ID Admin" value="{{old('link')}}">
+                                    <input name="id_admin" type="text" class="form-control" id="InputId_admin" aria-describedby="ID Admin" value="{{old('id_admin')}}">
                                     @if($errors->has('id_admin'))
                                         <span class="help-block">{{$errors->first('id_admin')}}</span>
                                     @endif
@@ -131,10 +132,23 @@
                                 <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                 <button type="submit"   class="btn btn-primary" > Tambahkan!</button>
                             </form>
-                    </div>
+                            <script>
+                                CKEDITOR.replace('isi')
+                            </script>
+            </div>
                 </div>
             </div>
     </div>
 </div>
 @endsection 
-  
+
+@section('ck-editor')
+<script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+@endsection
