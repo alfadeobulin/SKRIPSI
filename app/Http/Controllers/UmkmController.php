@@ -24,7 +24,12 @@ class UmkmController extends Controller
       return view ('umkm/usaha', ['usaha' => $usaha]);
   }
 
-  public function create(Request $request)
+  public function create()
+  {
+      return view ('member/createusaha');
+  }
+
+  public function store(Request $request)
     {
       $this->validate($request,
       [
@@ -62,7 +67,7 @@ class UmkmController extends Controller
           'id_kec.max' => 'ID kecamatan maksimal 3 digit',
       ]);
       
-      $kecamatan = Kecamatan::all();
+      
       //dd($request->all());
       $usaha = new Umkm;
       $usaha->id_usaha = $request->id_usaha;
@@ -75,7 +80,7 @@ class UmkmController extends Controller
       $usaha->id_kel = $request->id_kel;
       $usaha->id_kec = $request->id_kec;
       $usaha->save();
-      return redirect('/umkm', compact('kecamatan'))->with('sukses','Data berita berhasil ditambahkan');
+      return redirect('/umkm')->with('sukses','Data berita berhasil ditambahkan');
     }
 
   public function delete($id_usaha)

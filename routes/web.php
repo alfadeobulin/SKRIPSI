@@ -70,7 +70,8 @@ Route::group(['middleware' => ['auth','checkRole:admin']], function () {
 
 Route::group(['middleware' => ['auth','checkRole:member']], function () {
     //create usaha
-    Route::post('/createusaha', 'UmkmController@create');
+    Route::get('/usaha/create', 'UmkmController@create');
+    Route::post('/usaha/store', 'UmkmController@store');
     //create galeri
     Route::get('/galeri/delete/{glr}', 'GaleriController@delete');
     Route::post('/creategaleri', 'GaleriController@creategaleri');

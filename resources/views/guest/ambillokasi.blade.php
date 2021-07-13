@@ -1,6 +1,4 @@
-@extends('umkm.index')
 
-@section('content') 
 <div class = "main">
         <div class="main-content">
             <div class = "container-fluid ">
@@ -41,10 +39,6 @@
                         <!-- END Marker-->
                     </div>
                 </div>
-                @yield('content map')
             </div>
         </div>
     </div>
-@endsection
-
-
