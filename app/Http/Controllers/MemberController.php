@@ -72,24 +72,13 @@ class MemberController extends Controller
       return view ('member/editmember')->with(['member' => $member]);
     }
 
-    public function update(Request $request, $member)
+    public function update(Request $request, Member $member )
     {
-
-      DB::table('member')->where('id_member',$request->id_member)->update([
-      'id_member' => $request->id_member,
-      'nama_member' => $request->nama_member,
-      'nohp_member' => $request->nohp_member,
-      'alamat_member' => $request->alamat_member,
-      'avatar' => $request->avatar,
-      'id_admin' => $request->id_admin]);
-      
-      if($request->hasFile('avatar'))
+      $member->update($request->all());
+      if($request->hasFile('member'))
       {
-        
-        // $member = new \stdClass();
-        // $member->success = false;
-        dd($request->all());
-        $request->file('avatar')->move('assets/img', $request->file('avatar')->getClientOriginalName());
+        //dd($request->all());
+        $request->file('avatar')->move('images/avatar', $request->file('avatar')->getClientOriginalName());
         $member->avatar = $request->file('avatar')->getClientOriginalName();
         $member->save();
       }

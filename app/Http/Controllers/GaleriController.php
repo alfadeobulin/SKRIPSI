@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Galeri;
+use App\Models\Umkm;
+use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,11 +23,18 @@ class GaleriController extends Controller
       return view ('umkm/galeri', ['galeri' => $galeri]);
     }
 
+    public function galeriku()
+    {
+        $umkm = auth()->user()->member->umkm;
+        $galeri = auth()->user()->member->galeri;
+        return view('umkm/galeri',compact(['galeri','umkm']));
+    }
+
     public function creategaleri(Request $request)
     {
       $this->validate($request,
       [
-          'id_galeri' => 'required|min:4|max:10|unique:galeri',
+          'id_galeri' => 'required|min:3',
           'nama_gal' => 'required',
           'foto' => 'required',
           'id_usaha' => 'required|min:3|max:10',
@@ -34,23 +43,33 @@ class GaleriController extends Controller
       [
           'id_galeri.required' => 'ID galeri wajib di isi',
           'id_galeri.min'      => 'ID galeri minimal 3 karakter',
-          'id_galeri.max' => 'ID galeri maksimal 3 digit',
-          'id_galeri.unique' => 'ID galeri Sudah Digunakan',
           'nama_galeri.required'   => 'Nama wajib di isi',
           'foto.required' => 'Foto wajib di unggah',
           'id_usaha.required' => 'ID usaha wajib di isi',
           'id_usaha.min'      => 'ID usaha minimal 3 karakter',
-          'id_usaha.max' => 'ID usaha maksimal 3 digit',
           'ktrgn_foto.required' => 'Keterangan foto wajib di isi',
       ]);
-        // // dd($request);
+      $upload = "N";
+      if ($request->hasFile('foto')) 
+      {
+          $destination = "images/galeri";
+          $foto = $request->file('foto');
+          $foto->move($destination, $foto->getClientOriginalName());
+          $upload = "Y";
+      }
+
+      if ($upload=="Y") {
         $galeri = new Galeri;
         $galeri->id_galeri = $request->id_galeri;
         $galeri->nama_gal = $request->nama_gal;
-        $galeri->foto = $request->foto;
+        $galeri->foto = $foto->getClientOriginalName();
         $galeri->id_usaha = $request->id_usaha;
         $galeri->ktrgn_foto = $request->ktrgn_foto;        
         $galeri->save();
+    }
+
+         //dd($request);
+       
         return redirect('/galeri')->with('sukses','Data berita berhasil ditambahkan');
     }
     public function delete($id_galeri)
@@ -77,13 +96,12 @@ class GaleriController extends Controller
       
       if($request->hasFile('galeri'))
       {
-        
-        // $member = new \stdClass();
-        // $member->success = false;
-        dd($request->all());
-        $request->file('galeri')->move('images/', $request->file('galeri')->getClientOriginalName());
-        $galeri->avatar = $request->file('galeri')->getClientOriginalName();
-        $galeri->save();
+       $galeri->update($request->all());
+        if($request->hasFile('foto')){
+            $request->file('foto')->move('images/galeri',$request->file('foto')->getClientOriginalName());
+            $galeri->foto = $request->file('foto')->getClientOriginalName();
+            $galeri->save();
+        }
       }
       
       return redirect('/galeri')->with('sukses','Data berhasil diubah!');

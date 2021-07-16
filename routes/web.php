@@ -34,6 +34,7 @@ Auth::routes();
     Route::get('/kelurahan', 'KecamatanController@index');
     //maps
     Route::get('/lihatmaps', 'UmkmController@LihatMaps');
+    Route::get('/titik/json', 'UmkmController@titik');
     //berita
     Route::get('/lihatberita', 'BeritaController@LihatBerita');
     Route::get('/lihatberita/{id_berita}', 'BeritaController@IsiBerita');
@@ -43,6 +44,7 @@ Auth::routes();
 Route::group(['middleware' => ['auth','checkRole:admin,member']], function () {
     // profile member
     Route::get('/profilemember/profile/{id_member}', 'MemberController@profile');
+     Route::get('/galeriku','GaleriController@galeriku');
     //logout
      Route::get('/logout','AuthController@logout');
     

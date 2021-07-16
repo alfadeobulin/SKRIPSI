@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Galeri - Galeri UMKMku</title>
+        <title> Maps - Sebaran Wilayah</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -69,6 +69,14 @@
                                     tileSize: 512,
                                     zoomOffset: -1
                                     }).addTo(mymap);
+                                    
+                                    $(document).ready(function() {
+                                        $.getJSON('titik/json', function(data){
+                                        $.each(data, function(LihatMaps){
+                                        L.marker([parseFloat(data[LihatMaps].longitude), parseFloat(data[LihatMaps].latitude)]).addTo(mymap);
+                                        });
+                                    });
+                                    });
                                 </script>
                                 </body>
                                 </html> 

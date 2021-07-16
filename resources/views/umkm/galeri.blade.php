@@ -61,7 +61,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah berita</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Galeri</h5>
                             <div class="modal-body">
                             <form action ="/creategaleri" method="POST" enctype="multipart/form-data"> 
                                 @csrf
@@ -84,7 +84,7 @@
                                 <div class="mb-3">
                                     <div class="form-group {{$errors->has('foto') ? 'has-error' : ''}}">
                                     <label for="exampleInputEmail1" class="form-label">Foto</label>
-                                    <input name="foto" type="file" class="form-control" id="InputFoto" aria-describedby="Foto" value="{{old('foto')}}">
+                                    <input name="foto" type="file" class="form-control" id="foto" aria-describedby="Foto" value="{{old('foto')}}">
                                     @if($errors->has('foto'))
                                     <span class="help-block">{{$errors->first('foto')}}</span>
                                     @endif

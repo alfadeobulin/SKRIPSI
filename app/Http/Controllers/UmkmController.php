@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 use App\Models\Umkm;
-use App\Models\Kecamatan;
 use Illuminate\Support\Facades\Auth;
 
 
 class UmkmController extends Controller
 {
+ 
+
    public function index(Request $request)
   {
       
@@ -102,9 +103,20 @@ class UmkmController extends Controller
       return view ('detail/lihatumkm', ['usaha' => $usaha]);
   }
 
+  public function __construct()
+  {
+    $this->Umkm = new Umkm();
+  }
+
   public function LihatMaps()
   {
     return view ('detail/lihatmaps');
+  }
+
+  public function titik()
+  {
+    $results=$this->Umkm->allData();
+    return json_encode($results);
   }
   
 }   

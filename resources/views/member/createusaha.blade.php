@@ -79,24 +79,25 @@
                                             var curLocation = [-7.7822073, 110.3705015];
                                             mymap.attributionControl.setPrefix(false);
                                             var marker = new L.Marker(curLocation, {
-                                                draggable:'true',
+                                                draggable:'true'
                                             }); 
                                             marker.on('dragend', function (event) {
                                                 var position = marker.getLatLng();
                                                 marker.setLatLng(position, {
-                                                    draggable: 'true',
+                                                    draggable: 'true'
                                                 }).bindPopup(position).update();
                                                 $("#latitude").val(position.lat);
-                                                $("#longitude").val(position.lng).keyup();
+                                                $("#longitude").val(position.lng);
                                             });
                                             mymap.addLayer(marker);
-                                            mymap.on("click", function(e){
+                                            
+                                            mymap.on("click", function(e) {
                                                var lat = e.latlng.lat;
                                                var lat = e.latlng.lng;
-                                               if(!marker) { 
-                                                   marker = L.marker(e.latlng).addTo(mymap);
+                                               if (!marker) { 
+                                                    marker = L.marker(e.latlng).addTo(mymap);
                                                } 
-                                               else{
+                                               else {
                                                    marker.setLatLng(e.latlng);
                                                }
                                                latInput.value = lat;
