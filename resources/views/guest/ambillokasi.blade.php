@@ -19,6 +19,7 @@
 
                             <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
                             <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>   
+                            <script>"https://code.jquery.com/jquery-3.6.0.min.js"</script> 
                         </head>
                         <body>
                         <div id="mapid" style="height: 400px;"></div>
@@ -32,6 +33,18 @@
                             tileSize: 512,
                             zoomOffset: -1
                             }).addTo(mymap);
+
+                            $(document).ready(function() {
+                                $.getJSON('titik/json', function(data){
+                                $.each(data, function(i, field){
+                                    var v_lat=parseFloat(data[i].latitude);
+                                    var v_long=parseFloat(data[i].longitude);
+                                L.marker([v_lat,v_long]).addTo(mymap)
+                                .bindPopup(data[i].nama_ush)
+                                .openPopup();
+                                });
+                            });
+                            });
                         </script>
                         </body>
                         </html> 

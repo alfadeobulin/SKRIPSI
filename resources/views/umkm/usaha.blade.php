@@ -61,6 +61,9 @@
                                                     @if (auth()->user()->role == 'admin')
                                                         <a href="/umkm/delete/{{$ush->id_usaha}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
                                                     @endif
+                                                    @if (auth()->user()->role == 'member')
+                                                    <a href="/umkm/edit/{{$ush->id_usaha}}" class="btn btn-warning btn-sm">Edit Usaha</a>
+                                                    @endif
                                                     </td>    
                                             </tr>
                                         @endforeach

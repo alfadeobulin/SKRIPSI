@@ -103,8 +103,33 @@ class UmkmController extends Controller
       return view ('detail/lihatumkm', ['usaha' => $usaha]);
   }
 
+  public function editusaha($id_usaha)
+    {
+      $usaha = DB::table('usaha')->where('id_usaha', $id_usaha)->first();
+      return view ('umkm/editusaha')->with(['usaha' => $usaha]);
+    }
+
+  public function update(Request $request)
+    {
+
+      DB::table('usaha')->where('id_usaha',$request->id_usaha)->update([
+        'id_usaha' => $request->id_usaha,
+        'nama_ush' => $request->nama_ush,
+        'alamat_ush' => $request->alamat_ush,
+        'ket_ush' => $request->ket_ush,
+        'longitude' => $request->longitude,
+        'latitude' => $request->latitude,
+        'id_member' => $request->id_member,
+        'id_kel' => $request->id_kel,
+        'id_kec' => $request->id_kec,
+    ]);
+      
+      return redirect('/umkm')->with('sukses','Data berhasil diubah!');
+    }
+
   public function __construct()
   {
+    
     $this->Umkm = new Umkm();
   }
 

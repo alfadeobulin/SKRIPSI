@@ -44,8 +44,8 @@
                 <div class="row g-0">
                     @foreach ($galeri as $glr)
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/portfolio/fullsize/1.jpg" title="">
-                            <img class="img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="..." />
+                        <a class="portfolio-box" href="{{asset('images/galeri/'.$glr->foto)}}" title="">
+                            <img class="img-fluid" src="{{asset('images/galeri/'.$glr->foto)}}" height="100%" width="100%" alt="..." />
                             <div class="portfolio-box-caption">
                                 <div class="project-name">{{$glr->nama_gal}}</div>
                                 <div class="project-category text-white-50">{{$glr->ktrgn_foto}}</div>

@@ -1,42 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>@yield('UMKMku - Daerah Istimewa Yogyakarta')</title>
-        <!-- Favicon-->
-        <!-- <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
-        <!-- Bootstrap Icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
-        <!-- SimpleLightbox plugin CSS-->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-    <script src="js/scriptss.js"></script>
+
+<head>
+	<title>@yield('UMKM Daerah Istimewa Yogyakarta')</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!-- VENDOR CSS -->
+	<link rel="stylesheet" href="{{asset('admin/assets/vendor/bootstrap/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{asset('admin/assets/vendor/font-awesome/css/font-awesome.min.css')}}">
+	<link rel="stylesheet" href="{{asset('admin/assets/vendor/linearicons/style.css')}}">
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" href="{{asset('admin/assets/css/main.css')}}">
+	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+	<link rel="stylesheet" href="{{asset('admin/assets/css/demo.css')}}">
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	<!-- ICONS -->
+	<link rel="apple-touch-icon" sizes="76x76" href="{{asset('admin/assets/img/apple-icon.png')}}">
+	<link rel="icon" type="image/png" sizes="96x96" href="{{asset('admin/assets/img/favicon.png')}}">
+</head>
     <body>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="/">UMKMku</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="/lihatberita">Berita</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/lihatumkm">UMKM Terdaftar</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/lihatgaleri">Galeri</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        
         <!-- Header-->
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
@@ -72,6 +57,6 @@
 
 <!-- Footer-->
 <footer class="bg-light py-5">
-    <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2021 - UMKM Daerah Istimewa Yogyakarta</div></div>
+    <div class="container px-4 px-lg-5"><div class="small text-justify text-muted">Copyright &copy; 2021 - UMKM Daerah Istimewa Yogyakarta</div></div>
 </footer>
 </html>

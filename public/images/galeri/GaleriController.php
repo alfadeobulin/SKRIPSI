@@ -52,7 +52,7 @@ class GaleriController extends Controller
       $upload = "N";
       if ($request->hasFile('foto')) 
       {
-          $destination = "images/galeri";
+          $destination = "images/";
           $foto = $request->file('foto');
           $foto->move($destination, $foto->getClientOriginalName());
           $upload = "Y";
@@ -84,22 +84,8 @@ class GaleriController extends Controller
       return view ('umkm/editgaleri')->with(['galeri' => $galeri]);
     }
 
-    public function update(Request $request, Galeri $galeri)
+    public function update(Request $request, $galeri)
     {
-
-      // $ubah = Galeri::findorfail($id_galeri);
-      // $awal = $ubah->foto;
-
-      // $galeri = ([
-      //   'id_galeri' => $request->id_galeri,
-      //   'nama_gal' => $request->nama_gal,
-      //   'foto' => $awal->foto,
-      //   'id_usaha' => $request->id_usaha,
-      //   'ktrgn_foto' => $request->ktrgn_foto,]);
-
-      // $request->foto->move(public_path().'images/galeri/', $awal);
-      // $ubah->update($galeri);
-
 
       DB::table('galeri')->where('id_galeri',$request->id_galeri)->update([
       'id_galeri' => $request->id_galeri,
@@ -108,17 +94,17 @@ class GaleriController extends Controller
       'id_usaha' => $request->id_usaha,
       'ktrgn_foto' => $request->ktrgn_foto,]);
       
-      if($request->hasFile('foto'))
+      if($request->hasFile('galeri'))
       {
        $galeri->update($request->all());
         if($request->hasFile('foto')){
-            $request->file('foto')->move('images/galeri',$request->file('foto')->getClientOriginalName());
+            $request->file('foto')->move(public_path().'images/galeri',$request->file('foto')->getClientOriginalName());
             $galeri->foto = $request->file('foto')->getClientOriginalName();
             $galeri->save();
         }
       }
-      return redirect('/galeri')->with('sukses','Data berhasil diubah!');
       
+      return redirect('/galeri')->with('sukses','Data berhasil diubah!');
     }
 
     public function LihatGaleri(Request $request)

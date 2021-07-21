@@ -28,6 +28,7 @@
                                             <div class="mb-3">
                                                 <label for="exampleInputEmail1" class="form-label">Foto</label>
                                                 <input name="foto" type="file" class="form-control" id="InputFoto" aria-describedby="Foto" value="{{$galeri->foto}}">
+                                                <img src="{{asset('images/galeri/'.$galeri->foto)}}" height="10%" width="50%" alt="" srcset="">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleInputEmail1" class="form-label">ID Usaha</label>
@@ -35,7 +36,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlTextarea1" class="form-label">Keterangan</label>
-                                                <textarea name="ktrgn_foto" class="form-control" id="exampleFormControlTextarea1" rows="3">{{$galeri->ktrgn_foto}}</textarea>
+                                                <textarea name="ktrgn_foto" class="form-control" id="KETERANGAN" rows="3">{{$galeri->ktrgn_foto}}</textarea>
                                             </div>
                                             <button type="submit" class="btn btn-warning btn-sm">Ubah Data!</button>
                                         </form>

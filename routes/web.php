@@ -82,6 +82,9 @@ Route::group(['middleware' => ['auth','checkRole:member']], function () {
     //edit member
     Route::get('/daftarmemberumkm/edit/{id_member}', 'MemberController@editmember');
     Route::post('/daftarmemberumkm/update/{id_member}', 'MemberController@update');
+    //edit usaha
+    Route::get('/umkm/edit/{id_usaha}', 'UmkmController@editusaha');
+    Route::post('/umkm/update/{id_usaha}', 'UmkmController@update');
     
     
 });

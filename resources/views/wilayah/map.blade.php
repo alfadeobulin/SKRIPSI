@@ -20,7 +20,8 @@
                             <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
 
                             <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
-                            <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>   
+                            <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+                            <script>"https://code.jquery.com/jquery-3.6.0.min.js"</script>    
                         </head>
                         <body>
                         <div id="mapid" style="height: 400px;"></div>
@@ -34,6 +35,14 @@
                             tileSize: 512,
                             zoomOffset: -1
                             }).addTo(mymap);
+
+                            $(document).ready(function() {
+                                $.getJSON('titik/json', function(data){
+                                $.each(data, function(index){
+                                L.marker([parseFloat(data[index].longitude), parseFloat(data[index].latitude)]).addTo(mymap);
+                                });
+                            });
+                            });
                         </script>
                         </body>
                         </html> 
