@@ -1,50 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title> Maps - Sebaran Wilayah</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="/">UMKMku</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="/lihatberita">Berita</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/lihatumkm">UMKM Terdaftar</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/lihatgaleri">Galeri</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Sebaran Wilayah Terdaftar</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Peta pesebaran UMKMku</p>
-                </div>
-            </div>
-        </header>
-        <div class = "main">
-                <div class="main-content">
-                    <div class = "container-fluid ">
+@extends('umkm.index')
+
+@section('content')
+<div class = "main">
+        <div class="main-content">
+            <div class = "container-fluid ">
+                <div class="row">
+                    <div class="col-md-12">
+					<div class="panel panel-headline">
+						<div class="panel-heading">
+                        <h1>Peta Wilayah Usaha</h1>
                         <div class="row">
-                            <div class="col-md-12">
-                                <!-- Marker-->
-                                <!-- html script Maps umkmku CSS nya dipertama -->
+								<div class="col-md-12">
                                 <!DOCTYPE html> 
                                 <html>
                                 <head>
@@ -86,12 +52,13 @@
                                 </body>
                                 </html> 
                                 </div>
-                                <!-- END Marker-->
-                            </div>
+							</div>
                         </div>
+                        <!-- END Marker-->
                     </div>
                 </div>
             </div>
-            <footer class="bg-light py-5">
-                <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2021 - UMKM Daerah Istimewa Yogyakarta</div></div>
-            </footer>
+        </div>
+    </div>
+       
+@endsection

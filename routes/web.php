@@ -28,10 +28,6 @@ Auth::routes();
     //umkm terdaftar
     Route::get('/umkm', 'UmkmController@index');
     Route::get('/lihatumkm', 'UmkmController@LihatUmkm');
-    
-    //role lihat wilayah
-    Route::get('/kecamatan', 'KecamatanController@index');
-    Route::get('/kelurahan', 'KecamatanController@index');
     //maps
     Route::get('/lihatmaps', 'UmkmController@LihatMaps');
     Route::get('/titik/json', 'UmkmController@titik');
@@ -44,9 +40,13 @@ Auth::routes();
 Route::group(['middleware' => ['auth','checkRole:admin,member']], function () {
     // profile member
     Route::get('/profilemember/profile/{id_member}', 'MemberController@profile');
-     Route::get('/galeriku','GaleriController@galeriku');
+    Route::get('/galeriku','GaleriController@galeriku');
     //logout
-     Route::get('/logout','AuthController@logout');
+    Route::get('/logout','AuthController@logout');
+     //role lihat wilayah
+     Route::get('/kecamatan', 'KecamatanController@index');
+     Route::get('/kelurahan', 'KelurahanController@index');
+     Route::get('/sebaranumkm', 'UmkmController@Sebaran');
     
     
 });
@@ -68,6 +68,12 @@ Route::group(['middleware' => ['auth','checkRole:admin']], function () {
     Route::get('/daftarmemberumkm/delete/{id_member}', 'MemberController@delete');
     //daftar admin
     Route::get('/daftaradmin', 'AdminController@index');
+    //create kecamatan
+    Route::post('/createkecamatan', 'KecamatanController@createkecamatan');
+    Route::get('/kecamatan/delete/{id_kec}', 'KecamatanController@delete');
+     //create kelurahan
+     Route::post('/createkelurahan', 'KelurahanController@createkelurahan');
+     Route::get('/kelurahan/delete/{id_kel}', 'KelurahanController@delete');
 });
 
 Route::group(['middleware' => ['auth','checkRole:member']], function () {

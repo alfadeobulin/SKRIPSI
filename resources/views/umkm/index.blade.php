@@ -94,6 +94,17 @@
 						@if (auth()->user()->role == 'admin')
 						<li><a href="{{url('/berita')}}" class=""><i class="lnr lnr-file-empty"></i> <span>Berita</span></a></li>
 						@endif
+						<li>
+							<a href="#Pages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-map-marker"></i> <span>Wilayah</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="Pages" class="collapse ">
+								<ul class="nav">
+									<li><a href="{{url('/kecamatan')}}" class="">Kecamatan</a></li>
+									<li><a href="{{url('/kelurahan')}}" class="">Kelurahan</a></li>
+									<li><a href="{{url('/sebaranumkm')}}" class="">Peta Sebaran </a></li>
+									
+								</ul>
+							</div>
+						</li>
 						<li><a href="{{url('/informasi')}}" class=""><i class="fa fa-map"></i> <span>Informasi</span></a></li>
 					</ul>
 				</nav>

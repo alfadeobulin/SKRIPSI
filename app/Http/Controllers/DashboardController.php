@@ -3,17 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kecamatan;
+use App\Models\Kelurahan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
+
     public function index()
     {
-        $kecamatan = Kecamatan::all();
-        return view('umkm.visualisasi', compact('kecamatan'));
+
+        $kecamatan = DB::table('kecamatan')->paginate(8);
+        $kelurahan = DB::table('kelurahan')->paginate(8);
+        return view('umkm.visualisasi', compact('kecamatan','kelurahan'));
     }
+
+  
 
 //     public function createkecamatan(Request $request)
 //   {

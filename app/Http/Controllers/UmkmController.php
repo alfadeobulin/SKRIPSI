@@ -135,13 +135,13 @@ class UmkmController extends Controller
 
   public function LihatMaps()
   {
-    return view ('detail/lihatmaps');
+    $results=$this->Umkm->allData();
+    return view ('detail/lihatmaps',['results' => $results]);
   }
-
-  public function titik()
+  public function sebaran()
   {
     $results=$this->Umkm->allData();
-    return json_encode($results);
+    return view ('wilayah/sebaranumkm',['results' => $results]);
   }
   
 }   
