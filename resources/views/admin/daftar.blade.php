@@ -1,6 +1,7 @@
 @extends('umkm.index')
 
 @section('content')
+
     <div class = "main">
         <div class="main-content">
         @if(session('sukses'))
@@ -14,17 +15,25 @@
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Daftar Member UMKMku</h3>
                                 </div>
+                                <div class="panel-body text-wrap">
                                 <form class="navbar-form navbar-right" method='GET' action = ''>
                                     <div class="input-group">
-                                        <input name="cari" value="" class="form-control" placeholder="Cari . . .">
+                                        <input name="cari" value="" class="form-control" placeholder="Cari Nama Member . . .">
                                         <span class="input-group-btn">
                                         <button type="submit" class="btn btn-primary">Cari</button></span>
                                     </div>
                                 </form>
+                                </div>
+                               
+                                <div class="panel-body text-wrap" >
+                                    @if (auth()->user()->role == 'admin')
+                                    <a href="/member/exportpdf" class="btn btn-danger btn-sm fa fa-download">PDF</a>
+                                    <a href="/member/exportexcel" class="btn btn-success btn-sm fa fa-download ">Excel</a>
+                                    <button type="button" class="btn btn-default fa fa-upload" data-toggle="modal" data-target="#exampleModal"></button>
+                                    @endif
+                                </div>
+
                                 <div class="panel-body">
-                                @if (auth()->user()->role == 'admin')
-                                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">Tambah Data Member</button>
-                                @endif
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>

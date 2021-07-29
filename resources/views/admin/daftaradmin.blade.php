@@ -42,6 +42,7 @@
                                                 <td>{{$adm->nohp_admin}}</td>
                                                 <td>
                                                     <a href="/daftaradmin/delete/{{$adm->id_admin}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
+                                                    <a href="/profileadmin/profile/{{$adm->id_admin}}" class="btn btn-success btn-sm">Profile</a>
                                                 </td>
                                             </tr>
                                         @endforeach

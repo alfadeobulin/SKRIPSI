@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Galeri;
 use App\Models\Umkm;
+use App\Models\User;
 use App\Models\Member;
+use App\Models\Galeri;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,9 +25,9 @@ class GaleriController extends Controller
 
     public function galeriku()
     {
-        $umkm = auth()->user()->member->umkm;
-        //$galeri = auth()->user()->member->galeri;
-        return view('umkm/galeri',compact(['galeri','umkm']));
+        $umkm = auth()->user()->member['umkm'];
+        $galeri = auth()->user()->member['galeri'];
+        return view('umkm/galeri',compact('galeri','umkm'));
     }
 
     public function creategaleri(Request $request)

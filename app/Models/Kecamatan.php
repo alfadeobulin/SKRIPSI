@@ -11,5 +11,10 @@ class Kecamatan extends Model
     protected $table = 'kecamatan';
     protected $fillable = ['id_kec','nama_kec'];
     public $timestamps = false;
+
+    public function umkm()
+    {
+        return $this->hasMany(UMKM::class);
+    }
      
 }

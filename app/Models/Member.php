@@ -14,14 +14,33 @@ class Member extends Model
     public $timestamps = false; 
 
    
+    public function umkm()
+    {
+        return $this->hasMany(Umkm::class);
+    }
+
+    public function galeri()
+    {
+        return $this->hasMany(Galeri::class);
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class);
+    }
 
     public function getAvatar()
     {
         if (!$this->avatar) 
         {
-            return asset('images/user.jpg');
+            return asset('/images/galeri/user.jpg');
         }
-        return asset('images/'.$this->avatar);
+        return asset('/images/galeri'.$this->avatar);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     

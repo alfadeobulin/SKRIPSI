@@ -63,4 +63,10 @@ class AdminController extends Controller
       DB::table('admin')->where('id_admin', $id_admin)->delete();
       return redirect('/daftaradmin')->with('sukses','Data berhasil dihapus!');
   }
+
+  public function profile($id_admin)
+    {
+      $admin = DB::table('admin')->where('id_admin', $id_admin)->first();
+      return view('admin/profileadmin', ['admin'=>$admin]);
+    }
 }

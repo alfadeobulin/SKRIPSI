@@ -15,6 +15,7 @@
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Daftar Usaha Member UMKMku</h3>
                                 </div>
+                                <div class="panel-body text-wrap">
                                 <form class="navbar-form navbar-right" method='GET' action = ''>
                                     <div class="input-group">
                                         <input name="cari" value="" class="form-control" placeholder="Cari . . .">
@@ -22,12 +23,17 @@
                                         <button type="submit" class="btn btn-primary">Cari</button></span>
                                     </div>
                                 </form>
-                                <div class="panel-body text-wrap">
-                                @if (auth()->user()->role == 'member')
-                                <a href="/usaha/create" class="btn btn-primary">Buat Usaha</a>
-                                @endif
-                                <div class="panel-body">
-                                <!-- <a href="createusaha" class = "btn btn-primary">Tambah Data Usaha</a> -->
+                                </div>
+                                <div class="panel-body text-wrap" >
+                                    @if (auth()->user()->role == 'admin')
+                                    <a href="/member/exportpdf" class="btn btn-danger btn-sm fa fa-download">PDF</a>
+                                    <a href="/member/exportexcel" class="btn btn-success btn-sm fa fa-download ">Excel</a>
+                                    @endif
+                                    @if (auth()->user()->role == 'member')
+                                    <a href="/usaha/create" class="btn btn-default fa fa-upload">Buat Usaha</a>
+                                    @endif
+                                </div>
+                                <div class="panel-body text-wrap" >
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>

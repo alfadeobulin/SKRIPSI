@@ -40,14 +40,18 @@ Auth::routes();
 Route::group(['middleware' => ['auth','checkRole:admin,member']], function () {
     // profile member
     Route::get('/profilemember/profile/{id_member}', 'MemberController@profile');
-    Route::get('/galeriku','GaleriController@galeriku');
+    
     //logout
     Route::get('/logout','AuthController@logout');
-     //role lihat wilayah
-     Route::get('/kecamatan', 'KecamatanController@index');
-     Route::get('/kelurahan', 'KelurahanController@index');
-     Route::get('/sebaranumkm', 'UmkmController@Sebaran');
-    
+    //role lihat wilayah
+    Route::get('/kecamatan', 'KecamatanController@index');
+    Route::get('/kelurahan', 'KelurahanController@index');
+    Route::get('/sebaranumkm', 'UmkmController@Sebaran');
+    //reset password
+    Route::get('/gantipassword', 'ResetPasswordController@index');
+    Route::post('/gantipassword', 'ResetPasswordController@store')->name('ganti.password');
+
+
     
 });
 
@@ -74,6 +78,8 @@ Route::group(['middleware' => ['auth','checkRole:admin']], function () {
      //create kelurahan
      Route::post('/createkelurahan', 'KelurahanController@createkelurahan');
      Route::get('/kelurahan/delete/{id_kel}', 'KelurahanController@delete');
+     //profile
+     Route::get('/profileadmin/profile/{id_admin}', 'AdminController@profile');
 });
 
 Route::group(['middleware' => ['auth','checkRole:member']], function () {
@@ -82,6 +88,7 @@ Route::group(['middleware' => ['auth','checkRole:member']], function () {
     Route::post('/usaha/store', 'UmkmController@store');
     //create galeri
     Route::get('/galeri/delete/{glr}', 'GaleriController@delete');
+    Route::get('/galeriku','GaleriController@galeriku');
     Route::post('/creategaleri', 'GaleriController@creategaleri');
     Route::get('/galeri/edit/{id_galeri}', 'GaleriController@editgaleri');
     Route::post('/galeri/update/{id_galeri}', 'GaleriController@update');

@@ -20,4 +20,25 @@ class Umkm extends Model
        $results = DB::table('usaha')->select('nama_ush', 'latitude', 'longitude', 'alamat_ush')->get();
         return $results;
     }
+
+    public function member()
+    {
+        return $this->belongsTo(Member::class);
+    }
+
+    public function kecamatan()
+    {
+        return $this->belongsTo(Kecamatan::class);
+    }
+
+    public function kelurahan()
+    {
+        return $this->belongsTo(Kelurahan::class);
+    }
+
+    public function galeri()
+    {
+        return $this->hasMany(Galeri::class,'umkm_id');
+    }
+
 }
