@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 use App\Models\Umkm;
+use App\Models\Member;
+use App\Models\Kelurahan;
+use App\Models\Kecamatan;
+use App\Exports\UmkmExport;
+use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +19,9 @@ class UmkmController extends Controller
 
    public function index(Request $request)
   {
+      $member    = \App\Models\Member::all();
+      $kecamatan    = \App\Models\Kecamatan::all();
+      $kelurahan    = \App\Models\Kelurahan::all();
       
       if($request->has('cari'))
       {
@@ -23,7 +31,7 @@ class UmkmController extends Controller
       {
           $usaha = Umkm::all();
       }   
-      return view ('umkm/usaha', ['usaha' => $usaha]);
+      return view ('umkm/usaha', ['usaha' => $usaha, 'member' => $member, 'kecamatan' => $kecamatan,'kelurahan' => $kelurahan,]);
   }
 
   public function create()
@@ -145,6 +153,13 @@ class UmkmController extends Controller
     return view ('wilayah/sebaranumkm',['results' => $results]);
   }
 
+  public function exportExcel() 
+  {
+      ob_end_clean(); 
+      ob_start();
+      return Excel::download(new UmkmExport, 'Umkm.xlsx');
+  }
+
   public function exportPdf() 
   {
       $usaha = Umkm::all();
@@ -153,5 +168,7 @@ class UmkmController extends Controller
       return $pdf->download('umkm.pdf');
       
   }
+
+  
   
 }   

@@ -34,7 +34,7 @@
                                     @endif
                                 </div>
                                 <div class="panel-body text-wrap" >
-                                    <table class="table table-hover">
+                                    <table id="table-datatables" class="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th scope="col">NO</th>

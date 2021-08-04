@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Member;
-
+use App\Exports\MemberExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Hash;
 
 class MemberController extends Controller
@@ -97,6 +98,13 @@ class MemberController extends Controller
     {
       $member = DB::table('member')->where('id_member', $id_member)->first();
       return view('member/profile', ['member'=>$member]);
+    }
+
+    public function exportExcel() 
+    {
+        ob_end_clean(); 
+        ob_start();
+        return Excel::download(new MemberExport, 'Member.xlsx');
     }
    
     public function exportPdf() 
