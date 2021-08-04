@@ -40,6 +40,8 @@ Auth::routes();
 Route::group(['middleware' => ['auth','checkRole:admin,member']], function () {
     // profile member
     Route::get('/profilemember/profile/{id_member}', 'MemberController@profile');
+    //profil admin & member login
+    Route::get('/user/profile/{id}', 'ProfileController@show');
     
     //logout
     Route::get('/logout','AuthController@logout');
@@ -56,7 +58,6 @@ Route::group(['middleware' => ['auth','checkRole:admin,member']], function () {
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function () {
-
     //create member
     Route::post('/createmember', 'MemberController@createmember');
     //create berita 

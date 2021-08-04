@@ -28,7 +28,6 @@
 					<div class="text-center">
 						@if (auth()->user()->role == 'member')
 						<a href="/daftarmemberumkm/edit/{{$member->id_member}}" class="btn btn-warning">Edit Profile</a>
-						<a href="/gantipassword" class="btn btn-primary">Reset Password</a>
 						@endif
 					</div>
 				</div>

@@ -63,7 +63,7 @@
 						<li class="dropdown">
 							<a href="" class="dropdown-toggle" data-toggle="dropdown"><img src="" class="img-circle" alt="Avatar"> <span>{{Auth::user()->name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="/profile/{{auth()->user()}}"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+								<li><a href="{{asset('/user/profile/'.Auth::user()->id)}}"><i class="lnr lnr-user"></i> <span>Akun</span></a></li>
 								<li><a href="{{'/logout'}}"><i class=" lnr lnr-exit"></i><span>Logout</span></a></li>
 								@endif
 							</ul>
