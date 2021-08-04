@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 use App\Models\Umkm;
+use PDF;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -142,6 +143,15 @@ class UmkmController extends Controller
   {
     $results=$this->Umkm->allData();
     return view ('wilayah/sebaranumkm',['results' => $results]);
+  }
+
+  public function exportPdf() 
+  {
+      $usaha = Umkm::all();
+      view()->share('umkm', $usaha);
+      $pdf = PDF::loadview('download/umkmpdf');
+      return $pdf->download('umkm.pdf');
+      
   }
   
 }   

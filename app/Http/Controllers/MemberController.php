@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -98,4 +99,12 @@ class MemberController extends Controller
       return view('member/profile', ['member'=>$member]);
     }
    
+    public function exportPdf() 
+    {
+        $member = Member::all();
+        view()->share('member', $member);
+        $pdf = PDF::loadview('download/memberpdf');
+        return $pdf->download('member.pdf');
+        
+    }
 }

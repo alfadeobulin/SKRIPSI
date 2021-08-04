@@ -26,8 +26,8 @@
                                 </div>
                                 <div class="panel-body text-wrap" >
                                     @if (auth()->user()->role == 'admin')
-                                    <a href="/member/exportpdf" class="btn btn-danger btn-sm fa fa-download">PDF</a>
-                                    <a href="/member/exportexcel" class="btn btn-success btn-sm fa fa-download ">Excel</a>
+                                    <a href="/umkm/exportpdf" class="btn btn-danger btn-sm fa fa-download">PDF</a>
+                                    <a href="/umkm/exportexcel" class="btn btn-success btn-sm fa fa-download ">Excel</a>
                                     @endif
                                     @if (auth()->user()->role == 'member')
                                     <a href="/usaha/create" class="btn btn-default fa fa-upload">Buat Usaha</a>

@@ -80,7 +80,12 @@ Route::group(['middleware' => ['auth','checkRole:admin']], function () {
      Route::get('/kelurahan/delete/{id_kel}', 'KelurahanController@delete');
      //profile
      Route::get('/profileadmin/profile/{id_admin}', 'AdminController@profile');
-});
+     //export pdf & xls
+    Route::get('/member/exportexcel','MemberController@exportExcel');
+    Route::get('/member/exportpdf','MemberController@exportPdf');
+    Route::get('/umkm/exportexcel','UmkmController@exportExcel');
+    Route::get('/umkm/exportpdf','UmkmController@exportPdf');
+    });
 
 Route::group(['middleware' => ['auth','checkRole:member']], function () {
     //create usaha
