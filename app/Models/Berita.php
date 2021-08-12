@@ -13,3 +13,5 @@ class Berita extends Model
     public $timestamps = false;
      
 }
+
+

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Berita;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -20,6 +21,8 @@ class HomeController extends Controller
      */
     public function home()
     {
-        return view('umkm/home');
+        $berita = DB::table('berita')->paginate(8);
+        //return $berita;
+        return view('umkm/home', compact('berita'));
     }
 }

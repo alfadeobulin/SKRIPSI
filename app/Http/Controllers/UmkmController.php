@@ -7,6 +7,7 @@ use App\Models\Umkm;
 use App\Models\Member;
 use App\Models\Kelurahan;
 use App\Models\Kecamatan;
+use App\Models\Galeri;
 use App\Exports\UmkmExport;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
@@ -29,7 +30,12 @@ class UmkmController extends Controller
       }
       else
       {
-          $usaha = Umkm::all();
+          $usaha = DB::table('usaha')
+          ->join('kecamatan', 'usaha.id_kec', '=', 'kecamatan.id_kec')
+          ->join('kelurahan', 'usaha.id_kel', '=', 'kelurahan.id_kel')
+          ->select('usaha.*', 'kecamatan.nama_kec', 'kelurahan.nama_kel')
+          ->get();
+          //$usaha = Umkm::all();
       }   
       return view ('umkm/usaha', ['usaha' => $usaha, 'member' => $member, 'kecamatan' => $kecamatan,'kelurahan' => $kelurahan,]);
   }
@@ -107,9 +113,23 @@ class UmkmController extends Controller
       }
       else
       {
+          
           $usaha = Umkm::all();
       }   
       return view ('detail/lihatumkm', ['usaha' => $usaha]);
+  }
+
+  public function LihatUmkmGaleri(Request $request)
+  {
+    if($request->has('cari'))
+      {
+          $galeri = \App\Models\Galeri::where('nama_ush','LIKE','%'.$request->cari.'%')->get();
+      }
+      else
+      {
+          $galeri = Galeri::all();
+      }   
+      return view ('detail/lihatgaleriumkm', ['galeri' =>$galeri]);
   }
 
   public function editusaha($id_usaha)

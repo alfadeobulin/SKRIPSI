@@ -33,7 +33,7 @@
 							<div class="alert alert-danger" role="alert">{{session('alert')}}</div>
 							@endif
 							<div class="header">
-								<div class="logo text-center"><img src="{{asset('admin/umkm.png')}}" alt="Klorofil Logo"></div>
+								<div class="logo text-center"><img src="{{asset('admin/umkm.png')}}" alt="Umkm Logo"></div>
 								<p class="lead">Login </p>
 							</div>
 							<form class="form-auth-small" action="/login" method="POST">
@@ -74,10 +74,9 @@
 						</div>
 					</div>
 					<div class="right">
-						<div class="overlay"></div>
 						<div class="content text">
-							<h1 class="heading">UMKMku</h1>
-							<p>Visualisasi pesebaran umkm kuliner kota Yogyakarta</p>
+							<h1 class="heading-black">UMKMku</h1>
+							<h4>Visualisasi pesebaran umkm kuliner kota Yogyakarta</h4>
 						</div>
 					</div>
 					<div class="clearfix"></div>

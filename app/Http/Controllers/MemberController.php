@@ -5,10 +5,12 @@ use PDF;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
 use App\Models\Member;
 use App\Exports\MemberExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Hash;
+
 
 class MemberController extends Controller
 {public function index(Request $request)
@@ -76,15 +78,30 @@ class MemberController extends Controller
 
     public function update(Request $request, Member $member )
     {
-      $member->update($request->all());
-      if($request->hasFile('member'))
-      {
-        //dd($request->all());
-        $request->file('avatar')->move('images/avatar', $request->file('avatar')->getClientOriginalName());
-        $member->avatar = $request->file('avatar')->getClientOriginalName();
-        $member->save();
-      }
-      
+      DB::table('member')->where('id_member',$request->id_member)->update([
+        'id_member' => $request->id_member,
+        'nama_member' => $request->nama_member,
+        'nohp_member' => $request->nohp_member,
+        'alamat_member' => $request->alamat_member,
+        'avatar' => $request->avatar,
+        'id_admin' => $request->id_admin]);
+        
+        if($request->hasFile('avatar'))
+        {
+          $request->file('avatar')->move('images/galeri',$request->file('avatar')->getClientOriginalName());
+          $member->avatar = $request->file('avatar')->getClientOriginalName();
+          $member->save();
+        }
+        // if($request->hasFile('avatar'))
+        // {          
+          
+        //   // $avatar = new \stdClass();
+        //   // $avatar->success = false;
+        //   //dd($request->all());
+        //   $request->file('avatar')->move('images/avatar', $request->file('avatar')->getClientOriginalName());
+        //   $member->avatar  = $request->file('avatar')->getClientOriginalName();
+        //   $member->save();
+        // }
       return redirect('/daftarmemberumkm')->with('sukses','Data berhasil diubah!');
     }
     

@@ -11,6 +11,7 @@ class Galeri extends Model
     protected $table = 'galeri';
     protected $fillable = ['id_galeri','nama_gal','foto','id_usaha','ktrgn_foto'];
     public $timestamps = false;
+
      
     public function member()
     {

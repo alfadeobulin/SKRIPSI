@@ -26,7 +26,7 @@
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="/lihatberita">Berita</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="/lihatberita">Berita</a></li> -->
                         <li class="nav-item"><a class="nav-link" href="/lihatumkm">UMKM Terdaftar</a></li>
                         <li class="nav-item"><a class="nav-link" href="/lihatgaleri">Galeri</a></li>
                         <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
@@ -48,9 +48,35 @@
                     </div>
                 </div>
             </div>
-            
         </header>
-        
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Berita</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Berita terkait UMKMku</p>
+                    <br>
+        @foreach ($berita as $brt)
+        <div class="container px-4 px-lg-5">
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                            <h2 class="post-title">{{$brt->judul}}</h2>
+                        <p class="post-meta">
+                            Penulis
+                            <a href="{{$brt->link}}">{{$brt->penulis}}</a>
+                            Tanggal terbit :
+                            <a>{{$brt->tgl_terbit}}</a>
+                        </p>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Pager-->
+                    
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="/berita/{{$brt->id_berita}}">Lihat Berita</a></div>
+        </div>
+        @endforeach
+        </div>
+    </div>
+</header>
         </section>
         <!-- Footer-->
         <footer class="bg-light py-5">

@@ -84,10 +84,9 @@ class GaleriController extends Controller
       return view ('umkm/editgaleri')->with(['galeri' => $galeri]);
     }
 
-    public function update(Request $request, Galeri $galeri)
+    public function update(Request $request,  Galeri $galeri)
     {
-
-      // $ubah = Galeri::findorfail($id_galeri);
+      // $ubah = Galeri::findorfail($id_galeri)->where('id_galeri', $id_galeri)->first();
       // $awal = $ubah->foto;
 
       // $galeri = ([
@@ -97,7 +96,7 @@ class GaleriController extends Controller
       //   'id_usaha' => $request->id_usaha,
       //   'ktrgn_foto' => $request->ktrgn_foto,]);
 
-      // $request->foto->move(public_path().'images/galeri/', $awal);
+      // $request->foto->move(public_path().'images/galeri', $awal);
       // $ubah->update($galeri);
 
 

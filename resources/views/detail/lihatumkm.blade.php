@@ -21,7 +21,6 @@
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="/lihatberita">Berita</a></li>
                         <li class="nav-item"><a class="nav-link" href="/lihatumkm">UMKM Terdaftar</a></li>
                         <li class="nav-item"><a class="nav-link" href="/lihatgaleri">Galeri</a></li>
                         <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
@@ -59,11 +58,11 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Lihat Galeri</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/lihatgaleriumkm/{{$ush->id_usaha}}">Lihat Galeri</a></div>
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                @endforeach
                 </div>
             </div>
         </section>

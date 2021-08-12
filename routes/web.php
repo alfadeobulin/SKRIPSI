@@ -28,12 +28,13 @@ Auth::routes();
     //umkm terdaftar
     Route::get('/umkm', 'UmkmController@index');
     Route::get('/lihatumkm', 'UmkmController@LihatUmkm');
+    Route::get('/lihatgaleriumkm/{id_galeri}', 'UmkmController@LihatUmkmGaleri');
     //maps
     Route::get('/lihatmaps', 'UmkmController@LihatMaps');
     Route::get('/titik/json', 'UmkmController@titik');
     //berita
     Route::get('/lihatberita', 'BeritaController@LihatBerita');
-    Route::get('/lihatberita/{id_berita}', 'BeritaController@IsiBerita');
+    Route::get('/berita/{id_berita}', 'BeritaController@IsiBerita');
 
     
 
