@@ -24,7 +24,6 @@
 									<table class="table table-striped">
 										<thead>
 											<tr>
-                                                <th>ID KECAMATAN</th>
                                                 <th>KECAMATAN</th>
                                                 <th>STATUS</th>
                                             </tr>
@@ -32,7 +31,6 @@
                                         @foreach ($kecamatan as $kec)
 										<tbody>
 											<tr>
-                                                <td>{{$kec->id_kec}}</td>
                                                 <td>{{$kec->nama_kec}}</td>
                                                 <td><span class="label label-success">Terdaftar</span></td>
                                             </tr>
@@ -68,7 +66,6 @@
 									<table class="table table-striped">
 										<thead>
 											<tr>
-                                                <th>ID KELURAHAN</th>
                                                 <th>KELURAHAN</th>
                                                 <th>STATUS</th>
                                             </tr>
@@ -76,7 +73,6 @@
                                         @foreach ($kelurahan as $kel)
 										<tbody>
 											<tr>
-                                                <td>{{$kel->id_kel}}</td>
                                                 <td>{{$kel->nama_kel}}</td>
                                                 <td><span class="label label-success">Terdaftar</span></td>
                                             </tr>

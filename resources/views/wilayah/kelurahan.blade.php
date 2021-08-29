@@ -29,7 +29,6 @@
                                 <table class="table table-hover">
 										<thead>
 											<tr>
-                                                <th>ID KELURAHAN</th>
                                                 <th>KELURAHAN</th>
                                                 <th>STATUS</th>
                                                 <th></th>
@@ -38,7 +37,6 @@
                                         @foreach ($kelurahan as $kel)
 										<tbody>
 											<tr>
-                                                <td>{{$kel->id_kel}}</td>
                                                 <td>{{$kel->nama_kel}}</td>
                                                 <td><span class="label label-success">Terdaftar</span></td>
                                                 <td>

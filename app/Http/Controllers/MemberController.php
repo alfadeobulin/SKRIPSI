@@ -27,32 +27,41 @@ class MemberController extends Controller
     }
     public function createmember(Request $request)
     {
+
       $this->validate($request,
         [
-            'id_member' => 'required|min:3|unique:member',
+            'no_ktp' => 'required|unique:member|max:16|min:16',
             'nama_member' => 'required',
             'email' => 'required|email|unique:users',
             'nohp_member' => 'required|max:12',
-            'alamat_member' => 'required',
-            'id_admin' => 'required|min:3|max:3'
+            'alamat_member' => 'required'
         ],
         [
-            'id_member.required' => 'ID member wajib di isi',
-            'id_member.min'      => 'ID member minimal 3 karakter',
-            'id_member.unique'   => 'ID member sudah terdaftar',
+            'no_ktp.required' => 'No KTP wajib diisi dan sesuai dengan KTP anda',
+            'no_ktp.max' => 'No KTP Anda melebihi 16 digit',
+            'no_ktp.min' => 'No KTP anda kurang dari 16 digit',
+            'no_ktp.unique' => 'No KTP ini sudah pernah digunakan',
             'nama_member.required'   => 'Nama wajib di isi',
             'nohp_member.required' => 'No HP wajib di isi',
             'nohp_member.max' => 'No HP melebihi 12 digit',
             'email.required' => 'Email wajib di isi',
             'email.email' => 'Format Email Salah',
             'email.unique' => 'Email Sudah Digunakan',
-            'alamat_member.required' => 'Alamat wajib di isi',
-            'id_admin.required' => 'ID admin wajib di isi',
-            'id_admin.min'      => 'ID admin minimal 3 karakter',
-            'id_admin.max' => 'ID admin maksimal 3 digit',
+            'alamat_member.required' => 'Alamat wajib di isi'
         ]);
+      
+      $get_id =  DB::select('select max(id_users) as max_code from member');
+      if ($get_id[0]->max_code == null) {
+        $urutan = 1;
+        $id_users = "M" . sprintf("%04s", $urutan);
+      }else{
+        $urutan = (int) substr($get_id[0]->max_code,1,4);
+        $urutan++;
+        $id_users = "M" . sprintf("%04s", $urutan);
+      }
 
       $user = new \App\Models\User;
+      $user->id_users = $id_users;
       $user->role = 'member';
       $user->name = $request->nama_member;
       $user->email = $request->email;
@@ -60,31 +69,30 @@ class MemberController extends Controller
       $user->save();
 
       $member = new Member;
-      $member->id_member = $request->id_member;
+      $member->id_users = $id_users;
+      $member->no_ktp = $request->no_ktp;
       $member->nama_member = $request->nama_member;
       $member->nohp_member = $request->nohp_member;
       $member->alamat_member = $request->alamat_member;
-      $member->id_admin = $request->id_admin;
       $member->save();
 
       return redirect('/daftarmemberumkm')->with('sukses','Data berita berhasil ditambahkan');
     }
   
-    public function editmember($id_member)
+    public function editmember($id_users)
     {
-      $member = DB::table('member')->where('id_member', $id_member)->first();
+      $member = DB::table('member')->where('id_users', $id_users)->first();
       return view ('member/editmember')->with(['member' => $member]);
     }
 
     public function update(Request $request, Member $member )
     {
-      DB::table('member')->where('id_member',$request->id_member)->update([
-        'id_member' => $request->id_member,
+      DB::table('member')->where('id_users',$request->id_users)->update([
+        'id_users' => $request->id_users,
         'nama_member' => $request->nama_member,
         'nohp_member' => $request->nohp_member,
         'alamat_member' => $request->alamat_member,
-        'avatar' => $request->avatar,
-        'id_admin' => $request->id_admin]);
+        'avatar' => $request->avatar]);
         
         if($request->hasFile('avatar'))
         {
@@ -92,28 +100,29 @@ class MemberController extends Controller
           $member->avatar = $request->file('avatar')->getClientOriginalName();
           $member->save();
         }
-        // if($request->hasFile('avatar'))
-        // {          
+        if($request->hasFile('avatar'))
+        {          
           
-        //   // $avatar = new \stdClass();
-        //   // $avatar->success = false;
-        //   //dd($request->all());
-        //   $request->file('avatar')->move('images/avatar', $request->file('avatar')->getClientOriginalName());
-        //   $member->avatar  = $request->file('avatar')->getClientOriginalName();
-        //   $member->save();
-        // }
+          // $avatar = new \stdClass();
+          // $avatar->success = false;
+          //dd($request->all());
+          $request->file('avatar')->move('images/avatar', $request->file('avatar')->getClientOriginalName());
+          $member->avatar  = $request->file('avatar')->getClientOriginalName();
+          $member->save();
+        }
       return redirect('/daftarmemberumkm')->with('sukses','Data berhasil diubah!');
     }
     
-    public function delete($id_member)
+    public function delete($id_users)
     {
-      DB::table('member')->where('id_member', $id_member)->delete();
+      DB::table('member')->where('id_users', $id_users)->delete();
       return redirect('/daftarmemberumkm')->with('sukses','Data berhasil dihapus!');
     }
 
-    public function profile($id_member)
+    public function profile($id_users)
     {
-      $member = DB::table('member')->where('id_member', $id_member)->first();
+      
+      $member = DB::table('member')->where('id_users', $id_users)->first();
       return view('member/profile', ['member'=>$member]);
     }
 

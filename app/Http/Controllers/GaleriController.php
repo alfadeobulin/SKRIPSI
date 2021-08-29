@@ -12,15 +12,16 @@ class GaleriController extends Controller
 {
     public function index(Request $request)
     {
+      $usaha    = \App\Models\Umkm::all();
         if($request->has('cari'))
       {
           $galeri = \App\Models\Galeri::where('ktrgn_foto','LIKE','%'.$request->cari.'%')->get();
       }
       else
       {
-          $galeri = Galeri::all();
+        $galeri = Galeri::all();
       }   
-      return view ('umkm/galeri', ['galeri' => $galeri]);
+      return view ('umkm/galeri', ['galeri' => $galeri, 'usaha' => $usaha]);
     }
 
     public function galeriku()
@@ -34,21 +35,30 @@ class GaleriController extends Controller
     {
       $this->validate($request,
       [
-          'id_galeri' => 'required|min:3',
           'nama_gal' => 'required',
           'foto' => 'required',
           'id_usaha' => 'required|min:3|max:10',
           'ktrgn_foto' => 'required',
       ],
       [
-          'id_galeri.required' => 'ID galeri wajib di isi',
-          'id_galeri.min'      => 'ID galeri minimal 3 karakter',
           'nama_galeri.required'   => 'Nama wajib di isi',
           'foto.required' => 'Foto wajib di unggah',
           'id_usaha.required' => 'ID usaha wajib di isi',
           'id_usaha.min'      => 'ID usaha minimal 3 karakter',
           'ktrgn_foto.required' => 'Keterangan foto wajib di isi',
       ]);
+      
+      $get_id =  DB::select('select max(id_galeri) as max_code from galeri');
+      if ($get_id[0]->max_code == null) {
+        $urutan = 1;
+        $id_galeri = "G" . sprintf("%04s", $urutan);
+      }else{
+        $urutan = (int) substr($get_id[0]->max_code,1,4);
+        $urutan++;
+        $id_galeri = "G" . sprintf("%04s", $urutan);
+      }
+
+
       $upload = "N";
       if ($request->hasFile('foto')) 
       {
@@ -60,7 +70,7 @@ class GaleriController extends Controller
 
       if ($upload=="Y") {
         $galeri = new Galeri;
-        $galeri->id_galeri = $request->id_galeri;
+        $galeri->id_galeri = $id_galeri;
         $galeri->nama_gal = $request->nama_gal;
         $galeri->foto = $foto->getClientOriginalName();
         $galeri->id_usaha = $request->id_usaha;
@@ -128,7 +138,10 @@ class GaleriController extends Controller
       }
       else
       {
-          $galeri = Galeri::all();
+        $galeri = DB::table('galeri')
+        ->join('usaha', 'galeri.id_usaha', '=', 'usaha.id_usaha')
+        ->select('galeri.*', 'usaha.nama_ush')
+        ->get();
       }   
       return view ('detail/lihatgaleri', ['galeri' => $galeri]);
     }

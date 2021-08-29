@@ -61,11 +61,16 @@
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>Pengguna</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
+								@if (auth()->user()->role == 'member')
+								<li><a href="{{asset('/profilemember/profile/'.Auth::user()->id_users)}}" class="">Profil</a></li>
+								@endif
+								@if (auth()->user()->role == 'admin')
 									<li><a href="{{url('/daftarmemberumkm')}}" class="">Daftar Member UMKMku</a></li>
+								@endif
+								@if (auth()->user()->role == 'superadmin')
+									<li><a href="{{url('/daftaradmin')}}" class="">Admin Terdaftar</a></li>
+								@endif
 									<li><a href="{{url('/umkm')}}" class="">UMKM Terdaftar</a></li>
-									@if (auth()->user()->role == 'admin')
-									<li><a href="{{url('/daftaradmin')}}" class="">Daftar Admin</a></li>
-									@endif
 								</ul>
 							</div>
 						</li>
@@ -100,6 +105,7 @@
 			</div>
 		</footer>
 		@yield('content')
+		@yield('ck-editor')
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->

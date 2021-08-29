@@ -29,20 +29,20 @@
                                                 <th scope="col">NO</th>  
                                                 <th scope="col">ID ADMIN  </th>  
                                                 <th scope="col">NAMA</th>
-                                                <th scope="col">NO TELP</th>
+                                                <th scope="col">EMAIL</th>
                                                 <th scope="col"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($admin as $adm)
+                                        @foreach ($user as $usr)
                                             <tr>    
                                                 <th scope='row'>{{$loop->iteration}}</th>
-                                                <td>{{$adm->id_admin}}</td>
-                                                <td>{{$adm->nama_admin}}</td>
-                                                <td>{{$adm->nohp_admin}}</td>
+                                                <td>{{$usr->id_users}}</td>
+                                                <td>{{$usr->name}}</td>
+                                                <td>{{$usr->email}}</td>
                                                 <td>
-                                                    <a href="/daftaradmin/delete/{{$adm->id_admin}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
-                                                    <a href="/profileadmin/profile/{{$adm->id_admin}}" class="btn btn-success btn-sm">Profile</a>
+                                                    <a href="/daftaradmin/delete/{{$usr->id_users}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
+                                                    <a href="/profileadmin/profile/{{$usr->id_users}}" class="btn btn-success btn-sm">Profile</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -65,19 +65,11 @@
                                 <form action ="/createadmin" method="POST"> 
                                     @csrf
                                     <div class="mb-3">
-                                        <div class="form-group {{$errors->has('id_admin') ? 'has-error' : ''}}">
-                                        <label for="exampleInputEmail1" class="form-label">ID Admin </label>
-                                        <input name="id_admin" type="text"  class="form-control" id="InputNama" aria-describedby="NAMA" value="{{old('id_admin')}}">
-                                        @if($errors->has('id_admin'))
-                                        <span class="help-block">{{$errors->first('id_admin')}}</span>
-                                        @endif
-                                    </div>
-                                    <div class="mb-3">
                                         <div class="form-group {{$errors->has('nama_admin') ? 'has-error' : ''}}">
                                         <label for="exampleInputEmail1" class="form-label">Nama</label>
-                                        <input name="nama_admin" type="text" class="form-control" id="InputTelp" aria-describedby="TELP" value="{{old('nama_admin')}}">
-                                        @if($errors->has('nama_admin'))
-                                        <span class="help-block">{{$errors->first('nama_admin')}}</span>
+                                        <input name="name" type="text" class="form-control" id="InputTelp" aria-describedby="name" value="{{old('name')}}">
+                                        @if($errors->has('name'))
+                                        <span class="help-block">{{$errors->first('name')}}</span>
                                         @endif
                                     </div>
                                     <div class="mb-3">
@@ -86,14 +78,6 @@
                                         <input name="email" type="text" class="form-control" id="InputEmail" aria-describedby="Email" value="{{old('email')}}">
                                         @if($errors->has('email'))
                                         <span class="help-block">{{$errors->first('email')}}</span>
-                                        @endif
-                                    </div>
-                                    <div class="mb-3">
-                                        <div class="form-group {{$errors->has('nohp_admin') ? 'has-error' : ''}}">
-                                        <label for="exampleInputEmail1" class="form-label">No Telp</label>
-                                        <input name="nohp_admin" type="text" class="form-control" id="InputId" aria-describedby="IDADMIN" value="{{old('nohp_admin')}}">
-                                        @if($errors->has('nohp_admin'))
-                                        <span class="help-block">{{$errors->first('nohp_admin')}}</span>
                                         @endif
                                     </div>
                                     <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

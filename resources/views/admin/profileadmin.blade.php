@@ -10,16 +10,16 @@
 						<div class="overlay"></div>
 							<div class="profile-main">
 								<img src="" class="img-circle" alt="avatar">
-								<h3 class="name">{{$admin->nama_admin}}</h3>
+								<h3 class="name">{{$user->name}}</h3>
 							</div>
 					</div>
 					<div class="profile-detail">
 						<div class="profile-info">
-							<h4 class="heading">Profil Member</h4>
+							<h4 class="heading">Profil Admin</h4>
 							<ul class="list-unstyled list-justify">
-								<li>ID Member <span>{{$admin->id_admin}}</span></li>
-								<li>Nama  <span>{{$admin->nama_admin}}</span></li>
-								<li>Kontak <span>{{$admin->nohp_admin}}</span></li>
+								<li>ID Admin <span>{{$user->id_users}}</span></li>
+								<li>Nama  <span>{{$user->name}}</span></li>
+								<li>Email <span>{{$user->email}}</span></li>
 							</ul>
 						</div>
 					</div>

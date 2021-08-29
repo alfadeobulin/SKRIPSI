@@ -38,13 +38,12 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">NO</th>
-                                                <th scope="col">ID USAHA </th>
                                                 <th scope="col">NAMA USAHA</th>   
                                                 <th scope="col">ALAMAT USAHA</th>
                                                 <th scope="col">KETERANGAN</th>
                                                 <th scope="col">LONGITUDE</th>
                                                 <th scope="col">LATITUDE</th>
-                                                <th scope="col">ID MEMBER</th>
+                                                <th scope="col">NAMA MEMBER</th>
                                                 <th scope="col">KELURAHAN</th>
                                                 <th scope="col">KECAMATAN</th>
                                                 <th scope="col"></th>
@@ -54,17 +53,16 @@
                                         @foreach ($usaha as $ush)
                                             <tr>    
                                                 <th scope='row'>{{$loop->iteration}}</th>
-                                                    <td>{{$ush->id_usaha}}</td>
                                                     <td>{{$ush->nama_ush}}</td>
                                                     <td>{{$ush->alamat_ush}}</td>
                                                     <td>{{$ush->ket_ush}}</td>
                                                     <td>{{$ush->longitude}}</td>
                                                     <td>{{$ush->latitude}}</td>
-                                                    <td>{{$ush->id_member}}</td>
+                                                    <td>{{$ush->nama_member}}</td>
                                                     <td>{{$ush->nama_kel}}</td>
                                                     <td>{{$ush->nama_kec}}</td>
                                                     <td>
-                                                    @if (auth()->user()->role == 'admin')
+                                                    @if (auth()->user()->role == 'superadmin')
                                                         <a href="/umkm/delete/{{$ush->id_usaha}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
                                                     @endif
                                                     @if (auth()->user()->role == 'member')

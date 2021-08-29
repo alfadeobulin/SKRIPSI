@@ -24,6 +24,10 @@
                         <li class="nav-item"><a class="nav-link" href="/lihatumkm">UMKM Terdaftar</a></li>
                         <li class="nav-item"><a class="nav-link" href="/lihatgaleri">Galeri</a></li>
                         <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                        @if(auth()->user())
+                        <li class="nav-item"><a class="nav-link" href="{{url('/dashboard')}}">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{'/logout'}}">Logout</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -43,7 +47,7 @@
                 <div class="row g-0">
                     @foreach ($galeri as $glr)
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="{{asset('images/galeri/'.$glr->foto)}}" title="">
+                        <a class="portfolio-box" href="{{asset('images/galeri/'.$glr->foto)}}" title="{{$glr->nama_ush}}">
                             <img class="img-fluid" src="{{asset('images/galeri/'.$glr->foto)}}" height="100%" width="100%" alt="..." />
                             <div class="portfolio-box-caption">
                                 <div class="project-name">{{$glr->nama_gal}}</div>

@@ -38,11 +38,9 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">NO</th>
-                                                <th scope="col">ID MEMBER </th>
-                                                <th scope="col">NAMA</th>   
+                                                <th scope="col">NAMA</th>
                                                 <th scope="col">NO TELP</th>
                                                 <th scope="col">ALAMAT</th>
-                                                <th scope="col">ID ADMIN</th>
                                                 <th scope="col"></th>
                                             </tr>
                                         </thead>
@@ -50,16 +48,14 @@
                                         @foreach ($member as $mbr)
                                             <tr>    
                                                 <th scope='row'>{{$loop->iteration}}</th>
-                                                    <td>{{$mbr->id_member}}</td>
                                                     <td>{{$mbr->nama_member}}</td>
                                                     <td>{{$mbr->nohp_member}}</td>
                                                     <td>{{$mbr->alamat_member}}</td>
-                                                    <td>{{$mbr->id_admin}}</td>
                                                     <td>
                                                         @if (auth()->user()->role == 'admin')
-                                                        <a href="/daftarmemberumkm/delete/{{$mbr->id_member}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
+                                                        <a href="/daftarmemberumkm/delete/{{$mbr->id_users}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
                                                         @endif
-                                                        <a href="/profilemember/profile/{{$mbr->id_member}}" class="btn btn-success btn-sm">Profile</a>
+                                                        <a href="/profilemember/profile/{{$mbr->id_users}}" class="btn btn-success btn-sm">Profile</a>
                                                     </td>
                                             </tr>
                                         @endforeach
@@ -82,20 +78,21 @@
                                 <div class="modal-body">
                                 <form action ="/createmember" method="POST"> 
                                     @csrf
-                                    <div class="mb-3">
-                                        <div class="form-group {{$errors->has('id_member') ? 'has-error' : ''}}">
-                                        <label for="exampleInputEmail1" class="form-label">ID MEMBER</label>
-                                        <input name="id_member" type="text" class="form-control" id="" aria-describedby="IDMEMBER" value="{{old('id_member')}}">
-                                        @if($errors->has('id_member'))
-                                        <span class="help-block">{{$errors->first('id_member')}}</span>
-                                        @endif
-                                    </div>
+
                                     <div class="mb-3">
                                         <div class="form-group {{$errors->has('nama_member') ? 'has-error' : ''}}">
                                         <label for="exampleInputEmail1" class="form-label">Nama </label>
                                         <input name="nama_member" type="text"  class="form-control" id="" aria-describedby="NAMA" value="{{old('nama_member')}}">
                                         @if($errors->has('nama_member'))
                                         <span class="help-block">{{$errors->first('nama_member')}}</span>
+                                        @endif
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-group {{$errors->has('no_ktp') ? 'has-error' : ''}}">
+                                        <label for="exampleInputEmail1" class="form-label">Nomor KTP </label>
+                                        <input name="no_ktp" type="text"  class="form-control" id="" aria-describedby="NAMA" value="{{old('no_ktp')}}">
+                                        @if($errors->has('no_ktp'))
+                                        <span class="help-block">{{$errors->first('no_ktp')}}</span>
                                         @endif
                                     </div>
                                     <div class="mb-3">
@@ -120,14 +117,6 @@
                                         <textarea name="alamat_member" class="form-control" id="exampleFormControlTextarea1" rows="3" value="{{old('alamat_member')}}" ></textarea>
                                         @if($errors->has('alamat_member'))
                                         <span class="help-block">{{$errors->first('alamat_member')}}</span>
-                                        @endif
-                                    </div>
-                                    <div class="mb-3">
-                                        <div class="form-group {{$errors->has('id_admin') ? 'has-error' : ''}}">
-                                        <label for="exampleInputEmail1" class="form-label">ID ADMIN</label>
-                                        <input name="id_admin" type="text" class="form-control" id="" aria-describedby="IDADMIN" value="{{old('id_admin')}}">
-                                        @if($errors->has('id_admin'))
-                                        <span class="help-block">{{$errors->first('id_admin')}}</span>
                                         @endif
                                     </div>
                                     </div>

@@ -10,7 +10,7 @@ class Member extends Model
 {
     use HasFactory;
     protected $table = 'member';
-    protected $fillable = ['id_member','nama_member','nohp_member','alamat_member','avatar','id_admin'];
+    protected $fillable = ['id_users','no_ktp','nama_member','nohp_member','alamat_member','avatar',];
     public $timestamps = false; 
 
    
@@ -22,11 +22,6 @@ class Member extends Model
     public function galeri()
     {
         return $this->hasMany(Galeri::class);
-    }
-
-    public function admin()
-    {
-        return $this->belongsTo(Admin::class);
     }
 
     public function getAvatar()

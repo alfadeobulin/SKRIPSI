@@ -31,14 +31,6 @@
                                         <form action ="/usaha/store" method="POST">
                                         @csrf
                                         <div class="form-group">
-                                            <div class="form-group {{$errors->has('id_usaha') ? 'has-error' : ''}}">
-                                            <label for="id_usaha" class="form-label">ID USAHA</label>
-                                            <input name="id_usaha" type="text" class="form-control"  aria-describedby="ID Usaha" value="{{old('id_usaha')}}">
-                                            @if($errors->has('id_usaha'))
-                                            <span class="help-block">{{$errors->first('id_usaha')}}</span>
-                                            @endif
-                                        </div>
-                                        <div class="form-group">
                                             <div class="form-group {{$errors->has('nama_ush') ? 'has-error' : ''}}">
                                             <label for="Nama Usaha" class="form-label">NAMA USAHA</label>
                                             <input name="nama_ush" type="text" class="form-control" aria-describedby="Nama Usaha" value="{{old('nama_ush')}}">
@@ -124,48 +116,31 @@
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                            <div class="form-group {{$errors->has('id_member') ? 'has-error' : ''}}">
-                                            <label for="exampleInputEmail1" class="form-label">ID MEMBER</label>
-                                            <input name="id_member" type="text" class="form-control" aria-describedby="ID Member" value="{{old('id_member')}}">
-                                            @if($errors->has('id_member'))
-                                            <span class="help-block">{{$errors->first('id_member')}}</span>
-                                            @endif
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="form-group {{$errors->has('id_kel') ? 'has-error' : ''}}">
-                                            <label for="exampleInputEmail1" class="form-label">KELURAHAN</label>
-                                            <input name="id_kel" type="text" class="form-control"  aria-describedby="ID Kelurahan" value="{{old('id_kel')}}">
-                                            @if($errors->has('id_kel'))
-                                            <span class="help-block">{{$errors->first('id_kel')}}</span>
-                                            @endif
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleFormControlSelect1" class="form-label">PILIH KELURAHAN</label>
-                                            <select class="form-control" id="exampleFormControlSelect1">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            </select>
+                                            <label for="exampleFormControlSelect1" class="form-label" >MEMBER</label>
+                                            <select name="id_users" class="form-control">
+                                            <option value="">-Pilih Member-</option>
+                                            @foreach ($member as $mbr)
+                                            <option value="{{$mbr->id_users}}">{{$mbr->nama_member}}</option>
+                                            @endforeach
+                                            </select>  
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1" class="form-label" >PILIH KECAMATAN</label>
-                                            <select class="form-control" id="exampleFormControlSelect1">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            </select>
+                                            <select name="id_kec" class="form-control">
+                                            <option value="">-Pilih Kecamatan-</option>
+                                            @foreach ($kecamatan as $kec)
+                                            <option value="{{$kec->id_kec}}">{{$kec->nama_kec}}</option>
+                                            @endforeach
+                                            </select>  
                                         </div>
                                         <div class="form-group">
-                                            <div class="form-group {{$errors->has('id_kec') ? 'has-error' : ''}}">
-                                            <label for="exampleInputEmail1" class="form-label">KECAMATAN</label>
-                                            <input name="id_kec" type="text" class="form-control"  aria-describedby="ID Kecamatan" value="{{old('id_kec')}}">
-                                            @if($errors->has('id_kec'))
-                                            <span class="help-block">{{$errors->first('id_kec')}}</span>
-                                            @endif
+                                            <label for="exampleFormControlSelect1" class="form-label">PILIH KELURAHAN</label>
+                                            <select name="id_kel" class="form-control">
+                                            <option value="">-Pilih Kelurahan-</option>
+                                            @foreach ($kelurahan as $kel)
+                                            <option value="{{$kel->id_kel}}">{{$kel->nama_kel}}</option>
+                                            @endforeach
+                                            </select>
                                         </div>
                                             <button type="submit" class="btn btn-primary btn-warning">TAMBAHKAN</button>
                                         </form>

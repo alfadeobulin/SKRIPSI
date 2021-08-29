@@ -23,6 +23,7 @@ class UmkmController extends Controller
       $member    = \App\Models\Member::all();
       $kecamatan    = \App\Models\Kecamatan::all();
       $kelurahan    = \App\Models\Kelurahan::all();
+      // $user =  \App\Models\User::all();
       
       if($request->has('cari'))
       {
@@ -33,37 +34,33 @@ class UmkmController extends Controller
           $usaha = DB::table('usaha')
           ->join('kecamatan', 'usaha.id_kec', '=', 'kecamatan.id_kec')
           ->join('kelurahan', 'usaha.id_kel', '=', 'kelurahan.id_kel')
-          ->select('usaha.*', 'kecamatan.nama_kec', 'kelurahan.nama_kel')
+          ->join('member', 'usaha.id_users', '=', 'member.id_users')
+          ->select('usaha.*', 'kecamatan.nama_kec', 'kelurahan.nama_kel', 'member.nama_member')
           ->get();
           //$usaha = Umkm::all();
       }   
-      return view ('umkm/usaha', ['usaha' => $usaha, 'member' => $member, 'kecamatan' => $kecamatan,'kelurahan' => $kelurahan,]);
+      return view ('umkm/usaha', ['usaha' => $usaha, 'member' => $member, 'kecamatan' => $kecamatan,'kelurahan' => $kelurahan]);
   }
 
   public function create()
   {
-      return view ('member/createusaha');
+      $kecamatan = Kecamatan::all();
+      $kelurahan = Kelurahan::all();
+      $member = Member::all();
+      return view ('member/createusaha', ['kecamatan' => $kecamatan,'kelurahan' => $kelurahan,'member' => $member]);
   }
 
   public function store(Request $request)
     {
       $this->validate($request,
       [
-          'id_usaha' => 'required|min:3|max:10|unique:usaha',
           'nama_ush' => 'required|unique:usaha',
           'alamat_ush' => 'required',
           'ket_ush' => 'required|max:200',
           'longitude' => 'required',
           'latitude' => 'required',
-          'id_member' => 'required|min:3|max:10|unique:member',
-          'id_kel' => 'required|min:4|max:10',
-          'id_kec' => 'required|min:4|max:10',
       ],
       [
-          'id_usaha.required' => 'ID usaha wajib di isi',
-          'id_usaha.min'      => 'ID usaha minimal 3 karakter',
-          'id_usaha.max' => 'ID usaha maksimal 10 digit',
-          'id_usaha.unique' => 'ID usaha sudah digunakan',
           'nama_ush.required'   => 'Nama usaha wajib di isi',
           'nama_ush.unique' => 'Nama usaha sudah digunakan',
           'alamat_ush.required' => 'Alamat Wajib Diisi',
@@ -71,28 +68,27 @@ class UmkmController extends Controller
           'ket_ush.max' => 'keterangan maksimal 200 karakter',
           'longitude.required' => 'longitude tidak boleh kosong',
           'latitude.required' => 'latitude tidak boleh kosong',
-          'id_member.required' => 'ID member wajib di isi',
-          'id_member.min'      => 'ID member minimal 3 karakter',
-          'id_member.max' => 'ID member maksimal 3 digit',
-          'id_member.unique' => 'ID member Sudah Digunakan',
-          'id_kel.required' => 'ID kelurahan wajib di isi',
-          'id_kel.min'      => 'ID kelurahan minimal 3 karakter',
-          'id_kel.max' => 'ID kelurahan maksimal 3 digit',
-          'id_kec.required' => 'ID kecamatan wajib di isi',
-          'id_kec.min'      => 'ID kecamatan minimal 3 karakter',
-          'id_kec.max' => 'ID kecamatan maksimal 3 digit',
       ]);
       
+      $get_id =  DB::select('select max(id_usaha) as max_code from usaha');
+      if ($get_id[0]->max_code == null) {
+        $urutan = 1;
+        $id_usaha = "U" . sprintf("%04s", $urutan);
+      }else{
+        $urutan = (int) substr($get_id[0]->max_code,1,4);
+        $urutan++;
+        $id_usaha = "U" . sprintf("%04s", $urutan);
+      }
       
       //dd($request->all());
       $usaha = new Umkm;
-      $usaha->id_usaha = $request->id_usaha;
+      $usaha->id_usaha = $id_usaha;
       $usaha->nama_ush = $request->nama_ush;
       $usaha->alamat_ush = $request->alamat_ush;
       $usaha->ket_ush = $request->ket_ush;
       $usaha->longitude = $request->longitude;
       $usaha->latitude = $request->latitude;
-      $usaha->id_member = $request->id_member;
+      $usaha->id_users = $request->id_users;
       $usaha->id_kel = $request->id_kel;
       $usaha->id_kec = $request->id_kec;
       $usaha->save();
@@ -134,21 +130,22 @@ class UmkmController extends Controller
 
   public function editusaha($id_usaha)
     {
+      $kecamatan = Kecamatan::all();
+      $kelurahan = Kelurahan::all();
+      $member = Member::all();
       $usaha = DB::table('usaha')->where('id_usaha', $id_usaha)->first();
-      return view ('umkm/editusaha')->with(['usaha' => $usaha]);
+      return view ('umkm/editusaha', ['kecamatan' => $kecamatan,'kelurahan' => $kelurahan,'member' => $member])->with(['usaha' => $usaha]);
     }
 
   public function update(Request $request)
     {
 
       DB::table('usaha')->where('id_usaha',$request->id_usaha)->update([
-        'id_usaha' => $request->id_usaha,
         'nama_ush' => $request->nama_ush,
         'alamat_ush' => $request->alamat_ush,
         'ket_ush' => $request->ket_ush,
         'longitude' => $request->longitude,
         'latitude' => $request->latitude,
-        'id_member' => $request->id_member,
         'id_kel' => $request->id_kel,
         'id_kec' => $request->id_kec,
     ]);
@@ -182,7 +179,10 @@ class UmkmController extends Controller
 
   public function exportPdf() 
   {
-      $usaha = Umkm::all();
+    $usaha = DB::table('usaha')
+    ->join('member', 'usaha.id_member', '=', 'member.id_member')
+    ->select('usaha.*', 'member.nama_member')
+    ->get();
       view()->share('umkm', $usaha);
       $pdf = PDF::loadview('download/umkmpdf');
       return $pdf->download('umkm.pdf');

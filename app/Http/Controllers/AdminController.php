@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
-use App\Models\Admin;
+use App\Models\User;
 use Hash;
 
 class AdminController extends Controller
@@ -12,61 +12,60 @@ class AdminController extends Controller
   {
       if($request->has('cari'))
       {
-          $admin = \App\Models\Admin::where('nama_admin','LIKE','%'.$request->cari.'%')->get();
+          $user = \App\Models\User::where('name','LIKE','%'.$request->cari.'%')->get();
       }
       else
       {
-          $admin = Admin::all();
+          $user = User::all();
       }   
-      return view ('admin/daftaradmin', ['admin' => $admin]);
+      return view ('admin/daftaradmin', ['user' => $user]);
   }
   public function createadmin(Request $request)
   {
     $this->validate($request,
     [
-        'id_admin' => 'required|min:3|max:3|unique:member',
-        'nama_admin' => 'required',
-        'email' => 'required|email|unique:users',
-        'nohp_admin' => 'required|max:12',
+        'name' => 'required',
+        'email' => 'required|email|unique:user',
     ],
     [
-        'id_admin.required' => 'ID admin wajib di isi',
-        'id_admin.min'      => 'ID admin minimal 3 karakter',
-        'id_admin.max' => 'ID admin maksimal 3 digit',
         'nama_admin.required'   => 'Nama wajib di isi',
-        'nohp_admin.required' => 'No HP wajib di isi',
-        'nohp_admin.max' => 'No HP melebihi 12 digit',
         'email.required' => 'Email wajib di isi',
         'email.email' => 'Format Email Salah',
         'email.unique' => 'Email Sudah Digunakan',
         
     ]);
+
+    $get_id =  DB::select('select max(id_users) as max_code from user');
+    if ($get_id[0]->max_code == null) {
+      $urutan = 1;
+      $id_users = "A" . sprintf("%04s", $urutan);
+    }else{
+      $urutan = (int) substr($get_id[0]->max_code,1,4);
+      $urutan++;
+      $id_users = "A" . sprintf("%04s", $urutan);
+    }
+
     //$user= User::all()->toArray();
     $user = new \App\Models\User;
+    $user->id_users = $id_users; 
     $user->role = 'admin';
-    $user->name = $request->nama_admin;
+    $user->name = $request->name;
     $user->email = $request->email;
     $user->password = bcrypt('admin123');
     $user->save();
 
-    $admin = new Admin;
-    $admin->id_admin = $request->id_admin;
-    $admin->nama_admin = $request->nama_admin;
-    $admin->nohp_admin = $request->nohp_admin;
-    $admin->save();
-
     return redirect('/daftaradmin')->with('sukses','Data berita berhasil ditambahkan');
   }
   
-  public function delete($id_admin)
+  public function delete($id_users)
   {
-      DB::table('admin')->where('id_admin', $id_admin)->delete();
+      DB::table('user')->where('id_users', $id_users)->delete();
       return redirect('/daftaradmin')->with('sukses','Data berhasil dihapus!');
   }
 
-  public function profile($id_admin)
+  public function profile($id_users)
     {
-      $admin = DB::table('admin')->where('id_admin', $id_admin)->first();
-      return view('admin/profileadmin', ['admin'=>$admin]);
+      $user = DB::table('user')->where('id_users', $id_users)->first();
+      return view('admin/profileadmin', ['user'=>$user]);
     }
 }

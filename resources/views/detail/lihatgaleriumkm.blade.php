@@ -11,7 +11,7 @@
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
     </head>
     <body>
         <!-- Navigation-->
@@ -24,6 +24,10 @@
                         <li class="nav-item"><a class="nav-link" href="/lihatumkm">UMKM Terdaftar</a></li>
                         <li class="nav-item"><a class="nav-link" href="/lihatgaleri">Galeri</a></li>
                         <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                        @if(auth()->user())
+                        <li class="nav-item"><a class="nav-link" href="{{url('/dashboard')}}">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{'/logout'}}">Logout</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>

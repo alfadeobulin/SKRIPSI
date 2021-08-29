@@ -12,16 +12,16 @@
                     <div class="col-md-12">
                         <div class="panel">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Form Pendaftaran Usaha</h3>
+                            <h3 class="panel-title">Form Edit Member</h3>
                         </div>
                     <div class="panel-body text-wrap">
                             <div class="panel-body">
                         <table class="table table-hover">
-                            <form action ="/daftarmemberumkm/update/{{$member->id_member}}" method="POST" enctype="multipart/form-data"> 
+                            <form action ="/daftarmemberumkm/update/{{$member->id_users}}" method="POST" enctype="multipart/form-data"> 
                                 @csrf
                                 <div class="form-group">
                                     <label for="exampleInputEmail1" class="form-label">ID Member</label>
-                                    <input name="id_member" type="text" class="form-control" id="" aria-describedby="IDMEMBER" value="{{$member->id_member}}" readonly>
+                                    <input name="id_users" type="text" class="form-control" id="" aria-describedby="IDUSERS" value="{{$member->id_users}}" readonly>
                                 </div>
                                 <div class="form-group">
                                 <div class="form-group {{$errors->has('alamat_member') ? 'has-error' : ''}}">
@@ -49,15 +49,11 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="form-group {{$errors->has('avatar') ? 'has-error' : ''}}">
-                                    <label for="exampleInputEmail1" class="form-label">Foto Profil</label>
-                                    <input name="avatar" type="file" class="form-control" id="avatar" aria-describedby="AVATAR" value="{{$member->avatar}}">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Foto Profil</label>
+                                    <input name="avatar" type="file" class="form-control" id="" aria-describedby="EMAIL" value="{{$member->avatar}}">
                                     @if($errors->has('avatar'))
                                     <span class="help-block">{{$errors->first('avatar')}}</span>
                                     @endif
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1" class="form-label">ID ADMIN</label>
-                                    <input name="id_admin" type="text" class="form-control" id="" aria-describedby="IDADMIN" value="{{$member->id_admin}}" readonly>
                                 </div>
                                 <button type="submit" class="btn btn-warning btn-sm">Ubah Data!</button>
                             </form>

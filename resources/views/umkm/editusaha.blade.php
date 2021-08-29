@@ -13,29 +13,23 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>   
 </head>
-<div class = "main">
-    <div class="main-content">
         @if(session('sukses'))
         <div class="alert alert-success" role="alert">{{session('sukses')}}</div>
         @endif
-            <div class = "container-fluid ">
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- TABLE HOVER -->
-                            <div class="panel">
+        <div class="main">
+                <div class="main-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Edit Profile</h3>
-                                    <div class="panel-body">
+                                    <h3 class="panel-title">Edit Usaha</h3>
+                                </div>
+                                <div class="panel-body text-wrap">
+                                     <div class="panel-body">
+                                    <table class="table table-hover">
                                         <form action ="/umkm/update/{{$usaha->id_usaha}}" method="POST" enctype="multipart/form-data"> 
                                             @csrf
-                                        <div class="mb-3">
-                                            <div class="form-group {{$errors->has('id_usaha') ? 'has-error' : ''}}">
-                                            <label for="id_usaha" class="form-label">ID USAHA</label>
-                                            <input name="id_usaha" type="text" class="form-control"  aria-describedby="ID Usaha" value="{{$usaha->id_usaha}}" readonly>
-                                            @if($errors->has('id_usaha'))
-                                            <span class="help-block">{{$errors->first('id_usaha')}}</span>
-                                            @endif
-                                        </div>
                                         <div class="mb-3">
                                             <div class="form-group {{$errors->has('nama_ush') ? 'has-error' : ''}}">
                                             <label for="Nama Usaha" class="form-label">NAMA USAHA</label>
@@ -121,29 +115,24 @@
                                             <span class="help-block">{{$errors->first('latitude')}}</span>
                                             @endif
                                         </div>
-                                        <div class="mb-3">
-                                            <div class="form-group {{$errors->has('id_member') ? 'has-error' : ''}}">
-                                            <label for="exampleInputEmail1" class="form-label">ID MEMBER</label>
-                                            <input name="id_member" type="text" class="form-control" aria-describedby="ID Member" value="{{$usaha->id_member}}" readonly>
-                                            @if($errors->has('id_member'))
-                                            <span class="help-block">{{$errors->first('id_member')}}</span>
-                                            @endif
+                                        
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1" class="form-label" >PILIH KECAMATAN</label>
+                                            <select name="id_kec" class="form-control">
+                                            <option value="">-Pilih Kecamatan-</option>
+                                            @foreach ($kecamatan as $kec)
+                                            <option value="{{$kec->id_kec}}">{{$kec->nama_kec}}</option>
+                                            @endforeach
+                                            </select>  
                                         </div>
-                                        <div class="mb-3">
-                                            <div class="form-group {{$errors->has('id_kel') ? 'has-error' : ''}}">
-                                            <label for="exampleInputEmail1" class="form-label">KELURAHAN</label>
-                                            <input name="id_kel" type="text" class="form-control"  aria-describedby="ID Kelurahan" value="{{$usaha->id_kel}}">
-                                            @if($errors->has('id_kel'))
-                                            <span class="help-block">{{$errors->first('id_kel')}}</span>
-                                            @endif
-                                        </div>
-                                        <div class="mb-3">
-                                            <div class="form-group {{$errors->has('id_kec') ? 'has-error' : ''}}">
-                                            <label for="exampleInputEmail1" class="form-label">KECAMATAN</label>
-                                            <input name="id_kec" type="text" class="form-control"  aria-describedby="ID Kecamatan" value="{{$usaha->id_kec}}">
-                                            @if($errors->has('id_kec'))
-                                            <span class="help-block">{{$errors->first('id_kec')}}</span>
-                                            @endif
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1" class="form-label">PILIH KELURAHAN</label>
+                                            <select name="id_kel" class="form-control">
+                                            <option value="">-Pilih Kelurahan-</option>
+                                            @foreach ($kelurahan as $kel)
+                                            <option value="{{$kel->id_kel}}">{{$kel->nama_kel}}</option>
+                                            @endforeach
+                                            </select>
                                         </div>
                                         <button type="submit" class="btn btn-warning">Ubah Data!</button>
                                         </form>

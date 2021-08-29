@@ -18,7 +18,7 @@
 						<div class="profile-info">
 							<h4 class="heading">Profil Member</h4>
 							<ul class="list-unstyled list-justify">
-								<li>ID Member <span>{{$member->id_member}}</span></li>
+								<li>ID Member <span>{{$member->id_users}}</span></li>
 								<li>Nama  <span>{{$member->nama_member}}</span></li>
 								<li>Kontak <span>{{$member->nohp_member}}</span></li>
 								<li>Alamat <span>{{$member->alamat_member}}</span></li>
@@ -27,7 +27,7 @@
 					</div>
 					<div class="text-center">
 						@if (auth()->user()->role == 'member')
-						<a href="/daftarmemberumkm/edit/{{$member->id_member}}" class="btn btn-warning">Edit Profile</a>
+						<a href="/daftarmemberumkm/edit/{{$member->id_users}}" class="btn btn-warning">Edit Profile</a>
 						@endif
 					</div>
 				</div>

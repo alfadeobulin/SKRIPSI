@@ -28,6 +28,7 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
+                                            <th>Nama Galeri</th>
                                             <th>Keterangan</th>
                                             <th>Foto</th>
                                             <th></th>
@@ -36,6 +37,7 @@
                                     <tbody>
                                         @foreach ($galeri as $glr)
                                         <tr>
+                                            <td>{{$glr->nama_gal}}</td>
                                             <td>{{$glr->ktrgn_foto}}</td>
                                             <td><img src="images/galeri/{{$glr->foto}}" class="rounded" alt="foto" width="200" height="100"></td>
                                             <td>
@@ -65,14 +67,6 @@
                             <div class="modal-body">
                             <form action ="/creategaleri" method="POST" enctype="multipart/form-data"> 
                                 @csrf
-                                <div class="mb-3">
-                                    <div class="form-group {{$errors->has('id_galeri') ? 'has-error' : ''}}">
-                                    <label for="exampleInputEmail1" class="form-label">ID Galeri</label>
-                                    <input name="id_galeri" type="text" class="form-control" id="InputIdGaleri" aria-describedby="ID Galeri" value="{{old('id_galeri')}}">
-                                    @if($errors->has('id_galeri'))
-                                    <span class="help-block">{{$errors->first('id_galeri')}}</span>
-                                    @endif
-                                </div>
                                 <div class="mb-3">
                                     <div class="form-group {{$errors->has('nama_gal') ? 'has-error' : ''}}">
                                     <label for="exampleInputEmail1" class="form-label">Nama Galeri</label>
