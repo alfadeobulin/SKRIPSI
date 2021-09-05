@@ -9,7 +9,7 @@
 					<div class="profile-header">
 						<div class="overlay"></div>
 							<div class="profile-main">
-								<img src="" class="img-circle" alt="avatar">
+								<img src="{{asset('admin/4.png')}}" width = "15%" class="img-circle" alt="avatar">
 								<h3 class="name">{{$member->nama_member}}</h3>
 								<span class="online-status status-available">{{$member->alamat_member}}</span>
 							</div>
@@ -43,7 +43,7 @@
 								</div>
 							</div>
 						</div>
-					<div class="text-center"><a href="/galeriku" class="btn btn-default">Galeriku</a></div>
+					<div class="text-center"><a href="/galeriku" class="btn btn-default"> Galeri Usaha</a></div>
 				</div>
 			
 					

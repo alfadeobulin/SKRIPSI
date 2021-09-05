@@ -29,6 +29,7 @@
                                     <thead>
                                         <tr>
                                             <th>Nama Galeri</th>
+                                            <th>Nama Usaha</th>
                                             <th>Keterangan</th>
                                             <th>Foto</th>
                                             <th></th>
@@ -38,6 +39,7 @@
                                         @foreach ($galeri as $glr)
                                         <tr>
                                             <td>{{$glr->nama_gal}}</td>
+                                            <td>{{$glr->nama_ush}}</td>
                                             <td>{{$glr->ktrgn_foto}}</td>
                                             <td><img src="images/galeri/{{$glr->foto}}" class="rounded" alt="foto" width="200" height="100"></td>
                                             <td>
@@ -83,13 +85,15 @@
                                     <span class="help-block">{{$errors->first('foto')}}</span>
                                     @endif
                                 </div>
-                                <div class="mb-3">
-                                    <div class="form-group {{$errors->has('id_usaha') ? 'has-error' : ''}}">
-                                    <label for="exampleInputEmail1" class="form-label">ID Usaha</label>
-                                    <input name="id_usaha" type="text" class="form-control" id="InputLink" aria-describedby="LINK" value="{{old('id_usaha')}}">
-                                    @if($errors->has('id_usaha'))
-                                    <span class="help-block">{{$errors->first('id_usaha')}}</span>
-                                    @endif
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1" class="form-label" >Usaha</label>
+                                    <select name="id_usaha" class="form-control">
+                                    <option value="">-Pilih Usaha Anda-</option>
+                                    @foreach ($usaha as $ush)
+                                    <option value="{{$ush->id_usaha}}">{{$ush->nama_ush}}</option>
+                                    @endforeach
+                                    
+                                    </select>  
                                 </div>
                                 <div class="mb-3">
                                     <div class="form-group {{$errors->has('ktrgn_foto') ? 'has-error' : ''}}">

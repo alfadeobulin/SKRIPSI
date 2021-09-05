@@ -19,16 +19,20 @@ class GaleriController extends Controller
       }
       else
       {
-        $galeri = Galeri::all();
+        // $galeri = Galeri::all();
+        $galeri = DB::table('galeri')
+        ->join('usaha', 'usaha.id_usaha', '=', 'galeri.id_usaha')
+        ->select('galeri.*', 'usaha.nama_ush')
+        ->get();
       }   
       return view ('umkm/galeri', ['galeri' => $galeri, 'usaha' => $usaha]);
     }
 
     public function galeriku()
     {
-        $umkm = auth()->user()->member['umkm'];
         $galeri = auth()->user()->member['galeri'];
-        return view('umkm/galeri',compact('galeri','umkm'));
+        $umkm = auth()->user()->member['id_usaha'];
+        return view('umkm/galeriku',compact('galeri','umkm'));
     }
 
     public function creategaleri(Request $request)

@@ -39,7 +39,7 @@
 						
 						@if (auth()->user())
 						<li class="dropdown">
-							<a href="" class="dropdown-toggle" data-toggle="dropdown"><img src="avatar" class="img-circle" alt="avatar"> <span>{{Auth::user()->name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('admin/4.png')}}" class="img-circle" alt="avatar"> <span>{{Auth::user()->name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="{{asset('/user/profile/'.Auth::user()->id)}}"><i class="lnr lnr-user"></i> <span>Akun</span></a></li>
 								<li><a href="{{'/logout'}}"><i class=" lnr lnr-exit"></i><span>Logout</span></a></li>
@@ -58,7 +58,7 @@
 					<ul class="nav">
 						<li><a href="{{url('/dashboard')}}" class=""><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
 						<li>
-							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>Pengguna</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>Kelola</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
 								@if (auth()->user()->role == 'member')
@@ -70,7 +70,7 @@
 								@if (auth()->user()->role == 'superadmin')
 									<li><a href="{{url('/daftaradmin')}}" class="">Admin Terdaftar</a></li>
 								@endif
-									<li><a href="{{url('/umkm')}}" class="">UMKM Terdaftar</a></li>
+									<li><a href="{{url('/umkm')}}" class="">Usaha</a></li>
 								</ul>
 							</div>
 						</li>
