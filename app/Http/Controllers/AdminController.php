@@ -28,7 +28,7 @@ class AdminController extends Controller
         'email' => 'required|email|unique:user',
     ],
     [
-        'nama_admin.required'   => 'Nama wajib di isi',
+        'name.required' => 'Nama wajib di isi',
         'email.required' => 'Email wajib di isi',
         'email.email' => 'Format Email Salah',
         'email.unique' => 'Email Sudah Digunakan',
@@ -45,7 +45,7 @@ class AdminController extends Controller
       $id_users = "A" . sprintf("%04s", $urutan);
     }
 
-    //$user= User::all()->toArray();
+    $user= User::all()->toArray();
     $user = new \App\Models\User;
     $user->id_users = $id_users; 
     $user->role = 'admin';

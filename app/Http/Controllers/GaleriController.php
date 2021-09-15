@@ -142,8 +142,8 @@ class GaleriController extends Controller
       }
       else
       {
-        $galeri = DB::table('galeri')
-        ->join('usaha', 'galeri.id_usaha', '=', 'usaha.id_usaha')
+        $galeri = DB::table('usaha')
+        ->join('galeri', 'usaha.id_usaha', '=', 'galeri.id_usaha')
         ->select('galeri.*', 'usaha.nama_ush')
         ->get();
       }   

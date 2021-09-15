@@ -35,7 +35,8 @@ class UmkmController extends Controller
           ->join('kecamatan', 'usaha.id_kec', '=', 'kecamatan.id_kec')
           ->join('kelurahan', 'usaha.id_kel', '=', 'kelurahan.id_kel')
           ->join('member', 'usaha.id_users', '=', 'member.id_users')
-          ->select('usaha.*', 'kecamatan.nama_kec', 'kelurahan.nama_kel', 'member.nama_member')
+          ->join('galeri', 'usaha.id_usaha', '=', 'galeri.id_usaha')
+          ->select('usaha.*', 'kecamatan.nama_kec', 'kelurahan.nama_kel', 'member.nama_member', 'galeri.nama_gal')
           ->get();
           //$usaha = Umkm::all();
       }   
@@ -103,19 +104,19 @@ class UmkmController extends Controller
 
   public function LihatUmkm(Request $request)
   {
+    
     if($request->has('cari'))
       {
           $usaha = \App\Models\Umkm::where('nama_ush','LIKE','%'.$request->cari.'%')->get();
       }
       else
       {
-          
-          $usaha = Umkm::all();
+        $usaha = Umkm::all();
       }   
       return view ('detail/lihatumkm', ['usaha' => $usaha]);
   }
 
-  public function LihatUmkmGaleri(Request $request)
+  public function LihatUmkmGaleri(Request $request, $id_usaha)
   {
     if($request->has('cari'))
       {
@@ -123,8 +124,9 @@ class UmkmController extends Controller
       }
       else
       {
-          $galeri = Galeri::all();
-      }   
+          $galeri = Galeri::where('id_usaha','=',$id_usaha)->get();
+      }
+         
       return view ('detail/lihatgaleriumkm', ['galeri' =>$galeri]);
   }
 

@@ -9,7 +9,7 @@
 					<div class="profile-header">
 						<div class="overlay"></div>
 							<div class="profile-main">
-								<img src="" class="img-circle" alt="avatar">
+								<img src="{{asset('admin/4.png')}}" class="img-circle" alt="avatar">
 								<h3 class="name">{{$user->name}}</h3>
 							</div>
 					</div>
