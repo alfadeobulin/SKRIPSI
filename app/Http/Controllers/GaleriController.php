@@ -7,6 +7,7 @@ use App\Models\Member;
 use App\Models\Galeri;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class GaleriController extends Controller
 {
@@ -30,9 +31,13 @@ class GaleriController extends Controller
 
     public function galeriku()
     {
-        $galeri = auth()->user()->member['galeri'];
-        $umkm = auth()->user()->member['id_usaha'];
-        return view('umkm/galeriku',compact('galeri','umkm'));
+        $user = Auth::user();
+        $galeri = DB::table('galeri')
+        ->join('usaha', 'usaha.id_usaha', '=', 'galeri.id_usaha')
+        ->select('galeri.*', 'usaha.nama_ush')
+        ->where('usaha.id_users','=',$user->id_users)
+        ->get();
+        return view('umkm/galeriku',compact('galeri'));
     }
 
     public function creategaleri(Request $request)
@@ -84,7 +89,7 @@ class GaleriController extends Controller
 
          //dd($request);
        
-        return redirect('/galeri')->with('sukses','Data berita berhasil ditambahkan');
+        return redirect('/galeriku')->with('sukses','Data berita berhasil ditambahkan');
     }
     public function delete($id_galeri)
     {

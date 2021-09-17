@@ -19,6 +19,8 @@ class User extends Authenticatable
     
     protected $fillable = [
         'name',
+        'id_users',
+        'role',
         'email',
         'password',
         'role',
@@ -43,14 +45,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-    // public function admin()
-    // {
-    //     return $this->hasOne(Admin::class);
-    // }
-
-    // public function member()
-    // {
-    //     return $this->hasOne(Member::class);
-    // }
 }

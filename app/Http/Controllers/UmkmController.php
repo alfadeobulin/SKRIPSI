@@ -9,6 +9,7 @@ use App\Models\Kelurahan;
 use App\Models\Kecamatan;
 use App\Models\Galeri;
 use App\Exports\UmkmExport;
+use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,6 @@ use Illuminate\Support\Facades\Auth;
 
 class UmkmController extends Controller
 {
- 
 
    public function index(Request $request)
   {
@@ -31,24 +31,24 @@ class UmkmController extends Controller
       }
       else
       {
+        $user = Auth::user();
           $usaha = DB::table('usaha')
           ->join('kecamatan', 'usaha.id_kec', '=', 'kecamatan.id_kec')
           ->join('kelurahan', 'usaha.id_kel', '=', 'kelurahan.id_kel')
           ->join('member', 'usaha.id_users', '=', 'member.id_users')
-          ->join('galeri', 'usaha.id_usaha', '=', 'galeri.id_usaha')
-          ->select('usaha.*', 'kecamatan.nama_kec', 'kelurahan.nama_kel', 'member.nama_member', 'galeri.nama_gal')
+          ->select('usaha.*', 'kecamatan.nama_kec', 'kelurahan.nama_kel', 'member.nama_member')
+          ->where('usaha.id_users','=',$user->id_users)
           ->get();
           //$usaha = Umkm::all();
       }   
       return view ('umkm/usaha', ['usaha' => $usaha, 'member' => $member, 'kecamatan' => $kecamatan,'kelurahan' => $kelurahan]);
   }
 
-  public function create()
+  public function create(Request $request)
   {
       $kecamatan = Kecamatan::all();
       $kelurahan = Kelurahan::all();
-      $member = Member::all();
-      return view ('member/createusaha', ['kecamatan' => $kecamatan,'kelurahan' => $kelurahan,'member' => $member]);
+      return view ('member/createusaha', ['kecamatan' => $kecamatan,'kelurahan' => $kelurahan]);
   }
 
   public function store(Request $request)
@@ -80,6 +80,8 @@ class UmkmController extends Controller
         $urutan++;
         $id_usaha = "U" . sprintf("%04s", $urutan);
       }
+
+      $user = Auth::user();
       
       //dd($request->all());
       $usaha = new Umkm;
@@ -89,7 +91,7 @@ class UmkmController extends Controller
       $usaha->ket_ush = $request->ket_ush;
       $usaha->longitude = $request->longitude;
       $usaha->latitude = $request->latitude;
-      $usaha->id_users = $request->id_users;
+      $usaha->id_users = $user->id_users;
       $usaha->id_kel = $request->id_kel;
       $usaha->id_kec = $request->id_kec;
       $usaha->save();

@@ -25,7 +25,7 @@
 					</div>
 					<div class="text-center">
 						@if (auth()->user()->role == 'admin')
-						<a href="/daftaradminumkm/edit/{{$admin->id_admin}}" class="btn btn-warning">Edit Profile</a>
+						<a href="/daftaradminumkm/edit/{{$admin->id_users}}" class="btn btn-warning">Edit Profile</a>
 						<a href="/gantipassword" class="btn btn-primary">Reset Password</a>
 						@endif
 					</div>

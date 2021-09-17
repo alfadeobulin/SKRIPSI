@@ -116,15 +116,6 @@
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlSelect1" class="form-label" >MEMBER</label>
-                                            <select name="id_users" class="form-control">
-                                            <option value="">-Pilih Member-</option>
-                                            @foreach ($member as $mbr)
-                                            <option value="{{$mbr->id_users}}">{{$mbr->nama_member}}</option>
-                                            @endforeach
-                                            </select>  
-                                        </div>
-                                        <div class="form-group">
                                             <label for="exampleFormControlSelect1" class="form-label" >PILIH KECAMATAN</label>
                                             <select name="id_kec" class="form-control">
                                             <option value="">-Pilih Kecamatan-</option>
