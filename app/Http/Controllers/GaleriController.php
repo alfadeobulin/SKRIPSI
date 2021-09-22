@@ -94,7 +94,7 @@ class GaleriController extends Controller
     public function delete($id_galeri)
     {
       DB::table('galeri')->where('id_galeri', $id_galeri)->delete();
-      return redirect('/galeri')->with('sukses','Data berhasil dihapus!');
+      return redirect('/galeriku')->with('sukses','Data berhasil dihapus!');
     }
 
     public function editgaleri($id_galeri)

@@ -89,10 +89,7 @@
                                     <label for="exampleFormControlSelect1" class="form-label" >Usaha</label>
                                     <select name="id_usaha" class="form-control">
                                     <option value="">-Pilih Usaha Anda-</option>
-                                    @foreach ($galeri as $glr)
                                     <option value="{{$glr->id_usaha}}">{{$glr->nama_ush}}</option>
-                                    @endforeach
-                                    
                                     </select>  
                                 </div>
                                 <div class="mb-3">

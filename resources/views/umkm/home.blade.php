@@ -29,11 +29,13 @@
                         <!-- <li class="nav-item"><a class="nav-link" href="/lihatberita">Berita</a></li> -->
                         <li class="nav-item"><a class="nav-link" href="/lihatumkm">UMKM Terdaftar</a></li>
                         <li class="nav-item"><a class="nav-link" href="/lihatgaleri">Galeri</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                         @if(auth()->user())
                         <li class="nav-item"><a class="nav-link" href="{{url('/dashboard')}}">Dashboard</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{'/logout'}}">Logout</a></li>
+                        @else
+                        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                         @endif
+                        
                     </ul>
                 </div>
             </div>

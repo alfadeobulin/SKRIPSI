@@ -28,13 +28,11 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">NO</th>
-                                            <th scope="col">JUDUL </th>
-                                            <th scope="col">ISI</th>   
+                                            <th scope="col">JUDUL </th>  
                                             <th scope="col">PENULIS</th>
                                             <th scope="col">ID BERITA</th>
                                             <th scope="col">TANGGAL</th>
                                             <th scope="col">LINK</th>
-                                            <th scope="col">ID ADMIN</th>
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>
@@ -43,12 +41,10 @@
                                         <tr>    
                                             <th scope='row'>{{$loop->iteration}}</th>
                                                 <td>{{$brt->judul}}</td>
-                                                <td>{!!$brt->isi!!}</td>
                                                 <td>{{$brt->penulis}}</td>
                                                 <td>{{$brt->id_berita}}</td>
                                                 <td>{{$brt->tgl_terbit}}</td>
                                                 <td>{{$brt->link}}</td>
-                                                <td>{{$brt->id_admin}}</td>
                                                 <td>
                                                     <a href="/berita/delete/{{$brt->id_berita}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus berita?')">Delete</a>
                                                 </td>
@@ -97,14 +93,6 @@
                                     @endif
                                 </div>
                                 <div class="mb-3">
-                                    <div class="form-group {{$errors->has('id_berita') ? 'has-error' : ''}}">
-                                    <label for="exampleInputEmail1" class="form-label">ID Berita</label>
-                                    <input name="id_berita" type="text" class="form-control" id="InputId_berita" aria-describedby="ID Berita" value="{{old('id_berita')}}">
-                                    @if($errors->has('id_berita'))
-                                        <span class="help-block">{{$errors->first('id_berita')}}</span>
-                                    @endif
-                                </div>
-                                <div class="mb-3">
                                     <div class="form-group {{$errors->has('tgl_terbit') ? 'has-error' : ''}}">
                                     <label for="exampleInputEmail1" class="form-label">Tanggal</label>
                                     <input name="tgl_terbit" type="text" class="form-control" id="InputTgl_terbit" aria-describedby="TANGGAL" value="{{old('tgl_terbit')}}">
@@ -118,14 +106,6 @@
                                     <input name="link" type="text" class="form-control" id="InputLink" aria-describedby="LINK" value="{{old('link')}}">
                                     @if($errors->has('link'))
                                         <span class="help-block">{{$errors->first('link')}}</span>
-                                    @endif
-                                </div>
-                                <div class="mb-3">
-                                    <div class="form-group {{$errors->has('id_admin') ? 'has-error' : ''}}">
-                                    <label for="exampleInputEmail1" class="form-label">ID Admin</label>
-                                    <input name="id_admin" type="text" class="form-control" id="InputId_admin" aria-describedby="ID Admin" value="{{old('id_admin')}}">
-                                    @if($errors->has('id_admin'))
-                                        <span class="help-block">{{$errors->first('id_admin')}}</span>
                                     @endif
                                 </div>
                                 </div>

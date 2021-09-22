@@ -25,19 +25,26 @@ class KecamatanController extends Controller
   {
     $this->validate($request,
     [
-        'id_kec' => 'required|min:5|unique:kecamatan',
         'nama_kec' => 'required',
     ],
     [
-        'id_kec.required' => 'ID Kecamatan wajib di isi',
-        'id_kec.min'      => 'ID Kecamatan minimal 5 karakter',
-        'id_kec.unique' => 'ID Kecamatan  sudah digunakan',
+        
         'nama_kec.required' => 'Nama Kecamatan wajib di isi',
         
     ]);
+    $get_id =  DB::select('select max(id_kec) as max_code from kecamatan');
+      if ($get_id[0]->max_code == null) {
+        $urutan = 1;
+        $id_kec = "KEC" . sprintf("%00s", $urutan);
+      }else{
+        $urutan = (int) substr($get_id[0]->max_code,1,4);
+        $urutan++;
+        $id_kec = "KEC" . sprintf("%02s", $urutan);
+      }
+
     // dd($request);
     $kecamatan = new Kecamatan();
-    $kecamatan->id_kec = $request->id_kec;
+    $kecamatan->id_kec = $id_kec;
     $kecamatan->nama_kec = $request->nama_kec;
     $kecamatan->save();
     return redirect('/kecamatan')->with('sukses','Data berita berhasil ditambahkan');

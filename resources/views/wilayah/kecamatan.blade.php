@@ -71,14 +71,6 @@
                             <form action ="/createkecamatan" method="POST" enctype="multipart/form-data"> 
                                 @csrf
                                 <div class="mb-3">
-                                    <div class="form-group {{$errors->has('id_kec') ? 'has-error' : ''}}">
-                                    <label for="exampleInputEmail1" class="form-label">ID Kecamatan</label>
-                                    <input name="id_kec" type="text" class="form-control" id="id_kec" aria-describedby="ID Kecamatan" value="{{old('id_kec')}}">
-                                    @if($errors->has('id_kec'))
-                                    <span class="help-block">{{$errors->first('id_kec')}}</span>
-                                    @endif
-                                </div>
-                                <div class="mb-3">
                                     <div class="form-group {{$errors->has('nama_kec') ? 'has-error' : ''}}">
                                     <label for="exampleInputEmail1" class="form-label">Nama Kecamatan</label>
                                     <input name="nama_kec" type="text" class="form-control" id="nama_kec" aria-describedby="Nama Kecamatan" value="{{old('nama_kec')}}">

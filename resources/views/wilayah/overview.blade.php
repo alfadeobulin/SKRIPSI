@@ -14,7 +14,7 @@
 									<div class="metric">
 										<span class="icon"><i class="fa fa-shopping-bag"></i></span>
 										<p>
-											<span class="number">203</span>
+											<span class="number">4</span>
 											<span class="title">Umkm Terdaftar</span>
 										</p>
 									</div>
@@ -23,7 +23,7 @@
 									<div class="metric">
 										<span class="icon"><i class="fa fa-eye"></i></span>
 										<p>
-											<span class="number">274,678</span>
+											<span class="number">106</span>
 											<span class="title">Jumlah Kunjungan</span>
 										</p>
 									</div>
