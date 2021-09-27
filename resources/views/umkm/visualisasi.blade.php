@@ -2,6 +2,7 @@
 @extends('wilayah.overview')
 
 @section('content visual')
+
 <div class="container-fluid">
 					<!-- OVERVIEW -->
 					<div class="panel panel-headline">

@@ -68,9 +68,14 @@
 									<li><a href="{{url('/daftarmemberumkm')}}" class="">Daftar Member UMKMku</a></li>
 								@endif
 								@if (auth()->user()->role == 'superadmin')
+									<li><a href="{{url('/daftarmemberumkm')}}" class="">Daftar Member UMKMku</a></li>
 									<li><a href="{{url('/daftaradmin')}}" class="">Admin Terdaftar</a></li>
 								@endif
+								@if (auth()->user()->role == 'member')
 									<li><a href="{{url('/umkm')}}" class="">Usaha</a></li>
+								@else
+									<li><a href="{{url('/umkmmember')}}" class="">Usaha Member</a></li>
+								@endif
 								</ul>
 							</div>
 						</li>

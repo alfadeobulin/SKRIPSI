@@ -25,6 +25,9 @@
                                 @if (auth()->user()->role == 'admin')
                                 <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">Tambah Kelurahan</button>
                                 @endif
+                                @if (auth()->user()->role == 'superadmin')
+                                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">Tambah Kelurahan</button>
+                                @endif
                                 <div class="panel-body">
                                 <table class="table table-hover">
 										<thead>

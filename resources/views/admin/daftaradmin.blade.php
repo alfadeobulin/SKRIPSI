@@ -34,7 +34,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($user as $usr)
+                                        @foreach ($users as $usr)
                                             <tr>    
                                                 <th scope='row'>{{$loop->iteration}}</th>
                                                 <td>{{$usr->id_users}}</td>
@@ -65,7 +65,7 @@
                                 <form action ="/createadmin" method="POST"> 
                                     @csrf
                                     <div class="mb-3">
-                                        <div class="form-group {{$errors->has('nama_admin') ? 'has-error' : ''}}">
+                                        <div class="form-group {{$errors->has('name') ? 'has-error' : ''}}">
                                         <label for="exampleInputEmail1" class="form-label">Nama</label>
                                         <input name="name" type="text" class="form-control" id="InputTelp" aria-describedby="name" value="{{old('name')}}">
                                         @if($errors->has('name'))

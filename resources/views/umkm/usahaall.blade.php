@@ -29,6 +29,10 @@
                                     <a href="/umkm/exportpdf" class="btn btn-danger btn-sm fa fa-download">PDF</a>
                                     <a href="/umkm/exportexcel" class="btn btn-success btn-sm fa fa-download ">Excel</a>
                                     @endif
+                                    @if (auth()->user()->role == 'superadmin')
+                                    <a href="/umkm/exportpdf" class="btn btn-danger btn-sm fa fa-download">PDF</a>
+                                    <a href="/umkm/exportexcel" class="btn btn-success btn-sm fa fa-download ">Excel</a>
+                                    @endif
                                     @if (auth()->user()->role == 'member')
                                     <a href="/usaha/create" class="btn btn-default fa fa-upload">Buat Usaha</a>
                                     @endif
@@ -61,14 +65,16 @@
                                                     <td>{{$ush->nama_member}}</td>
                                                     <td>{{$ush->nama_kel}}</td>
                                                     <td>{{$ush->nama_kec}}</td>
-                                                    @if (auth()->user()->role == 'member')
-                                                    <td>
-                                                        <a href="/umkm/delete/{{$ush->id_usaha}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
-                                                    </td>
+                                                    @if (auth()->user()->role == 'superadmin')
                                                     <td>    
                                                         <a href="/umkm/edit/{{$ush->id_usaha}}" class="btn btn-warning btn-sm">Edit Usaha</a>
-                                                    </td>    
+                                                    </td> 
+                                                    <td>
+                                                        <a href="/umkm/delete/{{$ush->id_usaha}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
+                                                    </td>   
                                                     @endif
+                                                    
+                                                       
                                             </tr>
                                         @endforeach
                                         </tbody>

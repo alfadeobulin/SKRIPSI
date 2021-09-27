@@ -43,7 +43,6 @@ Route::group(['middleware' => ['auth','checkRole:admin,member,superadmin']], fun
     Route::get('/profilemember/profile/{id_users}', 'MemberController@profile');
     //profil admin & member login
     Route::get('/user/profile/{id}', 'ProfileController@show');
-    
     //logout
     Route::get('/logout','AuthController@logout');
     //role lihat wilayah
@@ -57,7 +56,7 @@ Route::group(['middleware' => ['auth','checkRole:admin,member,superadmin']], fun
 
     
 });
-
+    
 Route::group(['middleware' => ['auth','checkRole:superadmin']], function () {
       //daftar admin
     Route::get('/daftaradmin', 'AdminController@index');
@@ -73,6 +72,10 @@ Route::group(['middleware' => ['auth','checkRole:admin,superadmin']], function (
     Route::get('/berita/delete/{brt}', 'BeritaController@delete');
     Route::post('/createberita', 'BeritaController@createberita');
     Route::get('/berita', 'BeritaController@index');
+    //edit admin
+    Route::get('/daftaradminumkm/edit/{id_users}', 'AdminController@editadmin');
+    //get usaha
+    Route::get('/umkmmember', 'UmkmController@UsahaAll');
     //delete usaha
     Route::get('/umkm/delete/{ush}', 'UmkmController@delete');
     //delete member
@@ -92,7 +95,7 @@ Route::group(['middleware' => ['auth','checkRole:admin,superadmin']], function (
     Route::get('/umkm/exportpdf','UmkmController@exportPdf');
     });
 
-Route::group(['middleware' => ['auth','checkRole:member']], function () {
+Route::group(['middleware' => ['auth','checkRole:member,superadmin']], function () {
     //create usaha
     Route::get('/usaha/create', 'UmkmController@create');
     Route::post('/usaha/store', 'UmkmController@store');

@@ -31,6 +31,11 @@
                                     <a href="/member/exportexcel" class="btn btn-success btn-sm fa fa-download ">Excel</a>
                                     <button type="button" class="btn btn-default fa fa-upload" data-toggle="modal" data-target="#exampleModal"></button>
                                     @endif
+                                    @if (auth()->user()->role == 'superadmin')
+                                    <a href="/member/exportpdf" class="btn btn-danger btn-sm fa fa-download">PDF</a>
+                                    <a href="/member/exportexcel" class="btn btn-success btn-sm fa fa-download ">Excel</a>
+                                    <button type="button" class="btn btn-default fa fa-upload" data-toggle="modal" data-target="#exampleModal"></button>
+                                    @endif
                                 </div>
 
                                 <div class="panel-body">
@@ -39,9 +44,9 @@
                                             <tr>
                                                 <th scope="col">NO</th>
                                                 <th scope="col">NAMA</th>
+                                                <th scope="col">NO KTP</th>
                                                 <th scope="col">NO TELP</th>
                                                 <th scope="col">ALAMAT</th>
-                                                <th scope="col"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -49,13 +54,16 @@
                                             <tr>    
                                                 <th scope='row'>{{$loop->iteration}}</th>
                                                     <td>{{$mbr->nama_member}}</td>
+                                                    <td>{{$mbr->no_ktp}}</td>
                                                     <td>{{$mbr->nohp_member}}</td>
                                                     <td>{{$mbr->alamat_member}}</td>
                                                     <td>
-                                                        @if (auth()->user()->role == 'admin')
+                                                        @if (auth()->user()->role == 'superadmin')
                                                         <a href="/daftarmemberumkm/delete/{{$mbr->id_users}}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
                                                         @endif
+                                                        @if (auth()->user()->role == 'member')
                                                         <a href="/profilemember/profile/{{$mbr->id_users}}" class="btn btn-success btn-sm">Profile</a>
+                                                        @endif
                                                     </td>
                                             </tr>
                                         @endforeach

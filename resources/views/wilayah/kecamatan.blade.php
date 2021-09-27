@@ -25,6 +25,9 @@
                                 @if (auth()->user()->role == 'admin')
                                 <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">Tambah Kecamatan</button>
                                 @endif
+                                @if (auth()->user()->role == 'superadmin')
+                                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">Tambah Kecamatan</button>
+                                @endif
                                 <div class="panel-body">
                                 <table class="table table-hover">
 										<thead>
@@ -66,7 +69,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Galeri</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Kecamatan</h5>
                             <div class="modal-body">
                             <form action ="/createkecamatan" method="POST" enctype="multipart/form-data"> 
                                 @csrf

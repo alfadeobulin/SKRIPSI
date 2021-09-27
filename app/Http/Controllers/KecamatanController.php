@@ -55,5 +55,6 @@ class KecamatanController extends Controller
     return redirect('/kecamatan')->with('sukses','Data berhasil dihapus!');
 
   }
+
 }
 

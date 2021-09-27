@@ -44,6 +44,22 @@ class UmkmController extends Controller
       return view ('umkm/usaha', ['usaha' => $usaha, 'member' => $member, 'kecamatan' => $kecamatan,'kelurahan' => $kelurahan]);
   }
 
+  public function UsahaAll()
+  {
+    $member    = \App\Models\Member::all();
+    $kecamatan    = \App\Models\Kecamatan::all();
+    $kelurahan    = \App\Models\Kelurahan::all();
+
+      $usaha = Umkm::all();
+      $usaha = DB::table('usaha')
+      ->join('kecamatan', 'usaha.id_kec', '=', 'kecamatan.id_kec')
+      ->join('kelurahan', 'usaha.id_kel', '=', 'kelurahan.id_kel')
+      ->join('member', 'usaha.id_users', '=', 'member.id_users')
+      ->select('usaha.*', 'kecamatan.nama_kec', 'kelurahan.nama_kel', 'member.nama_member')
+      ->get();
+    return view ('umkm/usahaall', ['usaha' => $usaha,'member' => $member, 'kecamatan' => $kecamatan,'kelurahan' => $kelurahan]);
+  }
+
   public function create(Request $request)
   {
       $kecamatan = Kecamatan::all();
@@ -106,16 +122,21 @@ class UmkmController extends Controller
 
   public function LihatUmkm(Request $request)
   {
-    
+    $member    = \App\Models\Member::all();
     if($request->has('cari'))
       {
           $usaha = \App\Models\Umkm::where('nama_ush','LIKE','%'.$request->cari.'%')->get();
       }
       else
       {
-        $usaha = Umkm::all();
+        //dd($request);
+        // $usaha = Umkm::all();
+        $usaha = DB::table('usaha')
+        ->join('member','usaha.id_users' , '=','member.id_users' )
+        ->select('usaha.*', 'member.nohp_member')
+        ->get();
       }   
-      return view ('detail/lihatumkm', ['usaha' => $usaha]);
+      return view ('detail/lihatumkm', ['usaha' => $usaha],['member' => $member] );
   }
 
   public function LihatUmkmGaleri(Request $request, $id_usaha)
@@ -184,7 +205,7 @@ class UmkmController extends Controller
   public function exportPdf() 
   {
     $usaha = DB::table('usaha')
-    ->join('member', 'usaha.id_member', '=', 'member.id_member')
+    ->join('member', 'usaha.id_users', '=', 'member.id_users')
     ->select('usaha.*', 'member.nama_member')
     ->get();
       view()->share('umkm', $usaha);

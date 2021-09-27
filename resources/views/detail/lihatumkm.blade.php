@@ -58,17 +58,14 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">{{$ush->nama_ush}}</h5>
                                     <!-- Product price-->
-                                    {{$ush->alamat_ush}}
+                                    {{$ush->alamat_ush}} <br>
+                                    <h7 class="fw-bolder">Hubungi : {{$ush->nohp_member}} </h7>
+                                    
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-
-                                
                             <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/lihatgaleriumkm/{{$ush->id_usaha}}">Lihat Galeri</a></div>
-                     
-                            
-                        
                             </div>
                             
                         </div>
