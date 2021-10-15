@@ -20,6 +20,7 @@ class AdminController extends Controller
       }   
       return view ('admin/daftaradmin', ['users' => $user]);
   }
+  
   public function createadmin(Request $request)
   {
     $this->validate($request,

@@ -23,7 +23,9 @@
                                     </div>
                                 </form>
                                 <div class="panel-body">
-                                <button type="button" class="btn btn-primary navbar-left" data-toggle="modal" data-target="#exampleModal">Tambah Data Berita</button>
+                                @if (auth()->user()->role == 'admin')
+                                    <a href="/news/createberita" class="btn btn-default fa fa-upload">Unggah Berita</a>
+                                @endif
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
@@ -60,75 +62,6 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah berita</h5>
-                            <div class="modal-body">
-                            <form action ="/createberita" method="POST"> 
-                                @csrf
-                                <div class="mb-3">
-                                    <div class="form-group {{$errors->has('judul') ? 'has-error' : ''}}">
-                                    <label for="exampleInputEmail1" class="form-label">Judul</label>
-                                    <input name="judul" type="text" class="form-control" id="InputBerita" aria-describedby="JUDUL" value="{{old('judul')}}">
-                                    @if($errors->has('judul'))
-                                        <span class="help-block">{{$errors->first('judul')}}</span>
-                                    @endif
-                                </div>
-                                <div class="mb-3">
-                                    <div class="form-group {{$errors->has('isi') ? 'has-error' : ''}}">   
-                                    <label for="editor" class="form-label">Isi</label>
-                                    <textarea name="isi" class="form-control" id="editor" rows="10" cols="80" value="{{old('isi')}}"></textarea>
-                                    @if($errors->has('isi'))
-                                        <span class="help-block">{{$errors->first('isi')}}</span>
-                                    @endif
-                                </div>
-                                <div class="mb-3">
-                                    <div class="form-group {{$errors->has('penulis') ? 'has-error' : ''}}">
-                                    <label for="exampleInputEmail1" class="form-label">Penulis</label>
-                                    <input name="penulis" type="text" class="form-control" id="InputPenulis" aria-describedby="PENULIS" value="{{old('penulis')}}">
-                                    @if($errors->has('penulis'))
-                                        <span class="help-block">{{$errors->first('penulis')}}</span>
-                                    @endif
-                                </div>
-                                <div class="mb-3">
-                                    <div class="form-group {{$errors->has('tgl_terbit') ? 'has-error' : ''}}">
-                                    <label for="exampleInputEmail1" class="form-label">Tanggal</label>
-                                    <input name="tgl_terbit" type="text" class="form-control" id="InputTgl_terbit" aria-describedby="TANGGAL" value="{{old('tgl_terbit')}}">
-                                    @if($errors->has('tgl_terbit'))
-                                        <span class="help-block">{{$errors->first('tgl_terbit')}}</span>
-                                    @endif
-                                </div>
-                                <div class="mb-3">
-                                    <div class="form-group {{$errors->has('link') ? 'has-error' : ''}}">
-                                    <label for="exampleInputEmail1" class="form-label">Link</label>
-                                    <input name="link" type="text" class="form-control" id="InputLink" aria-describedby="LINK" value="{{old('link')}}">
-                                    @if($errors->has('link'))
-                                        <span class="help-block">{{$errors->first('link')}}</span>
-                                    @endif
-                                </div>
-                                </div>
-                                <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                <button type="submit"   class="btn btn-primary" > Tambahkan!</button>
-                            </form>
-                            <script>
-                                CKEDITOR.replace('isi')
-                            </script>
-            </div>
-                </div>
-            </div>
-    </div>
-</div>
+
 @endsection 
 
-@section('ck-editor')
-<script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>
-<script>
-    ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-</script>
-@endsection

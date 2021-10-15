@@ -83,7 +83,7 @@
 						@if (auth()->user()->role == 'admin')
 						<li><a href="{{url('/berita')}}" class=""><i class="lnr lnr-file-empty"></i> <span>Berita</span></a></li>
 						@endif
-						<li>
+						<!-- <li>
 							<a href="#Pages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-map-marker"></i> <span>Wilayah</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="Pages" class="collapse ">
 								<ul class="nav">
@@ -93,7 +93,7 @@
 									
 								</ul>
 							</div>
-						</li>
+						</li> -->
 						<li><a href="{{url('/informasi')}}" class=""><i class="fa fa-map"></i> <span>Informasi</span></a></li>
 					</ul>
 				</nav>

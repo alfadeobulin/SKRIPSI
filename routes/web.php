@@ -70,8 +70,9 @@ Route::group(['middleware' => ['auth','checkRole:admin,superadmin']], function (
     Route::post('/createmember', 'MemberController@createmember');
     //create berita 
     Route::get('/berita/delete/{brt}', 'BeritaController@delete');
-    Route::post('/createberita', 'BeritaController@createberita');
     Route::get('/berita', 'BeritaController@index');
+    Route::get('/news/createberita', 'BeritaController@createberita');
+    Route::post('/news/store', 'BeritaController@store');
     //edit admin
     Route::get('/daftaradminumkm/edit/{id_users}', 'AdminController@editadmin');
     //get usaha

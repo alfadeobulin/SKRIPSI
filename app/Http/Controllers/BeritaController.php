@@ -20,7 +20,14 @@ class BeritaController extends Controller
       }   
       return view ('umkm/berita', ['berita' => $berita]);
   }
+
   public function createberita(Request $request)
+  {
+      $berita = Berita::all();
+      return view ('admin/createberita', ['berita' => $berita]);
+  }
+
+  public function store(Request $request)
   {
     $this->validate($request,
     [
@@ -59,6 +66,7 @@ class BeritaController extends Controller
     $berita->save();
     return redirect('/berita')->with('sukses','Data berita berhasil ditambahkan');
   }
+
   public function delete($id_berita)
   {
     DB::table('berita')->where('id_berita', $id_berita)->delete();

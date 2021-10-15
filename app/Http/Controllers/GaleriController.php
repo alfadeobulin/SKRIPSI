@@ -16,15 +16,15 @@ class GaleriController extends Controller
       $usaha    = \App\Models\Umkm::all();
         if($request->has('cari'))
       {
-          $galeri = \App\Models\Galeri::where('ktrgn_foto','LIKE','%'.$request->cari.'%')->get();
+          $galeri = \App\Models\Galeri::where('nama_gal','LIKE','%'.$request->cari.'%')->get();
       }
       else
       {
         // $galeri = Galeri::all();
         $galeri = DB::table('galeri')
         ->join('usaha', 'usaha.id_usaha', '=', 'galeri.id_usaha')
-        ->select('galeri.*', 'usaha.nama_ush')
-        ->get();
+        ->select('galeri.*', 'usaha.nama_ush')->paginate(8);
+        //->get();
       }   
       return view ('umkm/galeri', ['galeri' => $galeri, 'usaha' => $usaha]);
     }
@@ -103,38 +103,23 @@ class GaleriController extends Controller
       return view ('umkm/editgaleri')->with(['galeri' => $galeri]);
     }
 
-    public function update(Request $request,  Galeri $galeri)
+    public function update(Request $request,  $foto)
     {
-      // $ubah = Galeri::findorfail($id_galeri)->where('id_galeri', $id_galeri)->first();
-      // $awal = $ubah->foto;
-
-      // $galeri = ([
-      //   'id_galeri' => $request->id_galeri,
-      //   'nama_gal' => $request->nama_gal,
-      //   'foto' => $awal->foto,
-      //   'id_usaha' => $request->id_usaha,
-      //   'ktrgn_foto' => $request->ktrgn_foto,]);
-
-      // $request->foto->move(public_path().'images/galeri', $awal);
-      // $ubah->update($galeri);
-
+      $foto='';
+      if($request->hasFile('foto'))
+      {
+        $file = $request->file('foto');
+        $filename = $file->getClientOriginalName();
+        $file->move('images/galeri/', $filename);
+        $foto = $filename;
+      }
 
       DB::table('galeri')->where('id_galeri',$request->id_galeri)->update([
       'id_galeri' => $request->id_galeri,
       'nama_gal' => $request->nama_gal,
-      'foto' => $request->foto,
+      'foto' => $foto,
       'id_usaha' => $request->id_usaha,
       'ktrgn_foto' => $request->ktrgn_foto,]);
-      
-      if($request->hasFile('foto'))
-      {
-       $galeri->update($request->all());
-        if($request->hasFile('foto')){
-            $request->file('foto')->move('images/galeri',$request->file('foto')->getClientOriginalName());
-            $galeri->foto = $request->file('foto')->getClientOriginalName();
-            $galeri->save();
-        }
-      }
       return redirect('/galeri')->with('sukses','Data berhasil diubah!');
       
     }

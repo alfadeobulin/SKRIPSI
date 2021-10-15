@@ -43,8 +43,8 @@
                                             <td>{{$glr->ktrgn_foto}}</td>
                                             <td><img src="images/galeri/{{$glr->foto}}" class="rounded" alt="foto" width="200" height="100"></td>
                                             <td>
-                                            @if (auth()->user()->role == 'member')
-                                                <a href="/galeri/edit/{{$glr->id_galeri}}" class="btn btn-warning btn-sm">Edit</a>
+                                            @if (auth()->user()->role == 'superadmin')
+                                                <!-- <a href="/galeri/edit/{{$glr->id_galeri}}" class="btn btn-warning btn-sm">Edit</a> -->
                                                 <a href="/galeri/delete/{{$glr->id_galeri}}" class="btn btn-danger btn-sm delete">Delete</a>
                                             @endif
                                             </td>
@@ -53,7 +53,12 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                        </div>
+                                <br/>
+                                Halaman : {{ $galeri->currentPage() }} <br/>
+                                Jumlah Data : {{ $galeri->total() }} <br/>
+                                Data Per Halaman : {{ $galeri->perPage() }} <br/>
+                                {{ $galeri->links() }}
+                            </div>
                             </div>
                         <!-- END TABLE HOVER -->
                     </div>

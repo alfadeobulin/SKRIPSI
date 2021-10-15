@@ -85,31 +85,23 @@ class MemberController extends Controller
       return view ('member/editmember')->with(['member' => $member]);
     }
 
-    public function update(Request $request, Member $member )
+    public function update(Request $request,  $avatar )
     {
+      $avatar='';
+      if($request->hasFile('avatar'))
+      {
+        $file = $request->file('avatar');
+        $filename = $file->getClientOriginalName();
+        $file->move('uploads/avatar/', $filename);
+        $avatar = $filename;
+      }
+
       DB::table('member')->where('id_users',$request->id_users)->update([
         'id_users' => $request->id_users,
         'nama_member' => $request->nama_member,
         'nohp_member' => $request->nohp_member,
         'alamat_member' => $request->alamat_member,
-        'avatar' => $request->avatar]);
-        
-        if($request->hasFile('avatar'))
-        {
-          $request->file('avatar')->move('images/galeri',$request->file('avatar')->getClientOriginalName());
-          $member->avatar = $request->file('avatar')->getClientOriginalName();
-          $member->save();
-        }
-        if($request->hasFile('avatar'))
-        {          
-          
-          // $avatar = new \stdClass();
-          // $avatar->success = false;
-          //dd($request->all());
-          $request->file('avatar')->move('images/avatar', $request->file('avatar')->getClientOriginalName());
-          $member->avatar  = $request->file('avatar')->getClientOriginalName();
-          $member->save();
-        }
+        'avatar' => $avatar]);
       return redirect('/daftarmemberumkm')->with('sukses','Data berhasil diubah!');
     }
     
