@@ -10,6 +10,7 @@ class Member extends Model
 {
     use HasFactory;
     protected $table = 'member';
+
     protected $fillable = ['id_users','no_ktp','nama_member','nohp_member','alamat_member','avatar',];
     public $timestamps = false; 
 
@@ -35,7 +36,7 @@ class Member extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class,"id_users",'id_users');
     }
 
     

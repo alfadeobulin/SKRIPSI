@@ -16,9 +16,7 @@
                                             <div class="profile-detail">
                                                 <div class="profile-info">
                                                     <h4 class="heading">About</h4>
-                                                    <p>UMKMku Merupakan sebuah sistem informasi berbasis web daerah kota 
-                                                    Yogyakarta yang memvisualisasikan pesebaran UMKM dengan 
-                                                    kategori kuliner dan sebagai media promosi produk - produk UMKM kota Yogyakarta
+                                                    <p>UMKMku merupakan sebuah visualisasi berbasis web Daerah Istimewa Yogyakarta yang memvisualisasikan pesebaran UMKM dengan kategori kuliner.
                                                     </p>
                                                     
                                                 </div>

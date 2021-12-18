@@ -38,6 +38,11 @@
                                             <span class="help-block">{{$errors->first('nama_ush')}}</span>
                                             @endif
                                         </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1" class="form-label">FOTO PROFIL USAHA</label>
+                                            <input name="avatar_usaha" type="file" class="form-control" id="avatar_usaha" aria-describedby="avatar_usaha" value="{{$usaha->avatar_usaha}}">
+                                            <img src="{{asset('images/usaha/'.$usaha->avatar_usaha)}}" height="10%" width="50%" alt="" srcset="">
+                                        </div>
                                         <div class="mb-3">
                                             <div class="form-group {{$errors->has('alamat_ush') ? 'has-error' : ''}}">
                                             <label for="exampleInputEmail1" class="form-label">ALAMAT</label>

@@ -69,6 +69,7 @@
                                                         <a href="/umkm/edit/{{$ush->id_usaha}}" class="btn btn-warning btn-sm">Edit Usaha</a>
                                                     </td>    
                                                     @endif
+                                                    
                                             </tr>
                                         @endforeach
                                         </tbody>

@@ -7,10 +7,11 @@ use Illuminate\support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use App\Models\Member;
+
 use App\Exports\MemberExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Hash;
-
+use Illuminate\Support\Facades\Auth;
 
 class MemberController extends Controller
 {public function index(Request $request)
@@ -102,7 +103,7 @@ class MemberController extends Controller
         'nohp_member' => $request->nohp_member,
         'alamat_member' => $request->alamat_member,
         'avatar' => $avatar]);
-      return redirect('/daftarmemberumkm')->with('sukses','Data berhasil diubah!');
+      return redirect('/profilemember/profile/'.Auth::user()->id_users)->with('sukses','Data berhasil diubah!');
     }
     
     public function delete($id_users)

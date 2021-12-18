@@ -28,7 +28,7 @@
                                 <div class="panel-body text-wrap">
                                      <div class="panel-body">
                                     <table class="table table-hover">
-                                        <form action ="/usaha/store" method="POST">
+                                        <form action ="/usaha/store" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
                                             <div class="form-group {{$errors->has('nama_ush') ? 'has-error' : ''}}">
@@ -36,6 +36,14 @@
                                             <input name="nama_ush" type="text" class="form-control" aria-describedby="Nama Usaha" value="{{old('nama_ush')}}">
                                             @if($errors->has('nama_ush'))
                                             <span class="help-block">{{$errors->first('nama_ush')}}</span>
+                                            @endif
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="form-group {{$errors->has('avatar_usaha') ? 'has-error' : ''}}">
+                                            <label for="exampleInputEmail1" class="form-label">FOTO PROFIL USAHA</label>
+                                            <input name="avatar_usaha" type="file" class="form-control" id="avatar_usaha" aria-describedby="Foto" value="{{old('avatar_usaha')}}">
+                                            @if($errors->has('avatar_usaha'))
+                                            <span class="help-block">{{$errors->first('avatar_usaha')}}</span>
                                             @endif
                                         </div>
                                         <div class="form-group">

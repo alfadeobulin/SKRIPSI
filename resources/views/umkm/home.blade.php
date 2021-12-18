@@ -49,7 +49,7 @@
                         <hr class="divider">
                     </div>
                     <div class="col-lg-8 align-self-baseline">
-                        <p class="text-white-75 mb-5">UMKMku merupakan sebuah sistem informasi berbasis web Daerah Istimewa Yogyakarta yang memvisualisasikan pesebaran UMKM dengan kategori kuliner dan sebagai media promosi produk - produk UMKM kota Yogyakarta</p>
+                        <p class="text-white-75 mb-5">UMKMku merupakan sebuah visualisasi berbasis web Daerah Istimewa Yogyakarta yang memvisualisasikan pesebaran UMKM dengan kategori kuliner.</p>
                         <a class="btn btn-primary btn-xl" href="/lihatmaps">Jelajahi</a>
                     </div>
                 </div>

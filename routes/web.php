@@ -112,6 +112,7 @@ Route::group(['middleware' => ['auth','checkRole:member,superadmin']], function 
     //edit usaha
     Route::get('/umkm/edit/{id_usaha}', 'UmkmController@editusaha');
     Route::post('/umkm/update/{id_usaha}', 'UmkmController@update');
+    Route::get('/umkm/delete/{ush}', 'UmkmController@delete');
     
     
 });

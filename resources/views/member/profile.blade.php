@@ -9,7 +9,7 @@
 					<div class="profile-header">
 						<div class="overlay"></div>
 							<div class="profile-main">
-								<img src="{{asset('admin/4.png')}}" width = "15%" class="img-circle" alt="avatar">
+								<img src='{{asset("uploads/avatar/". auth()->user()->member["avatar"])}}' width = "20%" height = "25%" class="img-circle" alt="avatar">
 								<h3 class="name">{{$member->nama_member}}</h3>
 								<span class="online-status status-available">{{$member->alamat_member}}</span>
 							</div>

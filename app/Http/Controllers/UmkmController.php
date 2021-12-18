@@ -97,12 +97,22 @@ class UmkmController extends Controller
         $id_usaha = "U" . sprintf("%04s", $urutan);
       }
 
+      $upload = "N";
+      if ($request->hasFile('avatar_usaha')) 
+      {
+          $destination = "images/usaha";
+          $avatar_usaha = $request->file('avatar_usaha');
+          $avatar_usaha->move($destination, $avatar_usaha->getClientOriginalName());
+          $upload = "Y";
+      }
+
       $user = Auth::user();
-      
+      if ($upload=="Y") {
       //dd($request->all());
       $usaha = new Umkm;
       $usaha->id_usaha = $id_usaha;
       $usaha->nama_ush = $request->nama_ush;
+      $usaha->avatar_usaha = $avatar_usaha->getClientOriginalName();
       $usaha->alamat_ush = $request->alamat_ush;
       $usaha->ket_ush = $request->ket_ush;
       $usaha->longitude = $request->longitude;
@@ -111,6 +121,7 @@ class UmkmController extends Controller
       $usaha->id_kel = $request->id_kel;
       $usaha->id_kec = $request->id_kec;
       $usaha->save();
+      }
       return redirect('/umkm')->with('sukses','Data berita berhasil ditambahkan');
     }
 
@@ -162,11 +173,20 @@ class UmkmController extends Controller
       return view ('umkm/editusaha', ['kecamatan' => $kecamatan,'kelurahan' => $kelurahan,'member' => $member])->with(['usaha' => $usaha]);
     }
 
-  public function update(Request $request)
+  public function update(Request $request, $avatar_usaha)
     {
+      $avatar_usaha='';
+      if($request->hasFile('avatar_usaha'))
+      {
+        $file = $request->file('avatar_usaha');
+        $filename = $file->getClientOriginalName();
+        $file->move('images/usaha/', $filename);
+        $avatar_usaha = $filename;
+      }
 
       DB::table('usaha')->where('id_usaha',$request->id_usaha)->update([
         'nama_ush' => $request->nama_ush,
+        'avatar_usaha' => $avatar_usaha,
         'alamat_ush' => $request->alamat_ush,
         'ket_ush' => $request->ket_ush,
         'longitude' => $request->longitude,

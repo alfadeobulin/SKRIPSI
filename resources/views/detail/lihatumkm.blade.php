@@ -39,9 +39,20 @@
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">UMKM Terdaftar </h1>
                     <p class="lead fw-normal text-white-50 mb-0">UMKM yang sudah terdaftar di UMKMku</p>
+                        <div class="container px-4 px-lg-5 mt-5" >
+                        <form class="navbar-form navbar-right" method='GET' action = '' >
+                        <div class="input-group"  > 
+                            <input name="cari" value="" class="form-control" placeholder="Cari . . .">
+                            <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary">Cari</button></span>
+                        </div>
                 </div>
             </div>
+            
+        </div>
+        </form>
         </header>
+        
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
@@ -50,7 +61,7 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="{{asset('admin/toko.png')}}" alt="..." />
+                            <img class="card-img-top" src="{{asset('images/usaha/'.$ush->avatar_usaha)}}" height="50%" width="40%" alt="..." />
                             <!-- Product details-->
                             
                             <div class="card-body p-4">
