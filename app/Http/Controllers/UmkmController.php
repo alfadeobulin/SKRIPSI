@@ -71,7 +71,7 @@ class UmkmController extends Controller
     {
       $this->validate($request,
       [
-          'nama_ush' => 'required|unique:usaha',
+          'nama_ush' => 'required|unique:usaha|max:200',
           'alamat_ush' => 'required',
           'ket_ush' => 'required|max:200',
           'longitude' => 'required',
@@ -79,6 +79,7 @@ class UmkmController extends Controller
       ],
       [
           'nama_ush.required'   => 'Nama usaha wajib di isi',
+          'nama_ush.max'   => 'Nama maksimal 200 karakter',
           'nama_ush.unique' => 'Nama usaha sudah digunakan',
           'alamat_ush.required' => 'Alamat Wajib Diisi',
           'ket_ush.required' => 'Keterangan tidak boleh kosong',
@@ -122,7 +123,7 @@ class UmkmController extends Controller
       $usaha->id_kec = $request->id_kec;
       $usaha->save();
       }
-      return redirect('/umkm')->with('sukses','Data berita berhasil ditambahkan');
+      return redirect('/umkm')->with('sukses','Data Usaha berhasil ditambahkan');
     }
 
   public function delete($id_usaha)

@@ -89,7 +89,7 @@ class GaleriController extends Controller
 
          //dd($request);
        
-        return redirect('/galeriku')->with('sukses','Data berita berhasil ditambahkan');
+        return redirect('/galeriku')->with('sukses','Data Galeri berhasil ditambahkan');
     }
     public function delete($id_galeri)
     {

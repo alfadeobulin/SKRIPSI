@@ -45,12 +45,16 @@
         </header>
         <!-- Section-->
         <div id="portfolio">
-            <div class="container-fluid p-0">
-                <div class="row g-0">
+            <div class="container-fluid p-2">
+                <div class="row g-2">
                     @foreach ($galeri as $glr)
                     <div class="col-lg-4 col-sm-6">
                         <a class="portfolio-box" href="{{asset('images/galeri/'.$glr->foto)}}" title="{{$glr->nama_ush}}">
+                        <div class="col mb-50">
+                        <div class="card h-100">
                             <img class="img-fluid" src="{{asset('images/galeri/'.$glr->foto)}}" height="100%" width="100%" alt="..." />
+                        </div>
+                        </div>
                             <div class="portfolio-box-caption">
                                 <div class="project-name">{{$glr->nama_gal}}</div>
                                 <div class="project-category text-white-50">{{$glr->ktrgn_foto}}</div>
