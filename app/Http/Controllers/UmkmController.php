@@ -205,10 +205,21 @@ class UmkmController extends Controller
     $this->Umkm = new Umkm();
   }
 
-  public function LihatMaps()
+  public function LihatMaps(Request $request)
   {
-    $results=$this->Umkm->allData();
-    return view ('detail/lihatmaps',['results' => $results]);
+    $results = \App\Models\Umkm::all();
+    $usaha = \App\Models\Umkm::all();
+    if($request->has('cari'))
+    {
+      $usaha =  $results=$this->Umkm::where('nama_ush','LIKE','%'.$request->cari.'%')->get();   
+    }
+    else
+    {
+      $results=$this->Umkm->allData();
+      
+    }
+   
+    return view ('detail/lihatmaps',['usaha' => $usaha,'results' => $results]);
   }
   public function sebaran()
   {

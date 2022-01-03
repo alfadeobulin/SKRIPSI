@@ -41,6 +41,13 @@
                     <p class="lead fw-normal text-white-50 mb-0">Peta pesebaran UMKMku</p>
                 </div>
             </div>
+            <div class="container px-4 px-lg-5 mt-5" >
+            <form class="navbar-form navbar-right" method='GET' action = '' >
+            <div class="input-group"  > 
+                <input name="cari" value="" class="form-control" placeholder="Cari . . .">
+                <span class="input-group-btn">
+                <button type="submit" class="btn btn-primary">Cari</button></span>
+            </div>
         </header>
         <div class = "main">
                 <div class="main-content">

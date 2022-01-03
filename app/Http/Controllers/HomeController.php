@@ -20,7 +20,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function home()
-    {
+    {   
         $berita = DB::table('berita')->paginate(8);
         //return $berita;
         return view('umkm/home', compact('berita'));
